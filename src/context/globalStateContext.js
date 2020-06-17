@@ -29,6 +29,7 @@ function reducer(state, action) {
 const GlobalStateContext = React.createContext()
 export const GlobalStateProvider = ({ children }) => {
   const [state, dispatch] = React.useReducer(reducer, DEFAULT_STATE)
+  const [showMap, setShowMap] = React.useState(false)
   return (
     <GlobalStateContext.Provider
       value={{
@@ -36,6 +37,8 @@ export const GlobalStateProvider = ({ children }) => {
         dispatch,
         ls_data,
         ls_stations,
+        showMap,
+        setShowMap,
       }}
     >
       {children}

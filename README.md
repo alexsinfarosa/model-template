@@ -1,3 +1,3 @@
 # Model Template
 
-## Bluebarry Maggot
+## Blueberry Maggot

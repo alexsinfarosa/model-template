@@ -5,15 +5,22 @@ import Toggle from "../components/toggle"
 import StationsDropdown from "../components/stationsDropdown"
 import DateOfInterest from "../components/dateOfInterest"
 import Footer from "../components/footer"
+import GlobalStateContext from "../context/globalStateContext"
+
+// import ipmLogo from "../assets/ipm-logo-small.svg"
+// import cornellLogo from "../assets/cornell-logo-small.svg"
 
 const Layout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = React.useState(false)
+  const { showMap, setShowMap } = React.useContext(GlobalStateContext)
 
   function handleCloseSidebar(e) {
     if (e.keyCode === 27) {
       setSidebarOpen(false)
     }
   }
+
+  const [user, setUser] = React.useState(true)
 
   return (
     <div
@@ -60,6 +67,7 @@ const Layout = ({ children }) => {
                     alt="NEWA (Network for Environment and Weather Applications)"
                     className="flex items-center w-32"
                   />
+                  <small>Cornell University</small>
                 </div>
                 <div className="mt-8 px-2">
                   <StationsDropdown></StationsDropdown>
@@ -68,6 +76,8 @@ const Layout = ({ children }) => {
                   <div className="mt-12 bg-gray-50">
                     <Toggle text="Map"></Toggle>
                     <Toggle text="Graph"></Toggle>
+                    <Toggle text="Messages"></Toggle>
+                    <Toggle text="Whatever..."></Toggle>
                   </div>
                 </div>
               </div>
@@ -83,18 +93,49 @@ const Layout = ({ children }) => {
       <div className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-72 border-r border-gray-200 bg-white">
           <div className="h-0 flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-            <img
-              src={newaLogo}
-              alt="NEWA (Network for Environment and Weather Applications)"
-              className="flex items-center w-32 ml-4"
-            />
+            <div className="flex items-end">
+              <img
+                src={newaLogo}
+                alt="NEWA (Network for Environment and Weather Applications)"
+                className="flex items-center w-32 ml-4"
+              />
+            </div>
+            {/* <div className="mt-3 flex justify-center items-center">
+              <span className="text-xs">a partnership of</span>
+              <span className="ml-3 flex items-center">
+                <a
+                  href="https://nysipm.cornell.edu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block w-10"
+                >
+                  <img
+                    src={ipmLogo}
+                    alt="New York State Integrated Pest Management Program"
+                  />
+                </a>
+              </span>
+              <span className="ml-4 flex items-center">
+                <a
+                  href="https://nysipm.cornell.edu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block w-10"
+                >
+                  <img
+                    src={cornellLogo}
+                    alt="New York State Integrated Pest Management Program"
+                  />
+                </a>
+              </span>
+            </div> */}
             {/* Sidebar component */}
             <div className="flex-1 px-2">
               <div className="mt-12">
-                <StationsDropdown></StationsDropdown>
+                <StationsDropdown user={user}></StationsDropdown>
               </div>
 
-              <div className="mt-16">
+              <div className="mt-24">
                 <span className="block text-sm font-medium leading-5 text-primary-600 font-extrabold mb-1">
                   Date of Interest
                 </span>
@@ -108,11 +149,36 @@ const Layout = ({ children }) => {
                 </span>
                 <div className="bg-gray-100 rounded  flex justify-center items-center">
                   <div className="flex-1">
-                    <Toggle text="Map"></Toggle>
+                    <Toggle
+                      text="Map"
+                      isChecked={showMap}
+                      setIsChecked={setShowMap}
+                    ></Toggle>
                     <Toggle text="Graph"></Toggle>
+                    <Toggle text="Messages"></Toggle>
+                    <Toggle text="More..."></Toggle>
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="rounded-md shadow-sm flex justify-center">
+              <button
+                type="button"
+                className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:border-primary-700 focus:shadow-outline-primary active:bg-primary-700 transition ease-in-out duration-150"
+              >
+                <svg
+                  className="-ml-0.5 mr-2 h-4 w-4"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+                Download CSV
+              </button>
             </div>
           </div>
         </div>
