@@ -1,0 +1,24 @@
+@tailwind base;
+html {
+  @apply text-gray-900 antialiased leading-tight;
+}
+body {
+  @apply min-h-screen bg-gray-100;
+}
+h1 {
+  @apply text-2xl;
+}
+h2 {
+  @apply text-xl;
+}
+h3 {
+  @apply text-lg;
+}
+p {
+  @apply my-8;
+}
+a {
+  @apply text-blue-600 underline;
+}
+@tailwind components;
+@tailwind utilities;

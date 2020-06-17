@@ -1,0 +1,743 @@
+[
+  {
+    "lon": -86.8295,
+    "lat": 33.2589,
+    "name": "Alabama",
+    "postalCode": "AL",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-88.4731, 30.1375],
+      [-84.8882, 35.008]
+    ]
+  },
+  {
+    "lon": -111.7633,
+    "lat": 34.3953,
+    "postalCode": "AZ",
+    "name": "Arizona",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-114.8184, 31.3322],
+      [-109.0452, 37.0043]
+    ]
+  },
+  {
+    "lon": -92.4479,
+    "lat": 35.2049,
+    "name": "Arkansas",
+    "postalCode": "AR",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-94.6178, 33.0041],
+      [-89.6422, 36.4996]
+    ]
+  },
+  {
+    "lon": -127.647621,
+    "lat": 53.726669,
+    "name": "British Columbia",
+    "postalCode": "BC",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-139.06, 48.3],
+      [-114.03, 60]
+    ]
+  },
+  {
+    "lon": -118.756,
+    "lat": 36.7015,
+    "name": "California",
+    "postalCode": "CA",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-124.482, 32.5295],
+      [-114.1308, 42.0095]
+    ]
+  },
+  {
+    "lon": -105.6077,
+    "lat": 38.7252,
+    "name": "Colorado",
+    "postalCode": "CO",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-109.0603, 36.9924],
+      [-102.0416, 41.0024]
+    ]
+  },
+  {
+    "lon": -72.5982,
+    "lat": 41.4939,
+    "postalCode": "CT",
+    "name": "Connecticut",
+    "srcLogo": "/logo_state_partner_ct-01.svg",
+    "srcLogoSmall": "/logo_state_partner_ct_small-01.svg",
+    "isNewaStatePartner": true,
+    "bbox": [
+      [-73.7278, 40.9667],
+      [-71.787, 42.0506]
+    ],
+    "affiliation": "University of Connecticut Extension",
+    "altText": "University of Connecticut",
+    "affiliationUrl": "https://www.extension.uconn.edu"
+  },
+  {
+    "lon": -75.4013,
+    "lat": 38.692,
+    "name": "Delaware",
+    "postalCode": "DE",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-75.789, 38.4511],
+      [-74.9846, 39.8394]
+    ]
+  },
+  {
+    "lon": -77.0146,
+    "lat": 38.8938,
+    "name": "District of Columbia",
+    "postalCode": "DC",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-77.1198, 38.7916],
+      [-76.909, 38.996]
+    ]
+  },
+  {
+    "lon": -81.464,
+    "lat": 27.7568,
+    "name": "Florida",
+    "postalCode": "FL",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-87.6349, 24.3963],
+      [-79.9743, 31.001]
+    ]
+  },
+  {
+    "lon": -83.1137,
+    "lat": 32.3294,
+    "name": "Georgia",
+    "postalCode": "GA",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-85.6052, 30.3558],
+      [-80.7514, 35.0008]
+    ]
+  },
+  {
+    "lon": -114.0154,
+    "lat": 43.6448,
+    "name": "Idaho",
+    "postalCode": "ID",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-117.243, 41.9881],
+      [-111.0436, 49.0008]
+    ]
+  },
+  {
+    "lon": -89.434,
+    "lat": 40.0796,
+    "name": "Illinois",
+    "postalCode": "IL",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-91.5131, 36.9701],
+      [-87.0199, 42.5083]
+    ]
+  },
+  {
+    "lon": -86.1747,
+    "lat": 40.327,
+    "name": "Indiana",
+    "postalCode": "IN",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-88.0997, 37.7717],
+      [-84.7846, 41.7614]
+    ]
+  },
+  {
+    "lon": -93.3123,
+    "lat": 41.9217,
+    "name": "Iowa",
+    "postalCode": "IA",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-96.6397, 40.3756],
+      [-90.1401, 43.5011]
+    ]
+  },
+  {
+    "lon": -98.5822,
+    "lat": 38.2731,
+    "postalCode": "KS",
+    "name": "Kansas",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-102.0518, 36.9931],
+      [-94.5882, 40.0031]
+    ]
+  },
+  {
+    "lon": -85.1551,
+    "lat": 37.5726,
+    "postalCode": "KY",
+    "name": "Kentucky",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-89.5715, 36.4967],
+      [-81.9645, 39.1475]
+    ]
+  },
+  {
+    "lon": -92.0071,
+    "lat": 30.8704,
+    "name": "Louisiana",
+    "postalCode": "LA",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-94.0432, 28.921],
+      [-88.817, 33.0195]
+    ]
+  },
+  {
+    "lon": -68.859,
+    "lat": 45.7091,
+    "postalCode": "ME",
+    "name": "Maine",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-71.0842, 42.9561],
+      [-66.9251, 47.4598]
+    ]
+  },
+  {
+    "lon": -98.813873,
+    "lat": 53.76086,
+    "postalCode": "MB",
+    "name": "Manitoba",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-102.03, 48.99],
+      [-88.94, 60]
+    ]
+  },
+  {
+    "lon": -76.9382,
+    "lat": 39.5162,
+    "postalCode": "MD",
+    "name": "Maryland",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-79.4872, 37.8856],
+      [-75.0396, 39.7229]
+    ]
+  },
+  {
+    "lon": -72.0324,
+    "lat": 42.3789,
+    "name": "Massachusetts",
+    "postalCode": "MA",
+    "srcLogo": "/logo_state_partner_ma-01.svg",
+    "srcLogoSmall": "/logo_state_partner_ma_small-01.svg",
+    "isNewaStatePartner": true,
+    "bbox": [
+      [-73.5081, 41.1863],
+      [-69.8615, 42.8867]
+    ],
+    "altText": "University of Massachussets",
+    "affiliation": "UMass Extension",
+    "affiliationUrl": "https://ag.umass.edu/"
+  },
+  {
+    "lon": -84.6824,
+    "lat": 43.6212,
+    "name": "Michigan",
+    "postalCode": "MI",
+    "srcLogo": "/logo_state_partner_mi-01.svg",
+    "srcLogoSmall": "/logo_state_partner_mi_small-01.svg",
+    "isNewaStatePartner": true,
+    "bbox": [
+      [-90.4186, 41.6961],
+      [-82.1228, 48.3061]
+    ],
+    "affiliation": "Michigan State University",
+    "altText": "Michigan State University",
+    "affiliationUrl": "https://enviroweather.msu.edu"
+  },
+  {
+    "lon": -94.6113,
+    "lat": 45.9897,
+    "postalCode": "MN",
+    "name": "Minnesota",
+    "srcLogo": "/logo_state_partner_mn-01.svg",
+    "srcLogoSmall": "/logo_state_partner_mn_small-01.svg",
+    "isNewaStatePartner": true,
+    "bbox": [
+      [-97.2393, 43.4994],
+      [-89.4834, 49.3845]
+    ],
+    "affiliation": "Minnesota Apple Growers Association",
+    "altText": "Minnesota Apple Growers Association",
+    "affiliationUrl": "https://www.minnesotaapple.org/"
+  },
+  {
+    "lon": -89.7348,
+    "lat": 32.9716,
+    "postalCode": "MS",
+    "name": "Mississippi",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-91.655, 30.1478],
+      [-88.098, 34.9961]
+    ]
+  },
+  {
+    "lon": -92.5618,
+    "lat": 38.7605,
+    "postalCode": "MO",
+    "name": "Missouri",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-95.7741, 35.9957],
+      [-89.0988, 40.6136]
+    ]
+  },
+  {
+    "lon": -109.6388,
+    "lat": 47.3753,
+    "postalCode": "MT",
+    "name": "Montana",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-116.05, 44.3582],
+      [-104.0396, 49.0011]
+    ]
+  },
+  {
+    "lon": -99.5874,
+    "lat": 41.737,
+    "name": "Nebraska",
+    "postalCode": "NE",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-104.0535, 40],
+      [-95.3081, 43.0017]
+    ]
+  },
+  {
+    "lon": -116.8537,
+    "lat": 39.5159,
+    "postalCode": "NV",
+    "name": "Nevada",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-120.0057, 35.0019],
+      [-114.0396, 42.0022]
+    ]
+  },
+  {
+    "lon": -66.159668,
+    "lat": 46.49839,
+    "name": "New Brunswick",
+    "postalCode": "NB",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-69.06, 44.6],
+      [-63.77, 48.07]
+    ]
+  },
+  {
+    "lon": -71.6554,
+    "lat": 43.4849,
+    "postalCode": "NH",
+    "name": "New Hampshire",
+    "srcLogo": "/logo_state_partner_nh-01.svg",
+    "srcLogoSmall": "/logo_state_partner_nh_small-01.svg",
+    "isNewaStatePartner": true,
+    "bbox": [
+      [-72.5571, 42.697],
+      [-70.5341, 45.3058]
+    ],
+    "affiliation": "University of New Hampshire Cooperative Extension",
+    "altText": "University of New Hampshire",
+    "affiliationUrl": "https://extension.unh.edu"
+  },
+  {
+    "lon": -74.4042,
+    "lat": 40.0757,
+    "postalCode": "NJ",
+    "name": "New Jersey",
+    "srcLogo": "/logo_state_partner_nj-01.svg",
+    "srcLogoSmall": "/logo_state_partner_nj_small-01.svg",
+    "isNewaStatePartner": true,
+    "bbox": [
+      [-75.5634, 38.7888],
+      [-73.8851, 41.3574]
+    ],
+    "affiliation": "Rutgers, The State University of New Jersey",
+    "altText": "Rutgers, The State University of New Jersey",
+    "affiliationUrl": "https://njaes.rutgers.edu"
+  },
+  {
+    "lon": -105.993,
+    "lat": 34.5708,
+    "postalCode": "NM",
+    "name": "New Mexico",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-109.0502, 31.3323],
+      [-103.0009, 37.0001]
+    ]
+  },
+  {
+    "lon": -75.845,
+    "lat": 43.1562,
+    "postalCode": "NY",
+    "name": "New York",
+    "srcLogo": "/logo_state_partner_ny-01.svg",
+    "srcLogoSmall": "/logo_state_partner_ny_small-01.svg",
+    "isNewaStatePartner": true,
+    "bbox": [
+      [-79.7625, 40.4774],
+      [-71.8527, 45.0159]
+    ],
+    "affiliationUrl": "https://www.cornell.edu",
+    "affiliation": "Cornell University",
+    "altText": "Cornell University"
+  },
+  {
+    "lon": -57.660435,
+    "lat": 53.135509,
+    "postalCode": "NL",
+    "name": "Newfoundland and Labrador",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-67.8, 46.61],
+      [-52.61, 60.37]
+    ]
+  },
+  {
+    "lon": -79.0393,
+    "lat": 35.673,
+    "name": "North Carolina",
+    "postalCode": "NC",
+    "srcLogo": "/logo_state_partner_nc-01.svg",
+    "srcLogoSmall": "/logo_state_partner_nc_small-01.svg",
+    "isNewaStatePartner": true,
+    "bbox": [
+      [-84.3219, 33.7529],
+      [-75.4001, 36.588]
+    ],
+    "affiliation": "North Carolina State University",
+    "altText": "North Carolina Apple Growers Association",
+    "affiliationUrl": "https://horticulture.ces.ncsu.edu/comprehensive-resources-for-fruit-trees/"
+  },
+  {
+    "lon": -100.5407,
+    "lat": 47.6201,
+    "name": "North Dakota",
+    "postalCode": "ND",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-104.0493, 45.935],
+      [-96.5544, 49.0005]
+    ]
+  },
+  {
+    "lon": -124.8457,
+    "lat": 64.8255,
+    "postalCode": "NT",
+    "name": "Northwest Territories",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-136.44, 60],
+      [-101.98, 78.76]
+    ]
+  },
+  {
+    "lon": -63,
+    "lat": 45,
+    "postalCode": "NS",
+    "name": "Nova Scotia",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-66.32, 43.42],
+      [-59.68, 47.03]
+    ]
+  },
+  {
+    "lon": -83.1076,
+    "lat": 70.2998,
+    "name": "Nunavut",
+    "postalCode": "NU",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-120.68, 51.64],
+      [-61.08, 83.11]
+    ]
+  },
+  {
+    "lon": -82.6881,
+    "lat": 40.2254,
+    "name": "Ohio",
+    "postalCode": "OH",
+    "srcLogo": "/logo_state_partner_oh-01-1.svg",
+    "srcLogoSmall": "/logo_state_partner_oh_small-01.svg",
+    "isNewaStatePartner": true,
+    "bbox": [
+      [-84.8203, 38.4032],
+      [-80.519, 42.3232]
+    ],
+    "affiliation": "The Ohio State University OARDC",
+    "altText": "the Ohio State University",
+    "affiliationUrl": "https://www.oardc.ohio-state.edu"
+  },
+  {
+    "lon": -97.2684,
+    "lat": 34.9551,
+    "name": "Oklahoma",
+    "postalCode": "OK",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-103.0026, 33.6192],
+      [-94.4312, 37.0021]
+    ]
+  },
+  {
+    "lon": -85,
+    "lat": 50,
+    "name": "Ontario",
+    "postalCode": "ON",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-95.16, 41.66],
+      [-74.34, 56.86]
+    ]
+  },
+  {
+    "lon": -120.7373,
+    "lat": 43.9793,
+    "name": "Oregon",
+    "postalCode": "OR",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-124.7035, 41.9918],
+      [-116.4635, 46.2991]
+    ]
+  },
+  {
+    "lon": -77.7279,
+    "lat": 40.97,
+    "name": "Pennsylvania",
+    "postalCode": "PA",
+    "srcLogo": "/logo_state_partner_pa-01.svg",
+    "srcLogoSmall": "/logo_state_partner_pa_small-01.svg",
+    "isNewaStatePartner": true,
+    "bbox": [
+      [-80.5211, 39.7198],
+      [-74.6895, 42.5147]
+    ],
+    "affiliation": "Penn State University",
+    "altText": "Penn State University",
+    "affiliationUrl": "https://extension.psu.edu/forage-and-food-crops/fruit"
+  },
+  {
+    "lon": -63,
+    "lat": 46.25,
+    "name": "Prince Edward Island",
+    "postalCode": "PE",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-64.41, 45.95],
+      [-61.97, 47.06]
+    ]
+  },
+  {
+    "lon": -70,
+    "lat": 53,
+    "name": "Quebec",
+    "postalCode": "QC",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-79.76, 44.99],
+      [-57.1, 62.59]
+    ]
+  },
+  {
+    "lon": -71.5992,
+    "lat": 41.7962,
+    "postalCode": "RI",
+    "name": "Rhode Island",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-71.907, 41.0555],
+      [-71.1205, 42.0189]
+    ]
+  },
+  {
+    "lon": -106,
+    "lat": 55,
+    "postalCode": "SK",
+    "name": "Saskatchewan",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-109.99, 48.99],
+      [-101.36, 60]
+    ]
+  },
+  {
+    "lon": -80.4364,
+    "lat": 33.6874,
+    "name": "South Carolina",
+    "postalCode": "SC",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-83.354, 32.0333],
+      [-78.4993, 35.2155]
+    ]
+  },
+  {
+    "lon": -100.3488,
+    "lat": 44.6472,
+    "name": "South Dakota",
+    "postalCode": "SD",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-104.0577, 42.4799],
+      [-96.4363, 45.9455]
+    ]
+  },
+  {
+    "lon": -86.282,
+    "lat": 35.773,
+    "postalCode": "TN",
+    "name": "Tennessee",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-90.3103, 34.983],
+      [-81.6469, 36.6781]
+    ]
+  },
+  {
+    "lon": -99.5121,
+    "lat": 31.816,
+    "postalCode": "TX",
+    "name": "Texas",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-106.6457, 25.8371],
+      [-93.5078, 36.5007]
+    ]
+  },
+  {
+    "lon": -111.7144,
+    "lat": 39.4225,
+    "name": "Utah",
+    "postalCode": "UT",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-114.0539, 36.998],
+      [-109.0411, 42.0014]
+    ]
+  },
+  {
+    "lon": -72.5003,
+    "lat": 44.5991,
+    "postalCode": "VT",
+    "name": "Vermont",
+    "srcLogo": "/logo_state_partner_vt-01.svg",
+    "srcLogoSmall": "/logo_state_partner_vt_small-01.svg",
+    "isNewaStatePartner": true,
+    "bbox": [
+      [-73.4377, 42.7269],
+      [-71.4654, 45.0167]
+    ],
+    "affiliation": "University of Vermont",
+    "altText": "University of Vermont",
+    "affiliationUrl": "https://www.uvm.edu"
+  },
+  {
+    "lon": -78.4928,
+    "lat": 37.1232,
+    "name": "Virginia",
+    "postalCode": "VA",
+    "srcLogo": "/logo_state_partner_va-01.svg",
+    "srcLogoSmall": "/logo_state_partner_va_small-01.svg",
+    "isNewaStatePartner": true,
+    "bbox": [
+      [-83.6754, 36.5408],
+      [-75.2312, 39.466]
+    ],
+    "affiliation": "Virginia Tech",
+    "altText": "Virginia Tech",
+    "affiliationUrl": "https://www.vaes.vt.edu/index.html"
+  },
+  {
+    "lon": -120.2126,
+    "lat": 47.2868,
+    "name": "Washington",
+    "postalCode": "WA",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-124.8361, 45.5437],
+      [-116.9174, 49.0024]
+    ]
+  },
+  {
+    "lon": -80.8408,
+    "lat": 38.4758,
+    "postalCode": "WV",
+    "name": "West Virginia",
+    "srcLogo": "/logo_state_partner_wv-01.svg",
+    "srcLogoSmall": "/logo_state_partner_wv_small-01.svg",
+    "isNewaStatePartner": true,
+    "bbox": [
+      [-82.6447, 37.2015],
+      [-77.719, 40.6388]
+    ],
+    "affiliation": "West Virginia University Cooperative Extension Service",
+    "altText": "West Virginia University",
+    "affiliationUrl": "https://extension.wvu.edu/"
+  },
+  {
+    "lon": -89.6885,
+    "lat": 44.4309,
+    "name": "Wisconsin",
+    "postalCode": "WI",
+    "srcLogo": "/logo_state_partner_wi-01.svg",
+    "srcLogoSmall": "/logo_state_partner_wi_small-01.svg",
+    "isNewaStatePartner": true,
+    "bbox": [
+      [-92.8881, 42.4919],
+      [-86.2495, 47.3025]
+    ],
+    "altText": "Wisconsin Apple and Grape Grower Associations",
+    "affiliation": "University of Wisconsin-Madison",
+    "affiliationUrl": "https://cals.wisc.edu"
+  },
+  {
+    "lon": -107.5685,
+    "lat": 43.17,
+    "name": "Wyoming",
+    "postalCode": "WY",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-111.0569, 40.9949],
+      [-104.0522, 45.0034]
+    ]
+  },
+  {
+    "lon": -135,
+    "lat": 64.2823,
+    "name": "Yukon",
+    "postalCode": "YT",
+    "isNewaStatePartner": false,
+    "bbox": [
+      [-141, 60],
+      [-123.81, 69.65]
+    ]
+  }
+]

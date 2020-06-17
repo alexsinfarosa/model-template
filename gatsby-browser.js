@@ -1,7 +1,9 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+import "typeface-inter"
+import "./src/index.css"
 
-// You can delete this file if you're not using it
+import React from "react"
+import { GlobalStateProvider } from "./src/context/globalStateContext"
+
+export const wrapRootElement = ({ element }) => {
+  return <GlobalStateProvider>{element}</GlobalStateProvider>
+}
