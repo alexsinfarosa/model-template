@@ -30,6 +30,7 @@ const GlobalStateContext = React.createContext()
 export const GlobalStateProvider = ({ children }) => {
   const [state, dispatch] = React.useReducer(reducer, DEFAULT_STATE)
   const [showMap, setShowMap] = React.useState(false)
+
   return (
     <GlobalStateContext.Provider
       value={{
