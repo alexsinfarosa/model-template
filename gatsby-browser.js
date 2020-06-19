@@ -8,7 +8,7 @@ export const wrapRootElement = ({ element }) => (
   <GlobalStateProvider>{element}</GlobalStateProvider>
 )
 
-exports.onInitialClientRender = () => {
-  // Called when the initial (but not subsequent) render of Gatsby App is done on the client.
-  console.log("ReactDOM.render has executed")
-}
+// exports.onInitialClientRender = () => {
+//   // Called when the initial (but not subsequent) render of Gatsby App is done on the client.
+//   console.log("ReactDOM.render has executed")
+// }
