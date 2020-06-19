@@ -11,7 +11,7 @@ const IndexPage = () => {
       <SEO title="Home" />
       {showMap && <Map></Map>}
 
-      <div className="mt-24 border-4 border-dashed border-gray-200 rounded-lg h-72 flex justify-center items-center">
+      <div className="border-4 border-dashed border-gray-200 rounded-lg h-72 flex justify-center items-center">
         Management
       </div>
 

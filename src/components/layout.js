@@ -137,7 +137,7 @@ const Layout = ({ children }) => {
                 <StationsDropdown user={user}></StationsDropdown>
               </div>
 
-              <div className="mt-24">
+              <div className="mt-24 h-80">
                 <span className="block text-sm font-medium leading-5 text-primary-600 font-extrabold mb-1">
                   Date of Interest
                 </span>

@@ -16,20 +16,22 @@ export default function Map() {
   }
 
   return (
-    <ReactMapGL
-      {...viewport}
-      mapboxApiAccessToken={process.env.GATSBY_MAPBOX_TOKEN}
-      mapStyle="mapbox://styles/xscanna/ck3695z07029q1cp5fk1bz1fn"
-      interactiveLayerIds={["acisstationsgeojson"]}
-      onViewportChange={nextViewport => setViewport(nextViewport)}
-      dragRotate={false}
-      getCursor={getCursor}
-      clickRadius={2}
-    >
-      <NavigationControl
-        className="absolute right-0 z-10 mt-4 mb-4 mr-4"
-        showCompass={false}
-      ></NavigationControl>
-    </ReactMapGL>
+    <div className="mb-24">
+      <ReactMapGL
+        {...viewport}
+        mapboxApiAccessToken={process.env.GATSBY_MAPBOX_TOKEN}
+        mapStyle="mapbox://styles/xscanna/ck3695z07029q1cp5fk1bz1fn"
+        interactiveLayerIds={["acisstationsgeojson"]}
+        onViewportChange={nextViewport => setViewport(nextViewport)}
+        dragRotate={false}
+        getCursor={getCursor}
+        clickRadius={2}
+      >
+        <NavigationControl
+          className="absolute right-0 z-10 mt-4 mb-4 mr-4"
+          showCompass={false}
+        ></NavigationControl>
+      </ReactMapGL>
+    </div>
   )
 }
