@@ -14,12 +14,12 @@ const formatGroupLabel = data => (
 )
 
 const formatOptionLabel = ({ name, state, network }) => (
-  <div className="flex justify-between items-center">
-    <div className="flex-1 text-left text-xs">
+  <div className="flex justify-between items-center text-xs">
+    <div className="">
       <span>{name}, </span>
-      <span className="ml-1 font-bold">{state}</span>
+      <span className="mr-32 font-bold">{state}</span>
     </div>
-    <div className="mr-2">
+    <div className="">
       {network === "icao" && (
         <img src={planeIcon} alt="airport newa station" className="w-3"></img>
       )}

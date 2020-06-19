@@ -4,11 +4,13 @@ import modelData from "../assets/model-data.json"
 import Toggle from "../components/toggle"
 import StationsDropdown from "../components/stationsDropdown"
 import DateOfInterest from "../components/dateOfInterest"
-import Footer from "../components/footer"
+import Disclaimer from "./disclaimer"
 import GlobalStateContext from "../context/globalStateContext"
+import Header from "../components/header"
+import Footer from "../components/footer"
 
-// import ipmLogo from "../assets/ipm-logo-small.svg"
-// import cornellLogo from "../assets/cornell-logo-small.svg"
+import ipmLogo from "../assets/ipm-logo-small.svg"
+import cornellLogo from "../assets/cornell-logo-small.svg"
 
 const Layout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = React.useState(false)
@@ -20,7 +22,7 @@ const Layout = ({ children }) => {
     }
   }
 
-  const [user, setUser] = React.useState(true)
+  const user = false
 
   return (
     <div
@@ -100,7 +102,7 @@ const Layout = ({ children }) => {
                 className="flex items-center w-32 ml-4"
               />
             </div>
-            {/* <div className="mt-3 flex justify-center items-center">
+            <div className="mt-3 flex justify-center items-center">
               <span className="text-xs">a partnership of</span>
               <span className="ml-3 flex items-center">
                 <a
@@ -128,7 +130,7 @@ const Layout = ({ children }) => {
                   />
                 </a>
               </span>
-            </div> */}
+            </div>
             {/* Sidebar component */}
             <div className="flex-1 px-2">
               <div className="mt-12">
@@ -205,20 +207,17 @@ const Layout = ({ children }) => {
             </svg>
           </button>
         </div>
+        <Header modelData={modelData}></Header>
         <main
           className="flex-1 relative z-0 overflow-y-auto pt-2 pb-6 focus:outline-none md:py-6"
           tabIndex="0"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            <h1 className="text-2xl font-semibold text-gray-900">
-              {modelData.title}
-            </h1>
-          </div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             {/* <!-- Replace with your content --> */}
             <div className="py-4">{children}</div>
             {/* <!-- /End replace --> */}
             <hr className="max-w-7xl mx-auto my-12"></hr>
+            <Disclaimer></Disclaimer>
             <Footer></Footer>
           </div>
         </main>
