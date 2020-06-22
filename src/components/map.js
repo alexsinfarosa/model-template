@@ -2,6 +2,20 @@ import React from "react"
 import ReactMapGL, { NavigationControl } from "react-map-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
 
+const settings = {
+  dragPan: true,
+  dragRotate: false,
+  scrollZoom: false,
+  touchZoom: true,
+  touchRotate: true,
+  keyboard: true,
+  doubleClickZoom: true,
+  minZoom: 0,
+  maxZoom: 20,
+  minPitch: 0,
+  maxPitch: 85,
+}
+
 export default function Map() {
   const [viewport, setViewport] = React.useState({
     width: "100%",
@@ -19,11 +33,11 @@ export default function Map() {
     <div className="mb-24">
       <ReactMapGL
         {...viewport}
+        {...settings}
         mapboxApiAccessToken={process.env.GATSBY_MAPBOX_TOKEN}
         mapStyle="mapbox://styles/xscanna/ck3695z07029q1cp5fk1bz1fn"
         interactiveLayerIds={["acisstationsgeojson"]}
         onViewportChange={nextViewport => setViewport(nextViewport)}
-        dragRotate={false}
         getCursor={getCursor}
         clickRadius={2}
       >

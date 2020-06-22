@@ -4,12 +4,10 @@ import modelData from "../assets/model-data.json"
 import Toggle from "../components/toggle"
 import StationsDropdown from "../components/stationsDropdown"
 import DateOfInterest from "../components/dateOfInterest"
-import Disclaimer from "./disclaimer"
 import GlobalStateContext from "../context/globalStateContext"
 import Header from "../components/header"
-import Map from "../components/map"
-import Footer from "../components/footer"
 import Transition from "../components/transition"
+import { Link } from "gatsby"
 
 import ipmLogo from "../assets/ipm-logo-small.svg"
 import cornellLogo from "../assets/cornell-logo-small.svg"
@@ -143,11 +141,13 @@ const Layout = ({ children }) => {
         <div className="flex flex-col w-72 border-r border-gray-200 bg-white">
           <div className="h-0 flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
             <div className="flex items-end">
-              <img
-                src={newaLogo}
-                alt="NEWA (Network for Environment and Weather Applications)"
-                className="flex items-center w-32 ml-4"
-              />
+              <Link to="/">
+                <img
+                  src={newaLogo}
+                  alt="NEWA (Network for Environment and Weather Applications)"
+                  className="flex items-center w-32 ml-4"
+                />
+              </Link>
             </div>
             <div className="mt-3 flex justify-center items-center">
               <span className="text-xs">a partnership of</span>
@@ -240,7 +240,7 @@ const Layout = ({ children }) => {
 
       {/* Right hand side */}
       <div className="flex flex-col w-0 flex-1 overflow-hidden">
-        <div className="md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3">
+        <div className="md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3 rounded-md shadow-sm">
           <button
             onClick={() => setSidebarOpen(true)}
             className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:bg-gray-200 transition ease-in-out duration-150"
@@ -264,16 +264,12 @@ const Layout = ({ children }) => {
         <Header modelData={modelData}></Header>
         <main
           className="flex-1 relative z-0 overflow-y-auto pt-2 pb-6 focus:outline-none md:py-6"
-          tabIndex="0"
+          // tabIndex="0"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            {showMap && <Map></Map>}
             {/* <!-- Replace with your content --> */}
             <div className="py-4">{children}</div>
             {/* <!-- /End replace --> */}
-            <hr className="max-w-7xl mx-auto my-12"></hr>
-            <Disclaimer></Disclaimer>
-            <Footer></Footer>
           </div>
         </main>
       </div>

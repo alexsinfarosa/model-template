@@ -1,12 +1,15 @@
 import React from "react"
+import { Link } from "gatsby"
 
 export default function Header({ modelData }) {
   return (
     <div className="lg:flex lg:items-center lg:justify-between px-10 py-4 mb-4">
       <div className="flex-1 min-w-0">
-        <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
-          {modelData.title}
-        </h2>
+        <Link to="/" className="no-underline">
+          <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
+            {modelData.title}
+          </h2>
+        </Link>
         <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap">
           <div className="mt-3 flex items-center text-sm leading-5 text-gray-500 sm:mr-6">
             <svg
