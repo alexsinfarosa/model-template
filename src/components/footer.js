@@ -7,7 +7,7 @@ export default function Footer() {
         <nav className="-mx-5 -my-2 flex flex-wrap justify-center">
           <div className="px-5 py-2">
             <a
-              href="#"
+              href="https://newa.rcc-acis.workers.dev/about-us"
               className="text-base leading-6 text-gray-500 hover:text-gray-900"
             >
               About Us
@@ -15,7 +15,7 @@ export default function Footer() {
           </div>
           <div className="px-5 py-2">
             <a
-              href="#"
+              href="https://newa.rcc-acis.workers.dev/become-partner"
               className="text-base leading-6 text-gray-500 hover:text-gray-900"
             >
               Become a Partner
@@ -23,7 +23,7 @@ export default function Footer() {
           </div>
           <div className="px-5 py-2">
             <a
-              href="#"
+              href="https://newa.rcc-acis.workers.dev/press-room"
               className="text-base leading-6 text-gray-500 hover:text-gray-900"
             >
               Press Room
@@ -31,7 +31,7 @@ export default function Footer() {
           </div>
           <div className="px-5 py-2">
             <a
-              href="#"
+              href="https://newa.rcc-acis.workers.dev/partners"
               className="text-base leading-6 text-gray-500 hover:text-gray-900"
             >
               Partners
@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
           <div className="px-5 py-2">
             <a
-              href="#"
+              href="https://newa.rcc-acis.workers.dev/help"
               className="text-base leading-6 text-gray-500 hover:text-gray-900"
             >
               Get Help
@@ -47,17 +47,23 @@ export default function Footer() {
           </div>
         </nav>
         <div className="mt-8 flex justify-center">
-          <a href="#" className="text-gray-400 hover:text-gray-500">
+          <a
+            href="https://www.google.com"
+            className="text-gray-400 hover:text-gray-500"
+          >
             <span className="sr-only">Facebook</span>
             <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               />
             </svg>
           </a>
-          <a href="#" className="ml-6 text-gray-400 hover:text-gray-500">
+          <a
+            href="mailto:support@newa.zendesk.com"
+            className="ml-6 text-gray-400 hover:text-gray-500"
+          >
             <span className="sr-only">Email the NEWA Help Desk</span>
             <svg
               className="h-6 w-6"

@@ -13,23 +13,29 @@ const formatGroupLabel = data => (
   </div>
 )
 
-const formatOptionLabel = ({ name, state, network }) => (
-  <div className="flex justify-between items-center text-xs">
-    <div className="">
-      <span>{name}, </span>
-      <span className="mr-32 font-bold">{state}</span>
-    </div>
-    <div className="">
-      {network === "icao" && (
-        <img src={planeIcon} alt="airport newa station" className="w-3"></img>
-      )}
-    </div>
-  </div>
-)
-
-const StationsDropdown = ({ user }) => {
+const StationsDropdown = ({ user, marginRight }) => {
   const [tabIndex, setTabIndex] = React.useState(0)
   const { station, stations } = React.useContext(GlobalStateContext)
+
+  const formatOptionLabel = ({ name, state, network }) => (
+    <div className="flex justify-between items-center text-xs">
+      <div className="">
+        <span>{name}, </span>
+        <span className={`${marginRight === 32 ? `mr-32` : `mr-40`} font-bold`}>
+          {state}
+        </span>
+      </div>
+      <div className="">
+        {network === "icao" && (
+          <img
+            src={planeIcon}
+            alt="airport newa station"
+            className="w-3 mr-"
+          ></img>
+        )}
+      </div>
+    </div>
+  )
 
   let formattedStationsFavorite = []
   if (stations.length !== 0) {

@@ -1,14 +1,36 @@
 import React from "react"
+import { Link } from "gatsby"
 
+const activeStyle = `text-primary-600 font-bold`
 export default function Disclaimer() {
   return (
     <div className="p-6">
-      <div className="flex justify-center items-center pb-8">
-        <span>More Info</span>
-        <span className="mx-4 md:mx-8 text-gray-400">|</span>
-        <span>Acknowledgments</span>
-        <span className="mx-4 md:mx-8 text-gray-400">|</span>
-        <span>References</span>
+      <div className="flex justify-center items-center h-16 mb-12">
+        <div className="max-w-md w-full flex justify-between">
+          <Link
+            to="/more-info"
+            className="text-gray-900 text-center"
+            activeClassName={activeStyle}
+          >
+            More Info
+          </Link>
+
+          <Link
+            to="/acknowledgments"
+            className="text-gray-900 text-center"
+            activeClassName={activeStyle}
+          >
+            Acknowledgments
+          </Link>
+
+          <Link
+            to="/references"
+            className="text-gray-900 text-center"
+            activeClassName={activeStyle}
+          >
+            References
+          </Link>
+        </div>
       </div>
 
       <div className="">

@@ -7,89 +7,136 @@ import DateOfInterest from "../components/dateOfInterest"
 import Disclaimer from "./disclaimer"
 import GlobalStateContext from "../context/globalStateContext"
 import Header from "../components/header"
+import Map from "../components/map"
 import Footer from "../components/footer"
+import Transition from "../components/transition"
 
 import ipmLogo from "../assets/ipm-logo-small.svg"
 import cornellLogo from "../assets/cornell-logo-small.svg"
 
 const Layout = ({ children }) => {
-  const [sidebarOpen, setSidebarOpen] = React.useState(false)
+  const [sidebarOpen, setSidebarOpen] = React.useState(true)
   const { showMap, setShowMap } = React.useContext(GlobalStateContext)
-
-  function handleCloseSidebar(e) {
-    if (e.keyCode === 27) {
-      setSidebarOpen(false)
-    }
-  }
-
   const user = false
 
   return (
-    <div
-      onKeyDown={handleCloseSidebar}
-      className="h-screen flex overflow-hidden bg-gray-100"
-    >
+    <div className="h-screen flex overflow-hidden bg-gray-100">
       {/* <!-- Off-canvas menu for mobile --> */}
-      {sidebarOpen && (
-        <div className="md:hidden">
-          <div
-            className="fixed inset-0 flex z-40"
-            // onClick={() => setSidebarOpen(false)}
-            // onKeyDown={handleCloseSidebar}
-          >
-            <div className="fixed inset-0">
-              <div className="absolute inset-0 bg-gray-600 opacity-75"></div>
-            </div>
-            <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white">
-              <div className="absolute top-0 right-0 -mr-14 p-1">
-                <button
-                  className="flex items-center justify-center h-12 w-12 rounded-full focus:outline-none focus:bg-gray-600"
-                  aria-label="Close sidebar"
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  <svg
-                    className="h-6 w-6 text-white"
-                    stroke="currentColor"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
+      <div className="md:hidden">
+        <Transition show={sidebarOpen}>
+          <div className="fixed inset-0 flex z-40">
+            <Transition
+              enter="transition-opacity ease-linear duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="transition-opacity ease-linear duration-300"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0">
+                <div className="absolute inset-0 bg-gray-600 opacity-75"></div>
               </div>
-              <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
-                <div className="flex-shrink-0 flex items-center px-4">
-                  <img
-                    src={newaLogo}
-                    alt="NEWA (Network for Environment and Weather Applications)"
-                    className="flex items-center w-32"
-                  />
-                  <small>Cornell University</small>
+            </Transition>
+
+            <Transition
+              enter="transition ease-in-out duration-300 transform"
+              enterFrom="-translate-x-full"
+              enterTo="translate-x-0"
+              leave="transition ease-in-out duration-300 transform"
+              leaveFrom="translate-x-0"
+              leaveTo="-translate-x-full"
+            >
+              <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white">
+                <div className="absolute top-0 right-0 -mr-14 p-1">
+                  <button
+                    className="flex items-center justify-center h-12 w-12 rounded-full focus:outline-none focus:bg-gray-600"
+                    aria-label="Close sidebar"
+                    onClick={() => setSidebarOpen(false)}
+                  >
+                    <svg
+                      className="h-6 w-6 text-white"
+                      stroke="currentColor"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
                 </div>
-                <div className="mt-8 px-2">
-                  <StationsDropdown></StationsDropdown>
-                  <DateOfInterest></DateOfInterest>
-                  {/* Toggle components On/Off */}
-                  <div className="mt-12 bg-gray-50">
-                    <Toggle text="Map"></Toggle>
-                    <Toggle text="Graph"></Toggle>
-                    <Toggle text="Messages"></Toggle>
-                    <Toggle text="Whatever..."></Toggle>
+                <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
+                  <div className="flex-shrink-0 flex items-center px-4">
+                    <img
+                      src={newaLogo}
+                      alt="NEWA (Network for Environment and Weather Applications)"
+                      className="flex items-center w-32"
+                    />
+                  </div>
+                  <div className="flex-1 px-2">
+                    <div className="mt-12 h-32">
+                      <StationsDropdown user={user}></StationsDropdown>
+                    </div>
+
+                    <div className="mt-24 h-80">
+                      <span className="block text-sm font-medium leading-5 text-primary-600 font-extrabold mb-1">
+                        Date of Interest
+                      </span>
+                      <DateOfInterest></DateOfInterest>
+                    </div>
+
+                    {/* Toggle components On/Off */}
+                    <div className="mt-24">
+                      <span className="block text-sm font-medium leading-5 text-primary-600 font-extrabold mb-1">
+                        Show/Hide
+                      </span>
+                      <div className="bg-gray-100 rounded  flex justify-center items-center">
+                        <div className="flex-1">
+                          <Toggle
+                            text="Map"
+                            isChecked={showMap}
+                            setIsChecked={setShowMap}
+                          ></Toggle>
+                          <Toggle text="Graph"></Toggle>
+                          <Toggle text="Messages"></Toggle>
+                          <Toggle text="More..."></Toggle>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-shrink-0 flex justify-center border-t border-gray-200 p-4">
+                  <div className="rounded-md shadow-sm flex justify-center">
+                    <button
+                      type="button"
+                      className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:border-primary-700 focus:shadow-outline-primary active:bg-primary-700 transition ease-in-out duration-150"
+                    >
+                      <svg
+                        className="-ml-0.5 mr-2 h-4 w-4"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                      </svg>
+                      Download CSV
+                    </button>
                   </div>
                 </div>
               </div>
-            </div>
+            </Transition>
             <div className="flex-shrink-0 w-14">
               {/* <!-- Force sidebar to shrink to fit close icon --> */}
             </div>
           </div>
-        </div>
-      )}
+        </Transition>
+      </div>
 
       {/* <!-- Static sidebar for desktop --> */}
       <div className="hidden md:flex md:flex-shrink-0">
@@ -133,8 +180,11 @@ const Layout = ({ children }) => {
             </div>
             {/* Sidebar component */}
             <div className="flex-1 px-2">
-              <div className="mt-12">
-                <StationsDropdown user={user}></StationsDropdown>
+              <div className="mt-12 h-32">
+                <StationsDropdown
+                  user={user}
+                  marginRight={32}
+                ></StationsDropdown>
               </div>
 
               <div className="mt-24 h-80">
@@ -163,28 +213,32 @@ const Layout = ({ children }) => {
                 </div>
               </div>
             </div>
-            <div className="rounded-md shadow-sm flex justify-center">
-              <button
-                type="button"
-                className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:border-primary-700 focus:shadow-outline-primary active:bg-primary-700 transition ease-in-out duration-150"
-              >
-                <svg
-                  className="-ml-0.5 mr-2 h-4 w-4"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+            <div className="flex-shrink-0 flex justify-center border-t border-gray-200 p-4">
+              <div className="rounded-md shadow-sm flex justify-center">
+                <button
+                  type="button"
+                  className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:border-primary-700 focus:shadow-outline-primary active:bg-primary-700 transition ease-in-out duration-150"
                 >
-                  <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                </svg>
-                Download CSV
-              </button>
+                  <svg
+                    className="-ml-0.5 mr-2 h-4 w-4"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                  </svg>
+                  Download CSV
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Right hand side */}
       <div className="flex flex-col w-0 flex-1 overflow-hidden">
         <div className="md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3">
           <button
@@ -213,6 +267,7 @@ const Layout = ({ children }) => {
           tabIndex="0"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            {showMap && <Map></Map>}
             {/* <!-- Replace with your content --> */}
             <div className="py-4">{children}</div>
             {/* <!-- /End replace --> */}

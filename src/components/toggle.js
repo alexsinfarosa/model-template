@@ -9,6 +9,7 @@ export default function Toggle({ text, isChecked, setIsChecked }) {
         tabIndex="0"
         aria-checked="false"
         onClick={() => setIsChecked(!isChecked)}
+        onKeyDown={() => setIsChecked(!isChecked)}
         className={`${
           isChecked ? `bg-primary-600` : `bg-gray-400`
         } relative inline-block flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:shadow-outline`}
