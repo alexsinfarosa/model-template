@@ -95,7 +95,7 @@ const StationsDropdown = ({ user }) => {
 
         <TabPanel>
           {user ? (
-            <div className="mt-4 shadow-sm">
+            <div className="mt-4 shadow-sm bg-red-100">
               <Select
                 aria-labelledby="stations"
                 value={formattedStationsFavorite[0].options[0]}
@@ -121,7 +121,7 @@ const StationsDropdown = ({ user }) => {
               ></Select>
             </div>
           ) : (
-            <div className="mt-8 ml-3">
+            <div className="mt-6 ml-3">
               <a
                 className="inline-flex justify-between no-underline text-sm text-gray-900 font-semibold"
                 href="https://newa.rcc-acis.workers.dev/"

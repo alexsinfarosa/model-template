@@ -14,9 +14,12 @@ import cornellLogo from "../assets/cornell-logo-small.svg"
 
 const Layout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = React.useState(true)
-  const { showMap, showGraph, showMessages } = React.useContext(
-    GlobalStateContext
-  )
+  const {
+    showMap,
+    showGraph,
+    showPestManagement,
+    showMessages,
+  } = React.useContext(GlobalStateContext)
   const user = false
 
   return (
@@ -99,6 +102,11 @@ const Layout = ({ children }) => {
                             text="Map"
                             isChecked={showMap}
                             toggleElement="toggleMap"
+                          ></Toggle>
+                          <Toggle
+                            text="Pest Management"
+                            isChecked={showPestManagement}
+                            toggleElement="togglePestManagement"
                           ></Toggle>
                           <Toggle
                             text="Graph"
@@ -208,12 +216,17 @@ const Layout = ({ children }) => {
                 <span className="block text-sm font-medium leading-5 text-primary-600 font-extrabold mb-1">
                   Show/Hide
                 </span>
-                <div className="bg-gray-100 rounded  flex justify-center items-center">
+                <div className="flex justify-center items-center">
                   <div className="flex-1">
                     <Toggle
                       text="Map"
                       isChecked={showMap}
                       toggleElement="toggleMap"
+                    ></Toggle>
+                    <Toggle
+                      text="Pest Management"
+                      isChecked={showPestManagement}
+                      toggleElement="togglePestManagement"
                     ></Toggle>
                     <Toggle
                       text="Graph"
@@ -279,7 +292,7 @@ const Layout = ({ children }) => {
         </div>
         <Header modelData={modelData}></Header>
         <main
-          className="flex-1 relative z-0 overflow-y-auto pt-2 pb-6 focus:outline-none md:py-6"
+          className="flex-1 relative z-0 overflow-y-auto pt-2 pb-6 focus:outline-none md:py-6 bg-gray-50"
           // tabIndex="0"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">

@@ -5,7 +5,7 @@ export default function Toggle({ text, isChecked, toggleElement }) {
   const { dispatch } = React.useContext(GlobalStateContext)
 
   return (
-    <div className="flex items-center justify-between px-2 py-2 text-sm leading-5 font-medium text-gray-900 mb-2">
+    <div className="flex items-center justify-between px-2 py-2 text-sm leading-5 font-medium text-gray-900 mb-2 bg-gray-50 rounded">
       {text}
       <span
         role="checkbox"

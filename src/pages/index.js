@@ -3,13 +3,18 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import GlobalStateContext from "../context/globalStateContext"
 import Map from "../components/map"
+import PestManagement from "../components/pestManagement"
 import Disclaimer from "../components/disclaimer"
 import Footer from "../components/footer"
 
 const IndexPage = () => {
-  const { station, showMap, showGraph, showMessages } = React.useContext(
-    GlobalStateContext
-  )
+  const {
+    station,
+    showMap,
+    showGraph,
+    showPestManagement,
+    showMessages,
+  } = React.useContext(GlobalStateContext)
   return (
     <Layout>
       <SEO title="Home" />
@@ -21,10 +26,10 @@ const IndexPage = () => {
             showMap ? `mt-24` : `mt-6`
           } border-4 border-dashed border-gray-200 rounded-lg flex flex-col md:flex-row justify-between items-center px-2 py-6`}
         >
-          <h1 className="w-full md:w-5/6 text-2xl leading-7 text-gray-700 sm:text-3xl sm:leading-9 py-3 text-center md:text-left">
+          <h1 className="w-full md:w-5/6 text-2xl leading-7 text-gray-500 sm:text-3xl sm:leading-9 py-3 text-center md:text-left">
             Results for{" "}
             {station && (
-              <span className="font-extrabold">
+              <span className="text-gray-900 font-semibold">
                 {station.name}, {station.state}
               </span>
             )}
@@ -52,9 +57,11 @@ const IndexPage = () => {
           </div>
         </div>
 
-        <div className="mt-24 border-4 border-dashed border-gray-200 rounded-lg h-72 flex justify-center items-center">
-          Management
-        </div>
+        {showPestManagement && (
+          <div className="mt-24 h-72 flex justify-center items-center">
+            <PestManagement></PestManagement>
+          </div>
+        )}
 
         <div className="mt-24 border-4 border-dashed border-gray-200 rounded-lg h-72 flex justify-center items-center">
           Predictions

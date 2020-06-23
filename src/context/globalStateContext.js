@@ -11,6 +11,7 @@ const DEFAULT_STATE = {
   data: ls_modelData ? ls_modelData.data : null,
   showMap: ls_modelData ? ls_modelData.showMap : false,
   showGraph: ls_modelData ? ls_modelData.showGraph : false,
+  showPestManagement: ls_modelData ? ls_modelData.showPestManagement : false,
   showMessages: ls_modelData ? ls_modelData.showMessages : false,
 }
 
@@ -38,6 +39,12 @@ function reducer(state, action) {
       return {
         ...state,
         showMessages: !state.showMessages,
+      }
+    }
+    case "togglePestManagement": {
+      return {
+        ...state,
+        showPestManagement: !state.showPestManagement,
       }
     }
     default: {
