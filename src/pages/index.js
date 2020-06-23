@@ -23,9 +23,11 @@ const IndexPage = () => {
         >
           <h1 className="w-full md:w-5/6 text-2xl leading-7 text-gray-700 sm:text-3xl sm:leading-9 py-3 text-center md:text-left">
             Results for{" "}
-            <span className="font-extrabold">
-              {station.name}, {station.state}
-            </span>
+            {station && (
+              <span className="font-extrabold">
+                {station.name}, {station.state}
+              </span>
+            )}
           </h1>
 
           <div className="w-full md:w-1/6 flex justify-between md:flex-col text-sm leading-5 text-gray-500">
