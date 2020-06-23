@@ -5,6 +5,19 @@ import GlobalStateContext from "../context/globalStateContext"
 import { formatStationsToDisplayOnDropdownMenu } from "../utils/utils"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import "react-tabs/style/react-tabs.css"
+import useFetchAllStations from "../hooks/useFetchAllStations"
+
+const customStyles = {
+  placeholder: provided => ({
+    ...provided,
+    fontSize: 11,
+  }),
+  singleValue: provided => ({
+    ...provided,
+    width: "100%",
+    padding: "0 8px 0 0",
+  }),
+}
 
 const formatGroupLabel = data => (
   <div className="flex justify-between text-gray-400">
@@ -13,29 +26,28 @@ const formatGroupLabel = data => (
   </div>
 )
 
-const StationsDropdown = ({ user, marginRight }) => {
-  const [tabIndex, setTabIndex] = React.useState(0)
-  const { station, stations } = React.useContext(GlobalStateContext)
-
-  const formatOptionLabel = ({ name, state, network }) => (
-    <div className="flex justify-between items-center text-xs">
-      <div className="">
-        <span>{name}, </span>
-        <span className={`${marginRight === 32 ? `mr-32` : `mr-40`} font-bold`}>
-          {state}
-        </span>
-      </div>
-      <div className="">
-        {network === "icao" && (
-          <img
-            src={planeIcon}
-            alt="airport newa station"
-            className="w-3 mr-"
-          ></img>
-        )}
-      </div>
+const formatOptionLabel = ({ name, state, network }) => (
+  <div className="flex justify-between items-center text-xs">
+    <div className="">
+      <span>{name}, </span>
+      <span className="font-bold">{state}</span>
     </div>
-  )
+    <div className="">
+      {network === "icao" && (
+        <img
+          src={planeIcon}
+          alt="airport newa station"
+          className="w-3 mr-"
+        ></img>
+      )}
+    </div>
+  </div>
+)
+
+const StationsDropdown = ({ user }) => {
+  const [tabIndex, setTabIndex] = React.useState(user ? 0 : 1)
+  const { station, dispatch } = React.useContext(GlobalStateContext)
+  const { stations } = useFetchAllStations()
 
   let formattedStationsFavorite = []
   if (stations.length !== 0) {
@@ -47,6 +59,10 @@ const StationsDropdown = ({ user, marginRight }) => {
   let formattedStations = []
   if (stations.length !== 0) {
     formattedStations = formatStationsToDisplayOnDropdownMenu(stations)
+  }
+
+  function handleSetSelectedStation(station) {
+    dispatch({ type: "setStation", station })
   }
 
   return (
@@ -86,9 +102,11 @@ const StationsDropdown = ({ user, marginRight }) => {
                 placeholder={"Select or search by weather station name"}
                 isSearchable
                 options={formattedStationsFavorite}
+                onChange={stn => handleSetSelectedStation(stn)}
                 formatGroupLabel={formatGroupLabel}
                 formatOptionLabel={formatOptionLabel}
                 getOptionValue={option => option["id"]}
+                styles={customStyles}
                 theme={theme => ({
                   ...theme,
                   borderRadius: 5,
@@ -134,9 +152,11 @@ const StationsDropdown = ({ user, marginRight }) => {
               placeholder={"Select or search by weather station name"}
               isSearchable
               options={formattedStations}
+              onChange={stn => handleSetSelectedStation(stn)}
               formatGroupLabel={formatGroupLabel}
               formatOptionLabel={formatOptionLabel}
               getOptionValue={option => option["id"]}
+              styles={customStyles}
               theme={theme => ({
                 ...theme,
                 borderRadius: 5,

@@ -22,3 +22,7 @@ a {
 }
 @tailwind components;
 @tailwind utilities;
+
+/* .react-datepicker__header {
+  background-color: #e8f3f9 !important;
+} */

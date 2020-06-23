@@ -8,6 +8,8 @@ export default function Footer() {
           <div className="px-5 py-2">
             <a
               href="https://newa.rcc-acis.workers.dev/about-us"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-base leading-6 text-gray-500 hover:text-gray-900"
             >
               About Us
@@ -16,6 +18,8 @@ export default function Footer() {
           <div className="px-5 py-2">
             <a
               href="https://newa.rcc-acis.workers.dev/become-partner"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-base leading-6 text-gray-500 hover:text-gray-900"
             >
               Become a Partner
@@ -24,6 +28,8 @@ export default function Footer() {
           <div className="px-5 py-2">
             <a
               href="https://newa.rcc-acis.workers.dev/press-room"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-base leading-6 text-gray-500 hover:text-gray-900"
             >
               Press Room
@@ -32,6 +38,8 @@ export default function Footer() {
           <div className="px-5 py-2">
             <a
               href="https://newa.rcc-acis.workers.dev/partners"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-base leading-6 text-gray-500 hover:text-gray-900"
             >
               Partners
@@ -40,6 +48,8 @@ export default function Footer() {
           <div className="px-5 py-2">
             <a
               href="https://newa.rcc-acis.workers.dev/help"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-base leading-6 text-gray-500 hover:text-gray-900"
             >
               Get Help
@@ -48,7 +58,7 @@ export default function Footer() {
         </nav>
         <div className="mt-8 flex justify-center">
           <a
-            href="https://www.google.com"
+            href="https://www.facebook.com"
             className="text-gray-400 hover:text-gray-500"
           >
             <span className="sr-only">Facebook</span>

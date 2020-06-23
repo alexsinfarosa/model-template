@@ -1,16 +1,17 @@
 import React from "react"
 
-const LS_KEY = `newa_project_`
-let ls_data
-let ls_stations
+const LS_KEY = `blueberry_maggot_degree_day_model`
+let ls_modelData
 if (typeof window !== "undefined") {
-  ls_data = JSON.parse(window.localStorage.getItem(`${LS_KEY}_data`))
-  ls_stations = JSON.parse(window.localStorage.getItem(`${LS_KEY}_stations`))
+  ls_modelData = JSON.parse(window.localStorage.getItem(`${LS_KEY}`))
 }
 
 const DEFAULT_STATE = {
-  station: ls_data ? ls_data.station : null,
-  stations: ls_stations ? ls_stations : [],
+  station: ls_modelData ? ls_modelData.station : null,
+  data: ls_modelData ? ls_modelData.data : null,
+  showMap: ls_modelData ? ls_modelData.showMap : false,
+  showGraph: ls_modelData ? ls_modelData.showGraph : false,
+  showMessages: ls_modelData ? ls_modelData.showMessages : false,
 }
 
 function reducer(state, action) {
@@ -18,6 +19,25 @@ function reducer(state, action) {
     case "setStation": {
       return {
         ...state,
+        station: action.station,
+      }
+    }
+    case "toggleMap": {
+      return {
+        ...state,
+        showMap: !state.showMap,
+      }
+    }
+    case "toggleGraph": {
+      return {
+        ...state,
+        showGraph: !state.showGraph,
+      }
+    }
+    case "toggleMessages": {
+      return {
+        ...state,
+        showMessages: !state.showMessages,
       }
     }
     default: {
@@ -29,17 +49,16 @@ function reducer(state, action) {
 const GlobalStateContext = React.createContext()
 export const GlobalStateProvider = ({ children }) => {
   const [state, dispatch] = React.useReducer(reducer, DEFAULT_STATE)
-  const [showMap, setShowMap] = React.useState(false)
+
+  React.useEffect(() => {
+    window.localStorage.setItem(LS_KEY, JSON.stringify(state))
+  }, [state])
 
   return (
     <GlobalStateContext.Provider
       value={{
         ...state,
         dispatch,
-        ls_data,
-        ls_stations,
-        showMap,
-        setShowMap,
       }}
     >
       {children}

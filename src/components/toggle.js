@@ -1,6 +1,9 @@
 import React from "react"
+import GlobalStateContext from "../context/globalStateContext"
 
-export default function Toggle({ text, isChecked, setIsChecked }) {
+export default function Toggle({ text, isChecked, toggleElement }) {
+  const { dispatch } = React.useContext(GlobalStateContext)
+  console.log(toggleElement)
   return (
     <div className="flex items-center justify-between px-2 py-2 text-sm leading-5 font-medium text-gray-900 mb-2">
       {text}
@@ -8,8 +11,7 @@ export default function Toggle({ text, isChecked, setIsChecked }) {
         role="checkbox"
         tabIndex="0"
         aria-checked="false"
-        onClick={() => setIsChecked(!isChecked)}
-        onKeyDown={() => setIsChecked(!isChecked)}
+        onClick={() => dispatch({ type: toggleElement })}
         className={`${
           isChecked ? `bg-primary-600` : `bg-gray-400`
         } relative inline-block flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:shadow-outline`}

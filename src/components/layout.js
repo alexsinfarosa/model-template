@@ -14,7 +14,14 @@ import cornellLogo from "../assets/cornell-logo-small.svg"
 
 const Layout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = React.useState(true)
-  const { showMap, setShowMap } = React.useContext(GlobalStateContext)
+  const {
+    showMap,
+    toggleMap,
+    showGraph,
+    toggleGraph,
+    showMessages,
+    toggleMessages,
+  } = React.useContext(GlobalStateContext)
   const user = false
 
   return (
@@ -96,11 +103,18 @@ const Layout = ({ children }) => {
                           <Toggle
                             text="Map"
                             isChecked={showMap}
-                            setIsChecked={setShowMap}
+                            toggleElement="toggleMap"
                           ></Toggle>
-                          <Toggle text="Graph"></Toggle>
-                          <Toggle text="Messages"></Toggle>
-                          <Toggle text="More..."></Toggle>
+                          <Toggle
+                            text="Graph"
+                            isChecked={showGraph}
+                            toggleElement="toggleGraph"
+                          ></Toggle>
+                          <Toggle
+                            text="Messages"
+                            isChecked={showMessages}
+                            toggleElement="toggleMessages"
+                          ></Toggle>
                         </div>
                       </div>
                     </div>
@@ -204,11 +218,18 @@ const Layout = ({ children }) => {
                     <Toggle
                       text="Map"
                       isChecked={showMap}
-                      setIsChecked={setShowMap}
+                      toggleElement="toggleMap"
                     ></Toggle>
-                    <Toggle text="Graph"></Toggle>
-                    <Toggle text="Messages"></Toggle>
-                    <Toggle text="More..."></Toggle>
+                    <Toggle
+                      text="Graph"
+                      isChecked={showGraph}
+                      toggleElement="toggleGraph"
+                    ></Toggle>
+                    <Toggle
+                      text="Messages"
+                      isChecked={showMessages}
+                      toggleElement="toggleMessages"
+                    ></Toggle>
                   </div>
                 </div>
               </div>
