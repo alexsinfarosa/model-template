@@ -14,14 +14,9 @@ import cornellLogo from "../assets/cornell-logo-small.svg"
 
 const Layout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = React.useState(true)
-  const {
-    showMap,
-    toggleMap,
-    showGraph,
-    toggleGraph,
-    showMessages,
-    toggleMessages,
-  } = React.useContext(GlobalStateContext)
+  const { showMap, showGraph, showMessages } = React.useContext(
+    GlobalStateContext
+  )
   const user = false
 
   return (
