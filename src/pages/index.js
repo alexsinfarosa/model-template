@@ -4,6 +4,7 @@ import SEO from "../components/seo"
 import GlobalStateContext from "../context/globalStateContext"
 import Map from "../components/map"
 import PestManagement from "../components/pestManagement"
+import Predictions from "../components/predictions"
 import Disclaimer from "../components/disclaimer"
 import Footer from "../components/footer"
 
@@ -15,6 +16,7 @@ const IndexPage = () => {
     showPestManagement,
     showMessages,
   } = React.useContext(GlobalStateContext)
+
   return (
     <Layout>
       <SEO title="Home" />
@@ -63,8 +65,8 @@ const IndexPage = () => {
           </div>
         )}
 
-        <div className="mt-24 border-4 border-dashed border-gray-200 rounded-lg h-72 flex justify-center items-center">
-          Predictions
+        <div className="mt-24 h-72 flex justify-center items-center">
+          <Predictions></Predictions>
         </div>
 
         {showGraph && (

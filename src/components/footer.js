@@ -27,6 +27,16 @@ export default function Footer() {
           </div>
           <div className="px-5 py-2">
             <a
+              href="https://newa.rcc-acis.workers.dev/blog"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-base leading-6 text-gray-500 hover:text-gray-900"
+            >
+              Blog
+            </a>
+          </div>
+          <div className="px-5 py-2">
+            <a
               href="https://newa.rcc-acis.workers.dev/press-room"
               target="_blank"
               rel="noopener noreferrer"

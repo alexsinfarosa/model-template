@@ -1,0 +1,83 @@
+{
+  "ucc": {
+    "pcpn": 5,
+    "temp": 126,
+    "rhum": 141,
+    "lwet": 118,
+    "wspd": 128,
+    "wdir": 130,
+    "srad": 149
+  },
+  "nwon": {
+    "pcpn": 5,
+    "temp": 23,
+    "rhum": 24,
+    "lwet": 118,
+    "wspd": 28,
+    "wdir": 27,
+    "srad": 132
+  },
+  "newa": {
+    "pcpn": 5,
+    "temp": 23,
+    "rhum": 24,
+    "lwet": 118,
+    "wspd": 128,
+    "wdir": 130,
+    "srad": 132,
+    "st4i": 120,
+    "sm4i": 65
+  },
+  "icao": {
+    "pcpn": 5,
+    "temp": 23,
+    "rhum": 24,
+    "wspd": 28,
+    "wdir": 27,
+    "dwpt": 22
+  },
+  "cu_log": {
+    "pcpn": 5,
+    "temp": 126,
+    "rhum": 24,
+    "lwet": 118,
+    "wspd": 128,
+    "wdir": 130,
+    "srad": 132
+  },
+  "njwx": {
+    "pcpn": 5,
+    "temp": 23,
+    "rhum": 24,
+    "wspd": 28,
+    "wdir": 27,
+    "srad": 149
+  },
+  "miwx": {
+    "pcpn": 5,
+    "temp": 126,
+    "rhum": 143,
+    "lwet": 118,
+    "srad": 132
+  },
+  "oardc": {
+    "pcpn": 5,
+    "temp": 23,
+    "rhum": 24,
+    "lwet": 118,
+    "wspd": 28,
+    "wdir": 27,
+    "srad": 132,
+    "st4i": 120
+  },
+  "nysm": {
+    "pcpn": 5,
+    "temp": 23,
+    "rhum": 24,
+    "wspd": 28,
+    "wdir": 27,
+    "srad": 132,
+    "st4i": 120,
+    "sm2i": 104
+  }
+}

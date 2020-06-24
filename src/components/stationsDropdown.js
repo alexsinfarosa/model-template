@@ -128,7 +128,7 @@ const StationsDropdown = ({ user }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Login to NEWA
+                Visit NEWA
                 <svg
                   className="ml-2 w-4"
                   fill="none"

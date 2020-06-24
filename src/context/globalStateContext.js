@@ -8,10 +8,10 @@ if (typeof window !== "undefined") {
 
 const DEFAULT_STATE = {
   station: ls_modelData ? ls_modelData.station : null,
-  data: ls_modelData ? ls_modelData.data : null,
+  res: ls_modelData ? ls_modelData.res : null,
   showMap: ls_modelData ? ls_modelData.showMap : false,
   showGraph: ls_modelData ? ls_modelData.showGraph : false,
-  showPestManagement: ls_modelData ? ls_modelData.showPestManagement : false,
+  showPestManagement: ls_modelData ? ls_modelData.showPestManagement : true,
   showMessages: ls_modelData ? ls_modelData.showMessages : false,
 }
 
@@ -64,6 +64,7 @@ export const GlobalStateProvider = ({ children }) => {
   return (
     <GlobalStateContext.Provider
       value={{
+        LS_KEY,
         ...state,
         dispatch,
       }}

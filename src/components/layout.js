@@ -123,27 +123,6 @@ const Layout = ({ children }) => {
                     </div>
                   </div>
                 </div>
-                <div className="flex-shrink-0 flex justify-center border-t border-gray-200 p-4">
-                  <div className="rounded-md shadow-sm flex justify-center">
-                    <button
-                      type="button"
-                      className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:border-primary-700 focus:shadow-outline-primary active:bg-primary-700 transition ease-in-out duration-150"
-                    >
-                      <svg
-                        className="-ml-0.5 mr-2 h-4 w-4"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                      </svg>
-                      Download CSV
-                    </button>
-                  </div>
-                </div>
               </div>
             </Transition>
             <div className="flex-shrink-0 w-14">
@@ -240,27 +219,6 @@ const Layout = ({ children }) => {
                     ></Toggle>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className="flex-shrink-0 flex justify-center border-t border-gray-200 p-4">
-              <div className="rounded-md shadow-sm flex justify-center">
-                <button
-                  type="button"
-                  className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:border-primary-700 focus:shadow-outline-primary active:bg-primary-700 transition ease-in-out duration-150"
-                >
-                  <svg
-                    className="-ml-0.5 mr-2 h-4 w-4"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                  </svg>
-                  Download CSV
-                </button>
               </div>
             </div>
           </div>
