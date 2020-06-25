@@ -44,15 +44,22 @@ const formatOptionLabel = ({ name, state, network }) => (
   </div>
 )
 
-const StationsDropdown = ({ user }) => {
+const StationsDropdown = () => {
+  const { user, station, dispatch } = React.useContext(GlobalStateContext)
   const [tabIndex, setTabIndex] = React.useState(user ? 0 : 1)
-  const { station, dispatch } = React.useContext(GlobalStateContext)
   const { stations } = useFetchAllStations()
 
   let formattedStationsFavorite = []
-  if (stations.length !== 0) {
+  if (stations.length !== 0 && user) {
     formattedStationsFavorite = formatStationsToDisplayOnDropdownMenu(
-      stations.slice(56, 60)
+      stations.filter(d => {
+        const ss = `${d.id} ${d.network}`
+        if (user.favoriteStations.includes(ss)) {
+          return d
+        } else {
+          return null
+        }
+      })
     )
   }
 
@@ -73,7 +80,7 @@ const StationsDropdown = ({ user }) => {
             <span
               className={`${
                 tabIndex === 0
-                  ? `text-primary-600 font-extrabold`
+                  ? `text-secondary-600 font-extrabold`
                   : `text-gray-400`
               } text-sm leading-5`}
             >
@@ -84,7 +91,7 @@ const StationsDropdown = ({ user }) => {
             <span
               className={`${
                 tabIndex === 1
-                  ? `text-primary-600 font-extrabold`
+                  ? `text-secondary-600 font-extrabold`
                   : `text-gray-400`
               } text-sm leading-5`}
             >
@@ -98,7 +105,7 @@ const StationsDropdown = ({ user }) => {
             <div className="mt-4 shadow-sm bg-red-100">
               <Select
                 aria-labelledby="stations"
-                value={formattedStationsFavorite[0].options[0]}
+                value={station}
                 placeholder={"Select or search by weather station name"}
                 isSearchable
                 options={formattedStationsFavorite}
@@ -112,9 +119,9 @@ const StationsDropdown = ({ user }) => {
                   borderRadius: 5,
                   colors: {
                     ...theme.colors,
-                    primary25: "#DAEBCD",
-                    primary50: "#C4DFAE",
-                    primary: "#579427",
+                    secondary25: "#DAEBCD",
+                    secondary50: "#C4DFAE",
+                    secondary: "#579427",
                     neutral20: "#CBD5E0",
                   },
                 })}
@@ -162,9 +169,9 @@ const StationsDropdown = ({ user }) => {
                 borderRadius: 5,
                 colors: {
                   ...theme.colors,
-                  primary25: "#DAEBCD",
-                  primary50: "#C4DFAE",
-                  primary: "#579427",
+                  secondary25: "#DAEBCD",
+                  secondary50: "#C4DFAE",
+                  secondary: "#579427",
                   neutral20: "#CBD5E0",
                 },
               })}

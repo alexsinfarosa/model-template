@@ -3,19 +3,22 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import GlobalStateContext from "../context/globalStateContext"
 import Map from "../components/map"
-import PestManagement from "../components/pestManagement"
-import Predictions from "../components/predictions"
+import ManagementGuide from "../components/managementGuide"
+import ResultsTable from "../components/resultsTable"
+import ResultsGraph from "../components/resultsGraph"
 import Disclaimer from "../components/disclaimer"
 import Footer from "../components/footer"
+import useStationData from "../hooks/useStationData"
 
 const IndexPage = () => {
   const {
     station,
     showMap,
-    showGraph,
-    showPestManagement,
-    showMessages,
+    showManagementGuide,
+    showResultsTable,
+    showResultsGraph,
   } = React.useContext(GlobalStateContext)
+  const { data, isLoading } = useStationData()
 
   return (
     <Layout>
@@ -26,9 +29,9 @@ const IndexPage = () => {
         <div
           className={`${
             showMap ? `mt-24` : `mt-6`
-          } border-4 border-dashed border-gray-200 rounded-lg flex flex-col md:flex-row justify-between items-center px-2 py-6`}
+          } border-4 border-dashed border-gray-200 rounded-lg flex flex-col md:flex-row justify-between items-center px-4 py-6`}
         >
-          <h1 className="w-full md:w-5/6 text-2xl leading-7 text-gray-500 sm:text-3xl sm:leading-9 py-3 text-center md:text-left">
+          <h1 className="text-2xl leading-7 text-gray-500 sm:text-3xl sm:leading-9 py-3 text-center md:text-left mr-auto">
             Results for{" "}
             {station && (
               <span className="text-gray-900 font-semibold">
@@ -37,7 +40,7 @@ const IndexPage = () => {
             )}
           </h1>
 
-          <div className="w-full md:w-1/6 flex justify-between md:flex-col text-sm leading-5 text-gray-500">
+          <div className="flex justify-between md:flex-col text-sm leading-5 text-gray-500">
             <div className="flex-1 text-center md:text-left">
               <span className="font-semibold">Latitude:</span>{" "}
               <span className="ml-0">
@@ -59,25 +62,21 @@ const IndexPage = () => {
           </div>
         </div>
 
-        {showPestManagement && (
-          <div className="mt-24 h-72 flex justify-center items-center">
-            <PestManagement></PestManagement>
+        {showManagementGuide && (
+          <div className="mt-24 flex justify-center items-center">
+            <ManagementGuide></ManagementGuide>
           </div>
         )}
 
-        <div className="mt-24 h-72 flex justify-center items-center">
-          <Predictions></Predictions>
-        </div>
-
-        {showGraph && (
-          <div className="mt-24 border-4 border-dashed border-gray-200 rounded-lg h-72 flex justify-center items-center">
-            Graph...
+        {showResultsTable && data && (
+          <div className="mt-24 flex justify-center items-center">
+            <ResultsTable data={data} isLoading={isLoading}></ResultsTable>
           </div>
         )}
 
-        {showMessages && (
-          <div className="mt-24 border-4 border-dashed border-gray-200 rounded-lg h-72 flex justify-center items-center">
-            Messages...
+        {showResultsGraph && data && (
+          <div className="mt-24 flex justify-center items-center">
+            <ResultsGraph data={data} isLoading={isLoading}></ResultsGraph>
           </div>
         )}
 

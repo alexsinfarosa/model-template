@@ -14,7 +14,7 @@ export default function Toggle({ text, isChecked, toggleElement }) {
         onClick={() => dispatch({ type: toggleElement })}
         onKeyDown={() => dispatch({ type: toggleElement })}
         className={`${
-          isChecked ? `bg-primary-600` : `bg-gray-400`
+          isChecked ? `bg-secondary-600` : `bg-gray-400`
         } relative inline-block flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:shadow-outline`}
       >
         <span
@@ -53,7 +53,7 @@ export default function Toggle({ text, isChecked, toggleElement }) {
             } absolute inset-0 h-full w-full flex items-center justify-center transition-opacity`}
           >
             <svg
-              className="h-3 w-3 text-primary-600"
+              className="h-3 w-3 text-secondary-600"
               fill="currentColor"
               viewBox="0 0 12 12"
             >

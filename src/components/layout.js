@@ -1,26 +1,24 @@
 import React from "react"
-import newaLogo from "../assets/newa-logo.svg"
-import modelData from "../assets/model-data.json"
+import newaFavicon from "../assets/newa-favicon.png"
+import ipmLogo from "../assets/ipm-logo-small.svg"
 import Toggle from "../components/toggle"
 import StationsDropdown from "../components/stationsDropdown"
 import DateOfInterest from "../components/dateOfInterest"
 import GlobalStateContext from "../context/globalStateContext"
 import Header from "../components/header"
 import Transition from "../components/transition"
-import { Link } from "gatsby"
-
-import ipmLogo from "../assets/ipm-logo-small.svg"
-import cornellLogo from "../assets/cornell-logo-small.svg"
+import StatePartnerLogo from "./statePartnerLogo"
 
 const Layout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = React.useState(true)
   const {
+    user,
+    station,
     showMap,
-    showGraph,
-    showPestManagement,
-    showMessages,
+    showManagementGuide,
+    showResultsTable,
+    showResultsGraph,
   } = React.useContext(GlobalStateContext)
-  const user = false
 
   return (
     <div className="h-screen flex overflow-hidden bg-gray-100">
@@ -72,20 +70,20 @@ const Layout = ({ children }) => {
                   </button>
                 </div>
                 <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
-                  <div className="flex-shrink-0 flex items-center px-4">
+                  {/* <div className="flex-shrink-0 flex items-center px-4">
                     <img
                       src={newaLogo}
                       alt="NEWA (Network for Environment and Weather Applications)"
                       className="flex items-center w-32"
                     />
-                  </div>
+                  </div> */}
                   <div className="flex-1 px-2">
-                    <div className="mt-12 h-32">
+                    <div className="h-32">
                       <StationsDropdown user={user}></StationsDropdown>
                     </div>
 
                     <div className="mt-24 h-80">
-                      <span className="block text-sm font-medium leading-5 text-primary-600 font-extrabold mb-1">
+                      <span className="block text-sm leading-5 text-secondary-600 font-extrabold mb-1">
                         Date of Interest
                       </span>
                       <DateOfInterest></DateOfInterest>
@@ -93,30 +91,30 @@ const Layout = ({ children }) => {
 
                     {/* Toggle components On/Off */}
                     <div className="mt-24">
-                      <span className="block text-sm font-medium leading-5 text-primary-600 font-extrabold mb-1">
+                      <span className="block text-sm leading-5 text-secondary-600 font-extrabold mb-1">
                         Show/Hide
                       </span>
                       <div className="bg-gray-100 rounded  flex justify-center items-center">
                         <div className="flex-1">
                           <Toggle
-                            text="Map"
+                            text="Stations Map"
                             isChecked={showMap}
                             toggleElement="toggleMap"
                           ></Toggle>
                           <Toggle
-                            text="Pest Management"
-                            isChecked={showPestManagement}
-                            toggleElement="togglePestManagement"
+                            text="Management Guide"
+                            isChecked={showManagementGuide}
+                            toggleElement="toggleManagementGuide"
                           ></Toggle>
                           <Toggle
-                            text="Graph"
-                            isChecked={showGraph}
-                            toggleElement="toggleGraph"
+                            text="Results Table"
+                            isChecked={showResultsTable}
+                            toggleElement="toggleResultsTable"
                           ></Toggle>
                           <Toggle
-                            text="Messages"
-                            isChecked={showMessages}
-                            toggleElement="toggleMessages"
+                            text="Results Graph"
+                            isChecked={showResultsGraph}
+                            toggleElement="toggleResultsGraph"
                           ></Toggle>
                         </div>
                       </div>
@@ -136,47 +134,16 @@ const Layout = ({ children }) => {
       <div className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-72 border-r border-gray-200 bg-white">
           <div className="h-0 flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-            <div className="flex items-end">
-              <Link to="/">
-                <img
-                  src={newaLogo}
-                  alt="NEWA (Network for Environment and Weather Applications)"
-                  className="flex items-center w-32 ml-4"
-                />
-              </Link>
-            </div>
-            <div className="mt-3 flex justify-center items-center">
-              <span className="text-xs">a partnership of</span>
-              <span className="ml-3 flex items-center">
-                <a
-                  href="https://nysipm.cornell.edu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block w-10"
-                >
-                  <img
-                    src={ipmLogo}
-                    alt="New York State Integrated Pest Management Program"
-                  />
-                </a>
-              </span>
-              <span className="ml-4 flex items-center">
-                <a
-                  href="https://nysipm.cornell.edu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block w-10"
-                >
-                  <img
-                    src={cornellLogo}
-                    alt="New York State Integrated Pest Management Program"
-                  />
-                </a>
-              </span>
-            </div>
+            {/* <div className="flex-shrink-0 flex items-center px-4">
+              <img
+                src={newaLogo}
+                alt="NEWA (Network for Environment and Weather Applications)"
+                className="flex items-center w-32"
+              />
+            </div> */}
             {/* Sidebar component */}
             <div className="flex-1 px-2">
-              <div className="mt-12 h-32">
+              <div className="h-32">
                 <StationsDropdown
                   user={user}
                   marginRight={32}
@@ -184,7 +151,7 @@ const Layout = ({ children }) => {
               </div>
 
               <div className="mt-24 h-80">
-                <span className="block text-sm font-medium leading-5 text-primary-600 font-extrabold mb-1">
+                <span className="block text-sm leading-5 text-secondary-600 font-extrabold mb-1">
                   Date of Interest
                 </span>
                 <DateOfInterest></DateOfInterest>
@@ -192,30 +159,32 @@ const Layout = ({ children }) => {
 
               {/* Toggle components On/Off */}
               <div className="mt-24">
-                <span className="block text-sm font-medium leading-5 text-primary-600 font-extrabold mb-1">
+                <span className="block text-sm leading-5 text-secondary-600 font-extrabold mb-1">
                   Show/Hide
                 </span>
                 <div className="flex justify-center items-center">
                   <div className="flex-1">
                     <Toggle
-                      text="Map"
+                      text="Stations Map"
                       isChecked={showMap}
                       toggleElement="toggleMap"
                     ></Toggle>
                     <Toggle
-                      text="Pest Management"
-                      isChecked={showPestManagement}
-                      toggleElement="togglePestManagement"
+                      text="Management Guide"
+                      isChecked={showManagementGuide}
+                      toggleElement="toggleManagementGuide"
                     ></Toggle>
+                    {station && (
+                      <Toggle
+                        text="Results Table"
+                        isChecked={showResultsTable}
+                        toggleElement="toggleResultsTable"
+                      ></Toggle>
+                    )}
                     <Toggle
-                      text="Graph"
-                      isChecked={showGraph}
-                      toggleElement="toggleGraph"
-                    ></Toggle>
-                    <Toggle
-                      text="Messages"
-                      isChecked={showMessages}
-                      toggleElement="toggleMessages"
+                      text="Results Graph"
+                      isChecked={showResultsGraph}
+                      toggleElement="toggleResultsGraph"
                     ></Toggle>
                   </div>
                 </div>
@@ -227,7 +196,7 @@ const Layout = ({ children }) => {
 
       {/* Right hand side */}
       <div className="flex flex-col w-0 flex-1 overflow-hidden">
-        <div className="md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3 rounded-md shadow-sm">
+        <div className="flex justify-between items-center md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3 rounded-md shadow-sm">
           <button
             onClick={() => setSidebarOpen(true)}
             className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:bg-gray-200 transition ease-in-out duration-150"
@@ -247,16 +216,47 @@ const Layout = ({ children }) => {
               />
             </svg>
           </button>
+          <div className="flex mr-4 sm:hidden">
+            <span className="flex items-center w-8 mr-3">
+              <a
+                href="https://newa.netlify.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block w-8"
+              >
+                <img
+                  src={newaFavicon}
+                  alt="NEWA (Network for Environment and Weather Applications)"
+                />
+              </a>
+            </span>
+            <span className="flex items-center w-8 mr-3">
+              <a
+                href="https://nysipm.cornell.edu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block w-8"
+              >
+                <img
+                  src={ipmLogo}
+                  alt="New York State Integrated Pest Management Program"
+                />
+              </a>
+            </span>
+            <span className="flex items-center w-8">
+              <StatePartnerLogo
+                newaStatePartner={user ? user.stateOrProvince : "New York"}
+              ></StatePartnerLogo>
+            </span>
+          </div>
         </div>
-        <Header modelData={modelData}></Header>
+        <Header></Header>
         <main
           className="flex-1 relative z-0 overflow-y-auto pt-2 pb-6 focus:outline-none md:py-6 bg-gray-50"
           // tabIndex="0"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            {/* <!-- Replace with your content --> */}
-            <div className="py-4">{children}</div>
-            {/* <!-- /End replace --> */}
+            {children}
           </div>
         </main>
       </div>

@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <div className="bg-white">
       <div className="max-w-screen-xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
-        <nav className="-mx-5 -my-2 flex flex-wrap justify-center">
+        <nav className="-mx-5 -my-2 flex flex-wrap justify-around">
           <div className="px-5 py-2">
             <a
               href="https://newa.rcc-acis.workers.dev/about-us"

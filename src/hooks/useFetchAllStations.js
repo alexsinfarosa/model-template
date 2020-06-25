@@ -21,7 +21,7 @@ export default function useFetchAllStations() {
         )
         if (!didCancel) {
           window.localStorage.setItem(
-            "newa_project__stations",
+            "newa_project_stations",
             JSON.stringify(result.data.stations)
           )
 
@@ -38,7 +38,7 @@ export default function useFetchAllStations() {
     }
 
     const ls_stations = JSON.parse(
-      window.localStorage.getItem(`newa_project__stations`)
+      window.localStorage.getItem(`newa_project_stations`)
     )
     if (ls_stations === null) {
       fetchData()

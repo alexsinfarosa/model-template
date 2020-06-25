@@ -21,6 +21,13 @@ module.exports = {
       },
     },
     `gatsby-plugin-postcss`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `svgLogos`,
+        path: `${__dirname}/src/assets/state-partners`,
+      },
+    },
     // {
     //   resolve: `gatsby-plugin-mdx`,
     //   options: {

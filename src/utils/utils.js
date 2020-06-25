@@ -212,3 +212,26 @@ export function calculateCustomGdd(data, base, startDate, formula) {
 
   return cdd.toFixed(0)
 }
+
+export function formatDateMonthDay(stringDate) {
+  // string date format: 2020-12-23
+  const dd = stringDate.split("-")
+  // const year = dd[0]
+  const month = dd[1]
+  const date = dd[2]
+  const monthsList = {
+    "01": "January",
+    "02": "February",
+    "03": "March",
+    "04": "April",
+    "05": "May",
+    "06": "June",
+    "07": "July",
+    "08": "August",
+    "09": "September",
+    "10": "October",
+    "11": "November",
+    "12": "December",
+  }
+  return `${monthsList[month]} ${date}`
+}

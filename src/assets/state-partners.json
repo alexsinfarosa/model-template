@@ -1,0 +1,184 @@
+[
+  {
+    "affiliation": "West Virginia University Cooperative Extension Service",
+    "affiliationUrl": "https://extension.wvu.edu/",
+    "altText": "West Virginia University",
+    "state": "WV",
+    "stateName": "West Virginia",
+    "statePartnerSvgLogo": {
+      "sourceUrl": "logo_state_partner_wv-01.svg"
+    },
+    "statePartnerSvgLogoSmall": {
+      "sourceUrl": "logo_state_partner_wv_small-01.svg"
+    }
+  },
+  {
+    "affiliation": "Virginia Tech",
+    "affiliationUrl": "https://www.vaes.vt.edu/index.html",
+    "altText": "Virginia Tech",
+    "state": "VA",
+    "stateName": "Virginia",
+    "statePartnerSvgLogo": {
+      "sourceUrl": "logo_state_partner_va-01.svg"
+    },
+    "statePartnerSvgLogoSmall": {
+      "sourceUrl": "logo_state_partner_va_small-01.svg"
+    }
+  },
+  {
+    "affiliation": "University of Wisconsin-Madison",
+    "affiliationUrl": "https://cals.wisc.edu",
+    "altText": "Wisconsin Apple and Grape Grower Associations",
+    "state": "WI",
+    "stateName": "Wisconsin",
+    "statePartnerSvgLogo": {
+      "sourceUrl": "logo_state_partner_wi-01.svg"
+    },
+    "statePartnerSvgLogoSmall": {
+      "sourceUrl": "logo_state_partner_wi_small-01.svg"
+    }
+  },
+  {
+    "affiliation": "University of Vermont",
+    "affiliationUrl": "https://www.uvm.edu",
+    "altText": "University of Vermont",
+    "state": "VT",
+    "stateName": "Vermont",
+    "statePartnerSvgLogo": {
+      "sourceUrl": "logo_state_partner_vt-01.svg"
+    },
+    "statePartnerSvgLogoSmall": {
+      "sourceUrl": "logo_state_partner_vt_small-01.svg"
+    }
+  },
+  {
+    "affiliation": "University of New Hampshire Cooperative Extension",
+    "affiliationUrl": "https://extension.unh.edu",
+    "altText": "University of New Hampshire",
+    "state": "NH",
+    "stateName": "New Hampshire",
+    "statePartnerSvgLogo": {
+      "sourceUrl": "logo_state_partner_nh-01.svg"
+    },
+    "statePartnerSvgLogoSmall": {
+      "sourceUrl": "logo_state_partner_nh_small-01.svg"
+    }
+  },
+  {
+    "affiliation": "UMass Extension",
+    "affiliationUrl": "https://ag.umass.edu/",
+    "altText": "University of Massachussets",
+    "state": "MA",
+    "stateName": "Massachusetts",
+    "statePartnerSvgLogo": {
+      "sourceUrl": "logo_state_partner_ma-01.svg"
+    },
+    "statePartnerSvgLogoSmall": {
+      "sourceUrl": "logo_state_partner_ma_small-01.svg"
+    }
+  },
+  {
+    "affiliation": "University of Connecticut Extension",
+    "affiliationUrl": "https://www.extension.uconn.edu",
+    "altText": "University of Connecticut",
+    "state": "CT",
+    "stateName": "Connecticut",
+    "statePartnerSvgLogo": {
+      "sourceUrl": "logo_state_partner_ct-01.svg"
+    },
+    "statePartnerSvgLogoSmall": {
+      "sourceUrl": "logo_state_partner_ct_small-01.svg"
+    }
+  },
+  {
+    "affiliation": "Rutgers, The State University of New Jersey",
+    "affiliationUrl": "https://njaes.rutgers.edu",
+    "altText": "Rutgers, The State University of New Jersey",
+    "state": "NJ",
+    "stateName": "New Jersey",
+    "statePartnerSvgLogo": {
+      "sourceUrl": "logo_state_partner_nj-01.svg"
+    },
+    "statePartnerSvgLogoSmall": {
+      "sourceUrl": "logo_state_partner_nj_small-01.svg"
+    }
+  },
+  {
+    "affiliation": "Penn State University",
+    "affiliationUrl": "https://extension.psu.edu/forage-and-food-crops/fruit",
+    "altText": "Penn State University",
+    "state": "PA",
+    "stateName": "Pennsylvania",
+    "statePartnerSvgLogo": {
+      "sourceUrl": "logo_state_partner_pa-01.svg"
+    },
+    "statePartnerSvgLogoSmall": {
+      "sourceUrl": "logo_state_partner_pa_small-01.svg"
+    }
+  },
+  {
+    "affiliation": "The Ohio State University OARDC",
+    "affiliationUrl": "https://www.oardc.ohio-state.edu",
+    "altText": "the Ohio State University",
+    "state": "OH",
+    "stateName": "Ohio",
+    "statePartnerSvgLogo": {
+      "sourceUrl": "logo_state_partner_oh-01-1.svg"
+    },
+    "statePartnerSvgLogoSmall": {
+      "sourceUrl": "logo_state_partner_oh_small-01.svg"
+    }
+  },
+  {
+    "affiliation": "North Carolina State University",
+    "affiliationUrl": "https://horticulture.ces.ncsu.edu/comprehensive-resources-for-fruit-trees/",
+    "altText": "North Carolina Apple Growers Association",
+    "state": "NC",
+    "stateName": "North Carolina",
+    "statePartnerSvgLogo": {
+      "sourceUrl": "logo_state_partner_nc-01.svg"
+    },
+    "statePartnerSvgLogoSmall": {
+      "sourceUrl": "logo_state_partner_nc_small-01.svg"
+    }
+  },
+  {
+    "affiliation": "Minnesota Apple Growers Association",
+    "affiliationUrl": "https://www.minnesotaapple.org/",
+    "altText": "Minnesota Apple Growers Association",
+    "state": "MN",
+    "stateName": "Minnesota",
+    "statePartnerSvgLogo": {
+      "sourceUrl": "logo_state_partner_mn-01.svg"
+    },
+    "statePartnerSvgLogoSmall": {
+      "sourceUrl": "logo_state_partner_mn_small-01.svg"
+    }
+  },
+  {
+    "affiliation": "Michigan State University",
+    "affiliationUrl": "https://enviroweather.msu.edu",
+    "altText": "Michigan State University",
+    "state": "MI",
+    "stateName": "Michigan",
+    "statePartnerSvgLogo": {
+      "sourceUrl": "logo_state_partner_mi-01.svg"
+    },
+    "statePartnerSvgLogoSmall": {
+      "sourceUrl": "logo_state_partner_mi_small-01.svg"
+    }
+  },
+  {
+    "affiliation": "Cornell University",
+    "affiliationUrl": "https://cals.cornell.edu/",
+    "altText": "Cornell University, College of Agriculture and Life Sciences",
+    "state": "NY",
+    "stateName": "New York",
+    "statePartnerSvgLogo": {
+      "sourceUrl": "logo_state_partner_ny-01.svg"
+    },
+    "statePartnerSvgLogoSmall": {
+      "sourceUrl": "logo_state_partner_ny_small-01.svg"
+    }
+  }
+]

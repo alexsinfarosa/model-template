@@ -17,16 +17,9 @@ import {
 } from "../utils/utils"
 
 export default function useStationData() {
-  const {
-    LS_KEY,
-    station,
-    showMap,
-    showGraph,
-    showPestManagement,
-    showMessages,
-  } = React.useContext(GlobalStateContext)
+  const { LS_STATION_DATA_KEY, station } = React.useContext(GlobalStateContext)
   const [state, dispatch] = React.useReducer(dataFetchReducer, {
-    isLoading: true,
+    isLoading: false,
     isError: false,
     data: null,
   })
@@ -193,6 +186,44 @@ export default function useStationData() {
         // START: Forecast //////////////////////////////////////////////////////////
         const forecast = await fetchHourlyForecastData(body)
         // END: Forecast ////////////////////////////////////////////////////////////
+
+        // START: Calculate dd, gdd, min, avg, max ///////////////////////////////////
+        let fdd = 0
+        let fgdd = Number(dataFinal.map(d => d.gdd).slice(-1)[0])
+        let fmin
+        let favg
+        let fmax
+        const updatedForecast = forecast.map((day, i) => {
+          const dailyMissingValues = day.temp.filter(t => t === "M").length
+          if (dailyMissingValues >= 5) {
+            datesWithFiveOrMoreMissingValues.push(i)
+            return {
+              ...day,
+              dd: "N/A",
+              gdd: "N/A",
+              min: "N/A",
+              avg: "N/A",
+              max: "N/A",
+            }
+          } else {
+            const tempsNoMissingValues = day.temp
+              .filter(t => t !== "M")
+              .map(d => +d)
+            fmin = Math.min(...tempsNoMissingValues)
+            fmax = Math.max(...tempsNoMissingValues)
+            favg = (fmin + fmax) / tempsNoMissingValues.length
+            fdd = Math.abs(baskervilleEmin(fmin, fmax, 50))
+            fgdd += fdd
+            return {
+              ...day,
+              dd: fdd.toFixed(0),
+              gdd: fgdd.toFixed(0),
+              min: fmin.toFixed(0),
+              avg: favg.toFixed(0),
+              max: fmax.toFixed(0),
+            }
+          }
+        })
         // console.log(forecast, currentHour)
         // START: Determine weather icons from forecast data ////////////////////////
         // const forecastWithIcons = determineForecastWeatherIcon(
@@ -205,35 +236,26 @@ export default function useStationData() {
         dispatch({
           type: "FETCH_SUCCESS",
           res: {
+            station,
             stationData: dataFinal,
-            forecast,
+            forecast: updatedForecast,
             currentHour,
             currentDayMissingValues,
             datesWithFiveOrMoreMissingValues,
           },
         })
 
-        const currentState = {
-          station,
-          showMap,
-          showGraph,
-          showPestManagement,
-          showMessages,
-        }
-
         // START: Setup local storage ///////////////////////////////////////
         localStorage.setItem(
-          `${LS_KEY}`,
+          `${LS_STATION_DATA_KEY}`,
           JSON.stringify({
-            ...currentState,
-            res: {
-              stationData: dataFinal,
-              forecast,
-              currentHour,
-              currentDayMissingValues,
-              lastSuccess: Date.now(),
-              fetchedAtHour: new Date().getHours(),
-            },
+            station,
+            stationData: dataFinal,
+            forecast: updatedForecast,
+            currentHour,
+            currentDayMissingValues,
+            lastSuccess: Date.now(),
+            fetchedAtHour: new Date().getHours(),
           })
         )
         // END: Setup local storage ///////////////////////////////////////
@@ -243,23 +265,22 @@ export default function useStationData() {
     }
 
     if (station) {
-      const LS_MODEL_DATA = JSON.parse(window.localStorage.getItem(`${LS_KEY}`))
+      const LS_STATION_DATA = JSON.parse(
+        window.localStorage.getItem(`${LS_STATION_DATA_KEY}`)
+      )
 
-      if (LS_MODEL_DATA) {
+      if (LS_STATION_DATA) {
         const userCurrentHour = new Date().getHours()
         const isSameStation =
           `${station.id}-${station.network}` ===
-          `${LS_MODEL_DATA.station.id}-${LS_MODEL_DATA.station.network}`
+          `${LS_STATION_DATA.station.id}-${LS_STATION_DATA.station.network}`
 
-        if (
-          LS_MODEL_DATA.res.fetchedAtHour < userCurrentHour ||
-          !isSameStation
-        ) {
+        if (LS_STATION_DATA.fetchedAtHour < userCurrentHour || !isSameStation) {
           fetchStationHourlyData(station)
         } else {
           dispatch({
             type: "FETCH_SUCCESS",
-            res: LS_MODEL_DATA.res,
+            res: LS_STATION_DATA,
           })
         }
       } else {
@@ -270,7 +291,7 @@ export default function useStationData() {
     return () => {
       didCancel = true
     }
-  }, [station])
+  }, [station, LS_STATION_DATA_KEY])
 
   return { ...state }
 }
