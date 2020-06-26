@@ -53,7 +53,7 @@ const CustomYLabel = props => {
 export default function ResultsGraph({ data, isLoading }) {
   const dataTable = [...data.stationData, ...data.forecast].map(d => ({
     ...d,
-    gdd: +d.gdd,
+    gdd: d.gdd === "N/A" ? null : +d.gdd,
   }))
 
   if (isLoading) {

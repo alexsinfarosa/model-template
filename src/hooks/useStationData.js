@@ -3,7 +3,7 @@ import dataFetchReducer from "../reducers/dataFetchReducer"
 import { fetchStationData, fetchHourlyForecastData } from "../utils/fetchData"
 import GlobalStateContext from "../context/globalStateContext"
 import vXDef from "../assets/vXDef.json"
-
+import { differenceInHours } from "date-fns"
 import {
   setParams,
   formatDate,
@@ -139,6 +139,7 @@ export default function useStationData() {
             })
             data6 = [...data5.slice(0, -1), upToCurrentHour]
           }
+          // console.log({ data6 })
           // END: Calculate current hour and current hour data /////////////////////////
 
           // START: Calculate dd, gdd, min, avg, max ///////////////////////////////////
@@ -165,26 +166,29 @@ export default function useStationData() {
                 .map(d => +d)
               min = Math.min(...tempsNoMissingValues)
               max = Math.max(...tempsNoMissingValues)
-              avg = (min + max) / tempsNoMissingValues.length
+              avg =
+                tempsNoMissingValues.reduce((a, b) => a + b) /
+                tempsNoMissingValues.length
               dd = Math.abs(baskervilleEmin(min, max, 50))
-              gdd += dd
+              gdd += Math.round(dd)
               return {
                 ...day,
-                dd: dd.toFixed(0),
-                gdd: gdd.toFixed(0),
-                min: min.toFixed(0),
-                avg: avg.toFixed(0),
-                max: max.toFixed(0),
+                dd: Math.round(dd),
+                gdd: Math.round(gdd),
+                min: Math.round(min),
+                avg: Math.round(avg),
+                max: Math.round(max),
               }
             }
           })
           dataFinal = [...data7]
           // END: Calculate dd, gdd, min, avg, max ///////////////////////////////////
-          // console.log(dataFinal)
+          // console.log({ dataFinal })
         }
 
         // START: Forecast //////////////////////////////////////////////////////////
         const forecast = await fetchHourlyForecastData(body)
+        // console.log({ forecast: forecast.slice(1) })
         // END: Forecast ////////////////////////////////////////////////////////////
 
         // START: Calculate dd, gdd, min, avg, max ///////////////////////////////////
@@ -193,7 +197,7 @@ export default function useStationData() {
         let fmin
         let favg
         let fmax
-        const updatedForecast = forecast.map((day, i) => {
+        const updatedForecast = forecast.slice(1).map((day, i) => {
           const dailyMissingValues = day.temp.filter(t => t === "M").length
           if (dailyMissingValues >= 5) {
             datesWithFiveOrMoreMissingValues.push(i)
@@ -211,20 +215,21 @@ export default function useStationData() {
               .map(d => +d)
             fmin = Math.min(...tempsNoMissingValues)
             fmax = Math.max(...tempsNoMissingValues)
-            favg = (fmin + fmax) / tempsNoMissingValues.length
+            favg =
+              tempsNoMissingValues.reduce((a, b) => a + b) /
+              tempsNoMissingValues.length
             fdd = Math.abs(baskervilleEmin(fmin, fmax, 50))
-            fgdd += fdd
+            fgdd += Math.round(fdd)
             return {
               ...day,
-              dd: fdd.toFixed(0),
-              gdd: fgdd.toFixed(0),
-              min: fmin.toFixed(0),
-              avg: favg.toFixed(0),
-              max: fmax.toFixed(0),
+              dd: Math.round(fdd),
+              gdd: Math.round(fgdd),
+              min: Math.round(fmin),
+              avg: Math.round(favg),
+              max: Math.round(fmax),
             }
           }
         })
-        // console.log(forecast, currentHour)
         // START: Determine weather icons from forecast data ////////////////////////
         // const forecastWithIcons = determineForecastWeatherIcon(
         //   forecast,
@@ -270,12 +275,15 @@ export default function useStationData() {
       )
 
       if (LS_STATION_DATA) {
-        const userCurrentHour = new Date().getHours()
         const isSameStation =
           `${station.id}-${station.network}` ===
           `${LS_STATION_DATA.station.id}-${LS_STATION_DATA.station.network}`
 
-        if (LS_STATION_DATA.fetchedAtHour < userCurrentHour || !isSameStation) {
+        if (
+          differenceInHours(Date.now(), LS_STATION_DATA.lastSuccess) > 1 ||
+          !isSameStation
+        ) {
+          console.log("More than 1 hour since we fetched")
           fetchStationHourlyData(station)
         } else {
           dispatch({
