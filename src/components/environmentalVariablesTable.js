@@ -1,11 +1,12 @@
 import React from "react"
 import { formatDateMonthDay } from "../utils/utils"
-import modelData from "../assets/model-data.json"
 import HashLoader from "react-spinners/HashLoader"
 
-export default function EnvironmentalVariablesTable({ data, isLoading }) {
-  const { low, moderate, high } = modelData.degreeDaysRiskLevels
-
+export default function EnvironmentalVariablesTable({
+  environmentalVariablesTable,
+  data,
+  isLoading,
+}) {
   if (isLoading) {
     return (
       <div>
@@ -80,14 +81,6 @@ export default function EnvironmentalVariablesTable({ data, isLoading }) {
                 <tbody className="bg-white">
                   {data &&
                     data.stationData.slice(-3).map((day, i) => {
-                      let riskLevel
-                      if (day.gdd < low)
-                        riskLevel = "bg-green-500 text-green-900 font-semibold"
-                      if (day.gdd >= low && day.gdd <= moderate)
-                        riskLevel =
-                          "bg-orange-400 text-orange-900 font-semibold"
-                      if (day.gdd > high)
-                        riskLevel = "bg-red-500 text-red-900 font-semibold"
                       return (
                         <tr
                           key={day.date}
@@ -128,14 +121,6 @@ export default function EnvironmentalVariablesTable({ data, isLoading }) {
                     })}
                   {data &&
                     data.forecast.map(day => {
-                      let riskLevel
-                      if (day.gdd < low)
-                        riskLevel = "bg-green-500 text-green-900 font-semibold"
-                      if (day.gdd >= low && day.gdd <= moderate)
-                        riskLevel =
-                          "bg-orange-400 text-orange-900 font-semibold"
-                      if (day.gdd > high)
-                        riskLevel = "bg-red-500 text-red-900 font-semibold"
                       return (
                         <tr key={day.date} className="text-center">
                           <td className="px-6 py-4 border-b border-gray-200 text-sm leading-6  text-gray-700">

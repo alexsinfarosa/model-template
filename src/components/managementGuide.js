@@ -1,8 +1,6 @@
 import React from "react"
-import modelData from "../assets/model-data.json"
 
-export default function ManagementGuide() {
-  const { managementGuide } = modelData.elements
+export default function ManagementGuide({ managementGuide }) {
   return (
     <div>
       <h2 className="mb-3 font-semibold text-gray-600 md:text-2xl">

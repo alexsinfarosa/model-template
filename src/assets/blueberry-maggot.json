@@ -7,28 +7,32 @@
   },
   "elements": {
     "managementGuide": {
+      "title": "Management Guide",
       "priority": 1,
-      "isVisible": true,
       "pestStatus": "Blueberry maggot flies usually emerge first in unsprayed blueberries or abandoned plantings.",
       "pestManagement": "Set baited traps on field edges or in abandoned plantings to monitor for blueberry maggot adults. Use yellow sticky boards baited with ammonium acetate enhancers as a food attractant. Check traps once or twice per week, as required, and replace traps and baits every third week."
     },
     "resultsTable": {
+      "title": "Results Table",
       "priority": 2,
-      "isVisible": true,
       "startDate": { "month": "Jan 1", "index": 0 },
       "base": "50 ˚F",
-      "formula": "Baskerville Emin",
-      "degreeDaysRiskLevels": [613, 863, 863]
+      "formula": "BE",
+      "degreeDaysRiskLevels": {
+        "low": 613,
+        "moderate": 863,
+        "high": 863
+      }
     },
     "resultsGraph": {
+      "title": "Results Graph",
       "priority": 3,
-      "isVisible": false,
       "variables": ["gdd"]
     },
     "environmentalVariablesTable": {
+      "title": "Environment Variables Table",
       "priority": 4,
-      "isVisible": false,
-      "variables": ["temp"]
+      "variables": ["minT", "avgT", "maxT"]
     }
   }
 }

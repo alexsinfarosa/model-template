@@ -1,10 +1,9 @@
 import React from "react"
 import { formatDateMonthDay } from "../utils/utils"
-import modelData from "../assets/model-data.json"
 import HashLoader from "react-spinners/HashLoader"
 
-export default function ResultsTable({ data, isLoading }) {
-  const { low, moderate, high } = modelData.degreeDaysRiskLevels
+export default function ResultsTable({ resultsTable, data, isLoading }) {
+  const { title, base, formula, degreeDaysRiskLevels, startDate } = resultsTable
 
   if (isLoading) {
     return (
@@ -22,9 +21,7 @@ export default function ResultsTable({ data, isLoading }) {
     return (
       <div className="w-full">
         <div className="flex justify-between items-center mb-3 ">
-          <h2 className="font-semibold text-gray-600 md:text-2xl">
-            Results Table
-          </h2>
+          <h2 className="font-semibold text-gray-600 md:text-2xl">{title}</h2>
 
           <div className="rounded-md shadow-sm flex justify-center">
             <button
@@ -62,7 +59,7 @@ export default function ResultsTable({ data, isLoading }) {
                       className="px-6 py-3 border-b border-r border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
                       colSpan="2"
                     >
-                      Degree Days (Base 50 ˚F BE)
+                      Degree Days (Base {base} {formula})
                     </th>
                   </tr>
                   <tr className="text-center">
@@ -70,7 +67,7 @@ export default function ResultsTable({ data, isLoading }) {
                       Daily
                     </th>
                     <th className="px-6 py-3 border-b border-r border-gray-200 bg-secondary-600  text-xs leading-4 font-medium text-white uppercase tracking-wider">
-                      From Jan 1st
+                      From {startDate.month}
                     </th>
                   </tr>
                 </thead>
@@ -78,11 +75,14 @@ export default function ResultsTable({ data, isLoading }) {
                   {data &&
                     data.stationData.slice(-3).map((day, i) => {
                       let riskLevel
-                      if (day.gdd < low)
+                      if (day.gdd < degreeDaysRiskLevels.low)
                         riskLevel = "bg-green-600 text-white font-semibold"
-                      if (day.gdd >= low && day.gdd <= moderate)
+                      if (
+                        day.gdd >= degreeDaysRiskLevels.low &&
+                        day.gdd <= degreeDaysRiskLevels.moderate
+                      )
                         riskLevel = "bg-orange-500 text-white font-semibold"
-                      if (day.gdd > high)
+                      if (day.gdd > degreeDaysRiskLevels.high)
                         riskLevel = "bg-red-600 text-white font-semibold"
                       return (
                         <tr
@@ -108,10 +108,10 @@ export default function ResultsTable({ data, isLoading }) {
                           <td
                             className={`${
                               i === 2 ? `text-lg` : `text-sm`
-                            } px-6 py-4 border-b border-gray-200 leading-6`}
+                            } px-6 py-3 border-b border-gray-200 leading-6`}
                           >
                             <span
-                              className={`${riskLevel} rounded w-14 inline-block`}
+                              className={`${riskLevel} rounded w-20 py-1 inline-block`}
                             >
                               {day.gdd}
                             </span>
@@ -122,11 +122,14 @@ export default function ResultsTable({ data, isLoading }) {
                   {data &&
                     data.forecast.map(day => {
                       let riskLevel
-                      if (day.gdd < low)
+                      if (day.gdd < degreeDaysRiskLevels.low)
                         riskLevel = "bg-green-600 text-white font-semibold"
-                      if (day.gdd >= low && day.gdd <= moderate)
+                      if (
+                        day.gdd >= degreeDaysRiskLevels.low &&
+                        day.gdd <= degreeDaysRiskLevels.moderate
+                      )
                         riskLevel = "bg-orange-500 text-white font-semibold"
-                      if (day.gdd > high)
+                      if (day.gdd > degreeDaysRiskLevels.high)
                         riskLevel = "bg-red-600 text-white font-semibold"
                       return (
                         <tr key={day.date} className="text-center">
@@ -137,10 +140,10 @@ export default function ResultsTable({ data, isLoading }) {
                             {day.dd}
                           </td>
                           <td
-                            className={`px-6 py-4 border-b border-gray-200 text-sm leading-6`}
+                            className={`px-6 py-3 border-b border-gray-200 text-sm leading-6`}
                           >
                             <span
-                              className={`${riskLevel} rounded w-14 inline-block`}
+                              className={`${riskLevel} rounded w-20 py-1 inline-block`}
                             >
                               {day.gdd}
                             </span>

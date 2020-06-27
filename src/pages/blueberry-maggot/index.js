@@ -1,17 +1,17 @@
 import React from "react"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import StationHeader from "../components/stationHeader"
-import GlobalStateContext from "../context/globalStateContext"
-import Map from "../components/map"
-import ManagementGuide from "../components/managementGuide"
-import ResultsTable from "../components/resultsTable"
-import ResultsGraph from "../components/resultsGraph"
-import EnvironmentalVariablesTable from "../components/environmentalVariablesTable"
-import Disclaimer from "../components/disclaimer"
-import Footer from "../components/footer"
-import useStationData from "../hooks/useStationData"
-import modelData from "../assets/model-data.json"
+import Layout from "../../components/layout"
+import SEO from "../../components/seo"
+import StationHeader from "../../components/stationHeader"
+import GlobalStateContext from "../../context/globalStateContext"
+import Map from "../../components/map"
+import ManagementGuide from "../../components/managementGuide"
+import ResultsTable from "../../components/resultsTable"
+import ResultsGraph from "../../components/resultsGraph"
+import EnvironmentalVariablesTable from "../../components/environmentalVariablesTable"
+import Disclaimer from "../../components/disclaimer"
+import Footer from "../../components/footer"
+import useStationData from "../../hooks/useStationData"
+import modelData from "../../assets/blueberry-maggot.json"
 
 const IndexPage = () => {
   const {
@@ -23,7 +23,6 @@ const IndexPage = () => {
     showEnvironmentalVariablesTable,
   } = React.useContext(GlobalStateContext)
   const { data, isLoading } = useStationData()
-  console.log(modelData.elements["resultsTable"].priority)
 
   return (
     <Layout>
@@ -38,7 +37,9 @@ const IndexPage = () => {
           <div
             className={`mt-24 flex justify-center items-center order-${modelData.elements["managementGuide"].priority}`}
           >
-            <ManagementGuide></ManagementGuide>
+            <ManagementGuide
+              managementGuide={modelData.elements["managementGuide"]}
+            ></ManagementGuide>
           </div>
         )}
 
@@ -46,7 +47,11 @@ const IndexPage = () => {
           <div
             className={`mt-24 flex justify-center items-center order-${modelData.elements["resultsTable"].priority}`}
           >
-            <ResultsTable data={data} isLoading={isLoading}></ResultsTable>
+            <ResultsTable
+              data={data}
+              isLoading={isLoading}
+              resultsTable={modelData.elements["resultsTable"]}
+            ></ResultsTable>
           </div>
         )}
 
@@ -65,6 +70,9 @@ const IndexPage = () => {
             <EnvironmentalVariablesTable
               data={data}
               isLoading={isLoading}
+              environmentalVariablesTable={
+                modelData.elements["environmentalVariablesTable"]
+              }
             ></EnvironmentalVariablesTable>
           </div>
         )}
