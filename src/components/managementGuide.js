@@ -1,7 +1,8 @@
 import React from "react"
-import model from "../assets/model-data.json"
+import modelData from "../assets/model-data.json"
 
 export default function ManagementGuide() {
+  const { managementGuide } = modelData.elements
   return (
     <div>
       <h2 className="mb-3 font-semibold text-gray-600 md:text-2xl">
@@ -24,10 +25,10 @@ export default function ManagementGuide() {
               <tbody className="bg-white">
                 <tr>
                   <td className="px-6 py-4 border-b border-gray-200 text-sm leading-6 w-1/2 text-gray-700">
-                    {model.managementGuide.pestStatus}
+                    {managementGuide.pestStatus}
                   </td>
                   <td className="px-6 py-4 border-b border-gray-200 text-sm leading-6 w-1/2 text-gray-700">
-                    {model.managementGuide.pestManagement}
+                    {managementGuide.pestManagement}
                   </td>
                 </tr>
               </tbody>

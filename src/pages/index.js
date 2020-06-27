@@ -1,14 +1,17 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import StationHeader from "../components/stationHeader"
 import GlobalStateContext from "../context/globalStateContext"
 import Map from "../components/map"
 import ManagementGuide from "../components/managementGuide"
 import ResultsTable from "../components/resultsTable"
 import ResultsGraph from "../components/resultsGraph"
+import EnvironmentalVariablesTable from "../components/environmentalVariablesTable"
 import Disclaimer from "../components/disclaimer"
 import Footer from "../components/footer"
 import useStationData from "../hooks/useStationData"
+import modelData from "../assets/model-data.json"
 
 const IndexPage = () => {
   const {
@@ -17,72 +20,61 @@ const IndexPage = () => {
     showManagementGuide,
     showResultsTable,
     showResultsGraph,
+    showEnvironmentalVariablesTable,
   } = React.useContext(GlobalStateContext)
   const { data, isLoading } = useStationData()
+  console.log(modelData.elements["resultsTable"].priority)
 
   return (
     <Layout>
       <SEO title="Home" />
-      <div className="">
+      <div className="flex flex-col">
+        <StationHeader station={station}></StationHeader>
+
+        {/* Always on top - flex order-0 */}
         {showMap && <Map></Map>}
 
-        <div
-          className={`${
-            showMap ? `mt-24` : `mt-6`
-          } border-4 border-dashed border-gray-200 rounded-lg flex flex-col md:flex-row justify-between items-center px-4 py-6`}
-        >
-          <h1 className="text-2xl leading-7 text-gray-500 sm:text-3xl sm:leading-9 py-3 text-center md:text-left mr-auto">
-            Results for{" "}
-            {station && (
-              <span className="text-gray-900 font-semibold">
-                {station.name}, {station.state}
-              </span>
-            )}
-          </h1>
-
-          <div className="flex justify-between md:flex-col text-sm leading-5 text-gray-500">
-            <div className="flex-1 text-center md:text-left">
-              <span className="font-semibold">Latitude:</span>{" "}
-              <span className="ml-0">
-                {station ? station.lat.toFixed(2) : ""}
-              </span>
-            </div>
-            <div className="flex-1 text-center md:text-left">
-              <span className="font-semibold">Longitude:</span>{" "}
-              <span className="ml-0">
-                {station ? station.lon.toFixed(2) : ""}
-              </span>
-            </div>
-            <div className="flex-1 text-center md:text-left">
-              <span className="font-semibold">Elevation:</span>{" "}
-              <span className="ml-0">
-                {station ? `${station.elev} ft` : ""}
-              </span>
-            </div>
-          </div>
-        </div>
-
         {showManagementGuide && (
-          <div className="mt-24 flex justify-center items-center">
+          <div
+            className={`mt-24 flex justify-center items-center order-${modelData.elements["managementGuide"].priority}`}
+          >
             <ManagementGuide></ManagementGuide>
           </div>
         )}
 
         {showResultsTable && data && (
-          <div className="mt-24 flex justify-center items-center">
+          <div
+            className={`mt-24 flex justify-center items-center order-${modelData.elements["resultsTable"].priority}`}
+          >
             <ResultsTable data={data} isLoading={isLoading}></ResultsTable>
           </div>
         )}
 
         {showResultsGraph && data && (
-          <div className="mt-24 flex justify-center items-center">
+          <div
+            className={`mt-24 flex justify-center items-center order-${modelData.elements["resultsGraph"].priority}`}
+          >
             <ResultsGraph data={data} isLoading={isLoading}></ResultsGraph>
           </div>
         )}
 
-        <hr className="max-w-7xl mx-auto my-12"></hr>
-        <Disclaimer></Disclaimer>
-        <Footer></Footer>
+        {showEnvironmentalVariablesTable && data && (
+          <div
+            className={`mt-24 flex justify-center items-center order-${modelData.elements["environmentalVariablesTable"].priority}`}
+          >
+            <EnvironmentalVariablesTable
+              data={data}
+              isLoading={isLoading}
+            ></EnvironmentalVariablesTable>
+          </div>
+        )}
+
+        {/* Always at the bottom - flex order-12 */}
+        <div className="order-12 mt-24">
+          <hr className="max-w-7xl mx-auto"></hr>
+          <Disclaimer></Disclaimer>
+          <Footer></Footer>
+        </div>
       </div>
     </Layout>
   )

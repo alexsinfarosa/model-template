@@ -30,7 +30,7 @@ export default function Map() {
   }
 
   return (
-    <div className="mt-6">
+    <div className="mt-24">
       <ReactMapGL
         {...viewport}
         {...settings}

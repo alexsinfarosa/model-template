@@ -18,10 +18,11 @@ const Layout = ({ children }) => {
     showManagementGuide,
     showResultsTable,
     showResultsGraph,
+    showEnvironmentalVariablesTable,
   } = React.useContext(GlobalStateContext)
 
   return (
-    <div className="h-screen flex overflow-hidden bg-gray-100">
+    <div className="h-screen flex overflow-hidden bg-gray-50">
       {/* <!-- Off-canvas menu for mobile --> */}
       <div className="md:hidden">
         <Transition show={sidebarOpen}>
@@ -112,9 +113,9 @@ const Layout = ({ children }) => {
                             toggleElement="toggleResultsTable"
                           ></Toggle>
                           <Toggle
-                            text="Results Graph"
-                            isChecked={showResultsGraph}
-                            toggleElement="toggleResultsGraph"
+                            text="Environmental Variables Table"
+                            isChecked={showEnvironmentalVariablesTable}
+                            toggleElement="toggleEnvironmentalVariablesTable"
                           ></Toggle>
                         </div>
                       </div>
@@ -185,6 +186,11 @@ const Layout = ({ children }) => {
                       text="Results Graph"
                       isChecked={showResultsGraph}
                       toggleElement="toggleResultsGraph"
+                    ></Toggle>
+                    <Toggle
+                      text="Environmental Variables Table"
+                      isChecked={showEnvironmentalVariablesTable}
+                      toggleElement="toggleEnvironmentalVariablesTable"
                     ></Toggle>
                   </div>
                 </div>

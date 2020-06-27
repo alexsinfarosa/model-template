@@ -3,7 +3,7 @@ import { formatDateMonthDay } from "../utils/utils"
 import modelData from "../assets/model-data.json"
 import HashLoader from "react-spinners/HashLoader"
 
-export default function ResultsTable({ data, isLoading }) {
+export default function EnvironmentalVariablesTable({ data, isLoading }) {
   const { low, moderate, high } = modelData.degreeDaysRiskLevels
 
   if (isLoading) {
@@ -23,7 +23,7 @@ export default function ResultsTable({ data, isLoading }) {
       <div className="w-full">
         <div className="flex justify-between items-center mb-3 ">
           <h2 className="font-semibold text-gray-600 md:text-2xl">
-            Results Table
+            Environmental Variables Table
           </h2>
 
           <div className="rounded-md shadow-sm flex justify-center">
@@ -59,18 +59,21 @@ export default function ResultsTable({ data, isLoading }) {
                       Date
                     </th>
                     <th
-                      className="px-6 py-3 border-b border-r border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
-                      colSpan="2"
+                      className="px-6 py-3 border-b border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
+                      colSpan="3"
                     >
-                      Degree Days (Base 50 ˚F BE)
+                      Temperature (˚F)
                     </th>
                   </tr>
                   <tr className="text-center">
                     <th className="px-6 py-3 border-b border-gray-200 bg-secondary-600 text-xs leading-4 font-medium text-white uppercase tracking-wider">
-                      Daily
+                      Min
                     </th>
-                    <th className="px-6 py-3 border-b border-r border-gray-200 bg-secondary-600  text-xs leading-4 font-medium text-white uppercase tracking-wider">
-                      From Jan 1st
+                    <th className="px-6 py-3 border-b border-gray-200 bg-secondary-600 text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                      Avg
+                    </th>
+                    <th className="px-6 py-3 border-b border-gray-200 bg-secondary-600 text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                      Max
                     </th>
                   </tr>
                 </thead>
@@ -79,11 +82,12 @@ export default function ResultsTable({ data, isLoading }) {
                     data.stationData.slice(-3).map((day, i) => {
                       let riskLevel
                       if (day.gdd < low)
-                        riskLevel = "bg-green-600 text-white font-semibold"
+                        riskLevel = "bg-green-500 text-green-900 font-semibold"
                       if (day.gdd >= low && day.gdd <= moderate)
-                        riskLevel = "bg-orange-500 text-white font-semibold"
+                        riskLevel =
+                          "bg-orange-400 text-orange-900 font-semibold"
                       if (day.gdd > high)
-                        riskLevel = "bg-red-600 text-white font-semibold"
+                        riskLevel = "bg-red-500 text-red-900 font-semibold"
                       return (
                         <tr
                           key={day.date}
@@ -93,28 +97,31 @@ export default function ResultsTable({ data, isLoading }) {
                         >
                           <td
                             className={`${
-                              i === 2 ? `text-lg` : `text-sm`
+                              i === 2 ? `text-lg` : `text-xs`
                             } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                           >
                             {i === 2 ? "Today" : formatDateMonthDay(day.date)}
                           </td>
                           <td
                             className={`${
-                              i === 2 ? `text-lg` : `text-sm`
+                              i === 2 ? `text-lg` : `text-xs`
                             } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                           >
-                            {day.dd}
+                            {day.min}
                           </td>
                           <td
                             className={`${
-                              i === 2 ? `text-lg` : `text-sm`
-                            } px-6 py-4 border-b border-gray-200 leading-6`}
+                              i === 2 ? `text-lg` : `text-xs`
+                            } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                           >
-                            <span
-                              className={`${riskLevel} rounded w-14 inline-block`}
-                            >
-                              {day.gdd}
-                            </span>
+                            {day.avg}
+                          </td>
+                          <td
+                            className={`${
+                              i === 2 ? `text-lg` : `text-xs`
+                            } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
+                          >
+                            {day.max}
                           </td>
                         </tr>
                       )
@@ -123,27 +130,25 @@ export default function ResultsTable({ data, isLoading }) {
                     data.forecast.map(day => {
                       let riskLevel
                       if (day.gdd < low)
-                        riskLevel = "bg-green-600 text-white font-semibold"
+                        riskLevel = "bg-green-500 text-green-900 font-semibold"
                       if (day.gdd >= low && day.gdd <= moderate)
-                        riskLevel = "bg-orange-500 text-white font-semibold"
+                        riskLevel =
+                          "bg-orange-400 text-orange-900 font-semibold"
                       if (day.gdd > high)
-                        riskLevel = "bg-red-600 text-white font-semibold"
+                        riskLevel = "bg-red-500 text-red-900 font-semibold"
                       return (
                         <tr key={day.date} className="text-center">
                           <td className="px-6 py-4 border-b border-gray-200 text-sm leading-6  text-gray-700">
                             {formatDateMonthDay(day.date)}
                           </td>
                           <td className="px-6 py-4 border-b border-gray-200 text-sm leading-6 text-gray-700">
-                            {day.dd}
+                            {day.min}
                           </td>
-                          <td
-                            className={`px-6 py-4 border-b border-gray-200 text-sm leading-6`}
-                          >
-                            <span
-                              className={`${riskLevel} rounded w-14 inline-block`}
-                            >
-                              {day.gdd}
-                            </span>
+                          <td className="px-6 py-4 border-b border-gray-200 text-sm leading-6 text-gray-700">
+                            {day.avg}
+                          </td>
+                          <td className="px-6 py-4 border-b border-gray-200 text-sm leading-6 text-gray-700">
+                            {day.max}
                           </td>
                         </tr>
                       )
@@ -153,24 +158,6 @@ export default function ResultsTable({ data, isLoading }) {
             </div>
           </div>
         </div>
-
-        {/* LEGEND */}
-        {data && (
-          <div className="flex justify-between items-center mx-auto my-3 max-w-2xl">
-            <span className="text-gray-600 text-sm font-bold">
-              Degree Days Risk Levels:{" "}
-            </span>
-            <span className="py-1 bg-green-600 flex-1 mx-2 text-sm text-center text-white font-semibold rounded">
-              Low
-            </span>
-            <span className="py-1 bg-orange-500 flex-1 mx-2 text-sm text-center text-white font-semibold rounded">
-              Moderate
-            </span>
-            <span className="py-1 bg-red-600 flex-1 mx-2 text-sm text-center text-white font-semibold rounded">
-              High
-            </span>
-          </div>
-        )}
       </div>
     )
   }

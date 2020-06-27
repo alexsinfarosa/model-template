@@ -17,7 +17,7 @@ if (typeof window !== "undefined") {
 const user = {
   name: "Alex Sinfarosa",
   email: "as898@cornell.edu",
-  stateOrProvince: "New York",
+  stateOrProvince: "New Jersey",
   favoriteStations: ["kdxr icao", "kbdr icao", "ew_haw miwx"],
   activeTools: [14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
   weatherVariables: [0, 1, 2, 6, 7],
@@ -31,6 +31,9 @@ const DEFAULT_STATE = {
   showManagementGuide: ls_model ? ls_model.showManagementGuide : true,
   showResultsTable: ls_model ? ls_model.showResultsTable : true,
   showResultsGraph: ls_model ? ls_model.showResultsGraph : false,
+  showEnvironmentalVariablesTable: ls_model
+    ? ls_model.showEnvironmentalVariablesTable
+    : false,
 }
 
 function reducer(state, action) {
@@ -63,6 +66,12 @@ function reducer(state, action) {
       return {
         ...state,
         showResultsGraph: !state.showResultsGraph,
+      }
+    }
+    case "toggleEnvironmentalVariablesTable": {
+      return {
+        ...state,
+        showEnvironmentalVariablesTable: !state.showEnvironmentalVariablesTable,
       }
     }
     default: {

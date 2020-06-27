@@ -8,7 +8,7 @@ import GlobalStateContext from "../context/globalStateContext"
 export default function Logo() {
   const { user } = React.useContext(GlobalStateContext)
   return (
-    <div className="flex flex-col pr-2">
+    <div className="flex flex-col w-64">
       <Link to="/">
         <img
           src={newaLogo}
@@ -17,7 +17,7 @@ export default function Logo() {
         />
       </Link>
       <div className="flex items-center ml-8">
-        <span className="text-xs">a partnership of</span>
+        <div className="text-xs">a partnership of</div>
         <span className="ml-3 flex items-center">
           <a
             href="https://nysipm.cornell.edu"
