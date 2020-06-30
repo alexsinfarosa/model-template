@@ -3,7 +3,7 @@ import dataFetchReducer from "../reducers/dataFetchReducer"
 import { fetchStationData, fetchHourlyForecastData } from "../utils/fetchData"
 import GlobalStateContext from "../context/globalStateContext"
 import vXDef from "../assets/vXDef.json"
-import { differenceInHours } from "date-fns"
+import { differenceInHours, getDayOfYear } from "date-fns"
 import {
   setParams,
   formatDate,
@@ -17,25 +17,32 @@ import {
 } from "../utils/utils"
 
 export default function useStationData() {
-  const { LS_STATION_DATA_KEY, station } = React.useContext(GlobalStateContext)
+  const { LS_STATION_DATA_KEY, station, dateOfInterest } = React.useContext(
+    GlobalStateContext
+  )
   const [state, dispatch] = React.useReducer(dataFetchReducer, {
     isLoading: false,
     isError: false,
     data: null,
   })
 
-  React.useEffect(() => {
-    let didCancel = false
+  const isSameYear =
+    new Date(dateOfInterest.date).getFullYear() === new Date().getFullYear()
 
+  React.useEffect(() => {
     async function fetchStationHourlyData(stn) {
       console.log(
         "fetchStationHourlyData ------------------------------------------"
       )
       // console.log("fetchStationHourlyData", stn.name)
-      const sdate = `${new Date().getFullYear()}-01-01`
-      const edate = formatDate(new Date())
+      const sdate = `${new Date(dateOfInterest.date).getFullYear()}-01-01`
+      let edate = ""
+      if (isSameYear) {
+        edate = formatDate(new Date())
+      } else {
+        edate = `${new Date(dateOfInterest.date).getFullYear()}-12-31`
+      }
       let eleList = vXDef[stn.network]
-      // console.log(eleList)
 
       const body = {
         sdate,
@@ -51,8 +58,7 @@ export default function useStationData() {
         let currentDayMissingValues = 0
         let datesWithFiveOrMoreMissingValues = []
 
-        let stationData
-        stationData = await fetchStationData(body)
+        let stationData = await fetchStationData(body)
         if (stationData.data) {
           const data = prettifyACISData(stationData.data, eleList)
           // console.log({ data })
@@ -154,6 +160,7 @@ export default function useStationData() {
               datesWithFiveOrMoreMissingValues.push(i)
               return {
                 ...day,
+                dayOfYear: getDayOfYear(new Date(day.date)),
                 dd: "N/A",
                 gdd: "N/A",
                 min: "N/A",
@@ -173,6 +180,7 @@ export default function useStationData() {
               gdd += Math.round(dd)
               return {
                 ...day,
+                dayOfYear: getDayOfYear(new Date(day.date)),
                 dd: Math.round(dd),
                 gdd: Math.round(gdd),
                 min: Math.round(min),
@@ -186,57 +194,62 @@ export default function useStationData() {
           // console.log({ dataFinal })
         }
 
-        // START: Forecast //////////////////////////////////////////////////////////
-        const forecast = await fetchHourlyForecastData(body)
-        // console.log({ forecast: forecast.slice(1) })
-        // END: Forecast ////////////////////////////////////////////////////////////
+        let updatedForecast = null
+        if (isSameYear) {
+          // START: Forecast //////////////////////////////////////////////////////////
+          const forecast = await fetchHourlyForecastData(body)
+          // console.log({ forecast: forecast.slice(1) })
+          // END: Forecast ////////////////////////////////////////////////////////////
 
-        // START: Calculate dd, gdd, min, avg, max ///////////////////////////////////
-        let fdd = 0
-        let fgdd = Number(dataFinal.map(d => d.gdd).slice(-1)[0])
-        let fmin
-        let favg
-        let fmax
-        const updatedForecast = forecast.slice(1).map((day, i) => {
-          const dailyMissingValues = day.temp.filter(t => t === "M").length
-          if (dailyMissingValues >= 5) {
-            datesWithFiveOrMoreMissingValues.push(i)
-            return {
-              ...day,
-              dd: "N/A",
-              gdd: "N/A",
-              min: "N/A",
-              avg: "N/A",
-              max: "N/A",
+          // START: Calculate dd, gdd, min, avg, max ///////////////////////////////////
+          let fdd = 0
+          let fgdd = Number(dataFinal.map(d => d.gdd).slice(-1)[0])
+          let fmin
+          let favg
+          let fmax
+          updatedForecast = forecast.slice(1).map((day, i) => {
+            const dailyMissingValues = day.temp.filter(t => t === "M").length
+            if (dailyMissingValues >= 5) {
+              datesWithFiveOrMoreMissingValues.push(i)
+              return {
+                ...day,
+                dayOfYear: getDayOfYear(new Date(day.date)),
+                dd: "N/A",
+                gdd: "N/A",
+                min: "N/A",
+                avg: "N/A",
+                max: "N/A",
+              }
+            } else {
+              const tempsNoMissingValues = day.temp
+                .filter(t => t !== "M")
+                .map(d => +d)
+              fmin = Math.min(...tempsNoMissingValues)
+              fmax = Math.max(...tempsNoMissingValues)
+              favg =
+                tempsNoMissingValues.reduce((a, b) => a + b) /
+                tempsNoMissingValues.length
+              fdd = Math.abs(baskervilleEmin(fmin, fmax, 50))
+              fgdd += Math.round(fdd)
+              return {
+                ...day,
+                dayOfYear: getDayOfYear(new Date(day.date)),
+                dd: Math.round(fdd),
+                gdd: Math.round(fgdd),
+                min: Math.round(fmin),
+                avg: Math.round(favg),
+                max: Math.round(fmax),
+              }
             }
-          } else {
-            const tempsNoMissingValues = day.temp
-              .filter(t => t !== "M")
-              .map(d => +d)
-            fmin = Math.min(...tempsNoMissingValues)
-            fmax = Math.max(...tempsNoMissingValues)
-            favg =
-              tempsNoMissingValues.reduce((a, b) => a + b) /
-              tempsNoMissingValues.length
-            fdd = Math.abs(baskervilleEmin(fmin, fmax, 50))
-            fgdd += Math.round(fdd)
-            return {
-              ...day,
-              dd: Math.round(fdd),
-              gdd: Math.round(fgdd),
-              min: Math.round(fmin),
-              avg: Math.round(favg),
-              max: Math.round(fmax),
-            }
-          }
-        })
-        // START: Determine weather icons from forecast data ////////////////////////
-        // const forecastWithIcons = determineForecastWeatherIcon(
-        //   forecast,
-        //   currentHour
-        // )
-        // console.log({ forecastWithIcons })
-        // END: Determine weather icons from forecast data //////////////////////////
+          })
+          // START: Determine weather icons from forecast data ////////////////////////
+          // const forecastWithIcons = determineForecastWeatherIcon(
+          //   forecast,
+          //   currentHour
+          // )
+          // console.log({ forecastWithIcons })
+          // END: Determine weather icons from forecast data //////////////////////////
+        }
 
         dispatch({
           type: "FETCH_SUCCESS",
@@ -279,9 +292,14 @@ export default function useStationData() {
           `${station.id}-${station.network}` ===
           `${LS_STATION_DATA.station.id}-${LS_STATION_DATA.station.network}`
 
+        const isSameYear_LS =
+          new Date(LS_STATION_DATA.stationData[0].date).getFullYear() ===
+          new Date(dateOfInterest.date).getFullYear()
+
         if (
-          differenceInHours(Date.now(), LS_STATION_DATA.lastSuccess) > 1 ||
-          !isSameStation
+          differenceInHours(Date.now(), LS_STATION_DATA.lastSuccess) >= 1 ||
+          !isSameStation ||
+          !isSameYear_LS
         ) {
           console.log("More than 1 hour since we fetched")
           fetchStationHourlyData(station)
@@ -295,11 +313,7 @@ export default function useStationData() {
         fetchStationHourlyData(station)
       }
     }
-
-    return () => {
-      didCancel = true
-    }
-  }, [station, LS_STATION_DATA_KEY])
+  }, [station, dateOfInterest, LS_STATION_DATA_KEY])
 
   return { ...state }
 }

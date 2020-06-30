@@ -1,4 +1,5 @@
 import React from "react"
+import { getDayOfYear } from "date-fns"
 
 const LS_ALL_STATIONS_KEY = `newa_project_stations`
 const LS_STATION_DATA_KEY = `newa_project_station_data`
@@ -26,6 +27,7 @@ const user = {
 
 const DEFAULT_STATE = {
   station: ls_stationData ? ls_stationData.station : null,
+  dateOfInterest: { date: new Date(), dayOfYear: getDayOfYear(new Date()) },
   stationData: ls_stationData ? ls_stationData : null,
   showMap: ls_model ? ls_model.showMap : false,
   showManagementGuide: ls_model ? ls_model.showManagementGuide : true,
@@ -42,6 +44,12 @@ function reducer(state, action) {
       return {
         ...state,
         station: action.station,
+      }
+    }
+    case "setDateOfInterest": {
+      return {
+        ...state,
+        dateOfInterest: action.dateOfInterest,
       }
     }
     case "toggleMap": {
@@ -80,15 +88,22 @@ function reducer(state, action) {
   }
 }
 
+let modelName = ""
+if (typeof window !== "undefined") {
+  const pathname = window.location.pathname
+  modelName = pathname
+    .slice(1)
+    .split("-")
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ")
+    .slice(0, -1)
+}
+
 const GlobalStateContext = React.createContext()
 export const GlobalStateProvider = ({ children }) => {
   const [state, dispatch] = React.useReducer(reducer, DEFAULT_STATE)
 
   React.useEffect(() => {
-    window.localStorage.setItem(
-      LS_STATION_DATA_KEY,
-      JSON.stringify(state.stationData)
-    )
     window.localStorage.setItem(
       LS_MODEL_KEY,
       JSON.stringify({
@@ -103,6 +118,7 @@ export const GlobalStateProvider = ({ children }) => {
   return (
     <GlobalStateContext.Provider
       value={{
+        modelName,
         user,
         LS_ALL_STATIONS_KEY,
         LS_STATION_DATA_KEY,

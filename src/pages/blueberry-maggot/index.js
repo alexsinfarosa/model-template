@@ -21,6 +21,7 @@ const IndexPage = () => {
     showResultsTable,
     showResultsGraph,
     showEnvironmentalVariablesTable,
+    dateOfInterest,
   } = React.useContext(GlobalStateContext)
   const { data, isLoading } = useStationData()
 
@@ -33,11 +34,13 @@ const IndexPage = () => {
         {/* Always on top - flex order-0 */}
         {showMap && <Map></Map>}
 
-        {showManagementGuide && (
+        {showManagementGuide && data && (
           <div
             className={`mt-24 flex justify-center items-center order-${modelData.elements["managementGuide"].priority}`}
           >
             <ManagementGuide
+              currentDate={data.stationData[dateOfInterest.dayOfYear - 1]}
+              isLoading={isLoading}
               managementGuide={modelData.elements["managementGuide"]}
             ></ManagementGuide>
           </div>
@@ -55,7 +58,7 @@ const IndexPage = () => {
           </div>
         )}
 
-        {showResultsGraph && data && (
+        {showResultsGraph && data && false && (
           <div
             className={`mt-24 flex justify-center items-center order-${modelData.elements["resultsGraph"].priority}`}
           >

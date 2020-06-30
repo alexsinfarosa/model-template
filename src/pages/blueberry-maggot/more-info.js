@@ -1,7 +1,7 @@
 import React from "react"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import BackButton from "../components/backButton"
+import Layout from "../../components/layout"
+import SEO from "../../components/seo"
+import BackButton from "../../components/backButton"
 
 export default function MoreInfo() {
   return (

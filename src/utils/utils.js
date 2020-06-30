@@ -235,3 +235,7 @@ export function formatDateMonthDay(stringDate) {
   }
   return `${monthsList[month]} ${date}`
 }
+
+// export function leapYear(year) {
+//   return year % 100 === 0 ? year % 400 === 0 : year % 4 === 0
+// }

@@ -1,16 +1,34 @@
 {
   "title": "Blueberry Maggot",
-  "degreeDaysRiskLevels": {
-    "low": 613,
-    "moderate": 863,
-    "high": 863
-  },
+  "explanation": "The blueberry maggot degree day model predicts when to set baited traps to monitor for adult flies. This insect has patchy distribution and monitoring will determine if and when it occurs on your farm. Flies typically emerge around 913 degree days base 50˚ F from January 1. (This model uses the Baskerville Emin (BE) formula.)",
   "elements": {
     "managementGuide": {
       "title": "Management Guide",
       "priority": 1,
-      "pestStatus": "Blueberry maggot flies usually emerge first in unsprayed blueberries or abandoned plantings.",
-      "pestManagement": "Set baited traps on field edges or in abandoned plantings to monitor for blueberry maggot adults. Use yellow sticky boards baited with ammonium acetate enhancers as a food attractant. Check traps once or twice per week, as required, and replace traps and baits every third week."
+      "thresholds": {
+        "03-01 | 09-30": {
+          "0-612": {
+            "pestStatus": "Blueberry maggot is overwintering as pupae in the soil. Predicted first emergence of blueberry maggot occurs after approximately 913 degree days have accumulated from January 1.",
+            "pestManagement": "No control measures are recommended at this time. Order yellow sticky board traps and ammonium acetate baits to monitor for blueberry maggot flies. About 1 trap per 2 acres to a maximum of 20 traps. Traps and baits are replaced every third week during the fruiting season."
+          },
+          "613-863": {
+            "pestStatus": "Blueberry maggot flies usually emerge first in unsprayed blueberries or abandoned plantings.",
+            "pestManagement": "Set baited traps on field edges or in abandoned plantings to monitor for blueberry maggot adults. Use yellow sticky boards baited with ammonium acetate enhancers as a food attractant. Check traps once or twice per week, as required, and replace traps and baits every third week."
+          },
+          "864-963": {
+            "pestStatus": "First emergence of blueberry maggot is predicted to occur at around 913 degree days.",
+            "pestManagement": "Set baited traps on field edges or in abandoned plantings to monitor for blueberry maggot adults. Use yellow sticky boards baited with ammonium acetate enhancers as a food attractant. Continue to check blueberry traps once or twice per week, as required, and replace traps and baits every third week. If caught, begin insecticide treatment to protect the crop, according to your market requirements."
+          },
+          "964-5000": {
+            "pestStatus": "First emergence of blueberry maggot is predicted to occur at around 913 degree days. Blueberry maggot flight places the crop at risk from egg-laying females. ",
+            "pestManagement": "Continue to check blueberry traps once or twice per week, as required, and replace traps and baits every third week. If caught, begin insecticide treatment. Maintain an IPM and insecticide program to protect the crop, according to your market requirements. After harvest, remove and discard used traps and bait."
+          }
+        },
+        "10-01 | 02-28": {
+          "pestStatus": "Blueberry maggot is overwintering as pupae in the soil. ",
+          "pestManagement": "The time of concern for blueberry maggot has passed. The blueberry maggot tool will begin again on March 1."
+        }
+      }
     },
     "resultsTable": {
       "title": "Results Table",
