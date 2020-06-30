@@ -8,7 +8,11 @@ export default function Disclaimer() {
       <div className="flex justify-center items-center h-16 mb-12">
         <div className="max-w-md w-full flex justify-between">
           <Link
-            to={window ? `${window.location.pathname}/more-info` : `/more-info`}
+            to={
+              typeof window !== "undefined"
+                ? `${window.location.pathname}/more-info`
+                : `/more-info`
+            }
             className="text-gray-900 text-center"
             activeClassName={activeStyle}
           >
@@ -17,7 +21,7 @@ export default function Disclaimer() {
 
           <Link
             to={
-              window
+              typeof window !== "undefined"
                 ? `${window.location.pathname}/acknowledgments`
                 : `/acknowledgments`
             }
@@ -29,7 +33,9 @@ export default function Disclaimer() {
 
           <Link
             to={
-              window ? `${window.location.pathname}/references` : `/references`
+              typeof window !== "undefined"
+                ? `${window.location.pathname}/references`
+                : `/references`
             }
             className="text-gray-900 text-center"
             activeClassName={activeStyle}
