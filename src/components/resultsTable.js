@@ -178,7 +178,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                         riskLevel = "bg-red-600 text-white font-semibold"
                       return (
                         <tr key={day.date} className="text-center">
-                          <td className="w-3 bg-orange-400"></td>
+                          <td className="w-3 bg-secondary-400"></td>
                           <td className="px-6 py-4 border-b border-gray-200 text-sm leading-6  text-gray-700">
                             <span className="w-20 inline-block">
                               {formatDateMonthDay(day.date)}
@@ -214,7 +214,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                   <span className="text-gray-600 text-sm font-bold">
                     Forecast:
                   </span>
-                  <span className="w-20 py-2 bg-orange-400 inline-block mx-2 text-sm text-center font-semibold rounded"></span>
+                  <span className="w-20 py-2 bg-secondary-400 inline-block mx-2 text-sm text-center font-semibold rounded"></span>
                 </>
               )}
             </div>

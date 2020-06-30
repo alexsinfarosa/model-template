@@ -93,6 +93,10 @@ export default function EnvirValuesTable({
                 <thead>
                   <tr>
                     <th
+                      className="py-3 border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
+                      rowSpan="2"
+                    ></th>
+                    <th
                       className="px-6 py-3 border-r border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
                       rowSpan="2"
                     >
@@ -126,6 +130,7 @@ export default function EnvirValuesTable({
                           i === 2 ? `font-bold text-center` : `text-center`
                         }
                       >
+                        <td className="w-3 py-4 border-b border-gray-200 leading-6 text-gray-700"></td>
                         <td
                           className={`${
                             i === 2 ? `text-lg` : `text-xs`
@@ -155,6 +160,7 @@ export default function EnvirValuesTable({
                     forecastDataTable.map(day => {
                       return (
                         <tr key={day.date} className="text-center">
+                          <td className="w-3 bg-secondary-300"></td>
                           <td className="px-6 py-4 border-b border-gray-200 text-sm leading-6  text-gray-700">
                             <span className="w-20 inline-block">
                               {formatDateMonthDay(day.date)}
@@ -177,6 +183,15 @@ export default function EnvirValuesTable({
               </table>
             </div>
           </div>
+        </div>
+
+        <div className="flex mt-3">
+          {forecastDataTable && (
+            <>
+              <span className="text-gray-600 text-sm font-bold">Forecast:</span>
+              <span className="w-20 py-2 bg-secondary-300 inline-block mx-2 text-sm text-center font-semibold rounded"></span>
+            </>
+          )}
         </div>
       </div>
     )
