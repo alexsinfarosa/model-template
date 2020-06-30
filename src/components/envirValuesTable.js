@@ -3,10 +3,12 @@ import { formatDateMonthDay } from "../utils/utils"
 import HashLoader from "react-spinners/HashLoader"
 import GlobalStateContext from "../context/globalStateContext"
 
-export default function ResultsTable({ resultsTable, data, isLoading }) {
+export default function EnvirValuesTable({
+  data,
+  isLoading,
+  envirValuesTable,
+}) {
   const { dateOfInterest } = React.useContext(GlobalStateContext)
-  const { title, base, formula, degreeDayRiskLevels, startDate } = resultsTable
-
   if (isLoading) {
     return (
       <div>
@@ -60,7 +62,9 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
     return (
       <div className="w-full">
         <div className="flex justify-between items-center mb-3 ">
-          <h2 className="font-semibold text-gray-600 md:text-2xl">{title}</h2>
+          <h2 className="font-semibold text-gray-600 md:text-2xl">
+            {envirValuesTable.title}
+          </h2>
 
           <div className="rounded-md shadow-sm flex justify-center">
             <button
@@ -89,43 +93,32 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                 <thead>
                   <tr>
                     <th
-                      className="py-3 border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
-                      rowSpan="2"
-                    ></th>
-                    <th
                       className="px-6 py-3 border-r border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
                       rowSpan="2"
                     >
                       Date
                     </th>
                     <th
-                      className="px-6 py-3 border-b border-r border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
-                      colSpan="2"
+                      className="px-6 py-3 border-b border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
+                      colSpan="3"
                     >
-                      Degree Days (Base {base} {formula})
+                      Temperature (˚F)
                     </th>
                   </tr>
                   <tr className="text-center">
                     <th className="px-6 py-3 border-b border-gray-200 bg-secondary-600 text-xs leading-4 font-medium text-white uppercase tracking-wider">
-                      Daily
+                      Avg
                     </th>
-                    <th className="px-6 py-3 border-b border-r border-gray-200 bg-secondary-600  text-xs leading-4 font-medium text-white uppercase tracking-wider">
-                      From {startDate.month}
+                    <th className="px-6 py-3 border-b border-gray-200 bg-secondary-600 text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                      Max
+                    </th>
+                    <th className="px-6 py-3 border-b border-gray-200 bg-secondary-600 text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                      Min
                     </th>
                   </tr>
                 </thead>
                 <tbody className="bg-white">
                   {stationDataTable.map((day, i) => {
-                    let riskLevel
-                    if (day.gdd <= degreeDayRiskLevels.low)
-                      riskLevel = "bg-green-600 text-white font-semibold"
-                    if (
-                      day.gdd >= degreeDayRiskLevels.lowerModerate &&
-                      day.gdd <= degreeDayRiskLevels.upperModerate
-                    )
-                      riskLevel = "bg-orange-500 text-white font-semibold"
-                    if (day.gdd >= degreeDayRiskLevels.high)
-                      riskLevel = "bg-red-600 text-white font-semibold"
                     return (
                       <tr
                         key={day.date}
@@ -133,69 +126,50 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                           i === 2 ? `font-bold text-center` : `text-center`
                         }
                       >
-                        <td className="w-3 py-4 border-b border-gray-200 leading-6 text-gray-700"></td>
                         <td
                           className={`${
-                            i === 2 ? `text-lg` : `text-sm`
+                            i === 2 ? `text-lg` : `text-xs`
                           } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                         >
                           <span className="w-20 inline-block">
                             {formatDateMonthDay(day.date)}
                           </span>
                         </td>
-                        <td
-                          className={`${
-                            i === 2 ? `text-lg` : `text-sm`
-                          } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
-                        >
-                          {day.dd}
-                        </td>
-                        <td
-                          className={`${
-                            i === 2 ? `text-lg` : `text-sm`
-                          } px-6 py-3 border-b border-gray-200 leading-6`}
-                        >
-                          <span
-                            className={`${riskLevel} rounded w-20 py-1 inline-block`}
-                          >
-                            {day.gdd}
-                          </span>
-                        </td>
+
+                        {envirValuesTable.variables.map(variable => {
+                          return (
+                            <td
+                              key={variable}
+                              className={`${
+                                i === 2 ? `text-lg` : `text-xs`
+                              } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
+                            >
+                              {day[variable]}
+                            </td>
+                          )
+                        })}
                       </tr>
                     )
                   })}
                   {forecastDataTable &&
                     forecastDataTable.map(day => {
-                      let riskLevel
-                      if (day.gdd <= degreeDayRiskLevels.low)
-                        riskLevel = "bg-green-600 text-white font-semibold"
-                      if (
-                        day.gdd >= degreeDayRiskLevels.lowerModerate &&
-                        day.gdd <= degreeDayRiskLevels.upperModerate
-                      )
-                        riskLevel = "bg-orange-500 text-white font-semibold"
-                      if (day.gdd >= degreeDayRiskLevels.high)
-                        riskLevel = "bg-red-600 text-white font-semibold"
                       return (
                         <tr key={day.date} className="text-center">
-                          <td className="w-3 bg-orange-400"></td>
                           <td className="px-6 py-4 border-b border-gray-200 text-sm leading-6  text-gray-700">
                             <span className="w-20 inline-block">
                               {formatDateMonthDay(day.date)}
                             </span>
                           </td>
-                          <td className="px-6 py-4 border-b border-gray-200 text-sm leading-6 text-gray-700">
-                            {day.dd}
-                          </td>
-                          <td
-                            className={`px-6 py-3 border-b border-gray-200 text-sm leading-6`}
-                          >
-                            <span
-                              className={`${riskLevel} rounded w-20 py-1 inline-block`}
-                            >
-                              {day.gdd}
-                            </span>
-                          </td>
+                          {envirValuesTable.variables.map(variable => {
+                            return (
+                              <td
+                                key={variable}
+                                className="px-6 py-4 border-b border-gray-200 text-sm leading-6 text-gray-700"
+                              >
+                                {day[variable]}
+                              </td>
+                            )
+                          })}
                         </tr>
                       )
                     })}
@@ -204,37 +178,6 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
             </div>
           </div>
         </div>
-
-        {/* LEGEND */}
-        {data && (
-          <div className="flex flex-col sm:flex-row mt-3 sm:justify-between sm:items-center">
-            <div className="mt-3 sm:mt-0 flex items-center order-2 sm:order-1">
-              {forecastDataTable && (
-                <>
-                  <span className="text-gray-600 text-sm font-bold">
-                    Forecast:
-                  </span>
-                  <span className="w-20 py-2 bg-orange-400 inline-block mx-2 text-sm text-center font-semibold rounded"></span>
-                </>
-              )}
-            </div>
-
-            <div className="order-1 sm:order-2">
-              <span className="text-gray-600 text-sm font-bold">
-                Degree Days Risk Levels:{" "}
-              </span>
-              <span className="w-20 py-1 bg-green-600 inline-block mx-2 text-sm text-center text-white font-semibold rounded">
-                Low
-              </span>
-              <span className="w-20 py-1 bg-yellow-300 inline-block mx-2 text-sm text-center text-white font-semibold rounded">
-                Moderate
-              </span>
-              <span className="w-20 py-1 bg-red-600 inline-block mx-2 text-sm text-center text-white font-semibold rounded">
-                High
-              </span>
-            </div>
-          </div>
-        )}
       </div>
     )
   }

@@ -1,15 +1,16 @@
 import React from "react"
 import {
-  CartesianGrid,
+  ComposedChart,
   ResponsiveContainer,
-  LineChart,
   XAxis,
   YAxis,
   Tooltip,
   Legend,
   Line,
+  Area,
 } from "recharts"
 import HashLoader from "react-spinners/HashLoader"
+import GlobalStateContext from "../context/globalStateContext"
 
 const CustomXLabel = props => {
   const { x, y, payload } = props
@@ -50,11 +51,67 @@ const CustomYLabel = props => {
   )
 }
 
-export default function ResultsGraph({ data, isLoading }) {
-  const dataTable = [...data.stationData, ...data.forecast].map(d => ({
-    ...d,
-    gdd: d.gdd === "N/A" ? null : +d.gdd,
-  }))
+export default function ResultsGraph({
+  data,
+  isLoading,
+  ddRiskLevels,
+  resultsGraph,
+}) {
+  const { dateOfInterest, station } = React.useContext(GlobalStateContext)
+
+  let dataGraph = null
+  let data1 = null
+  const { dayOfYear } = dateOfInterest
+  if (data.forecast !== null) {
+    const currentDateIndex = data.stationData.slice(-1)[0].dayOfYear
+
+    if (currentDateIndex - dayOfYear === 0) {
+      const stationData = data.stationData.slice(0, currentDateIndex - 3)
+      const forecastData = data.forecast
+      data1 = [...stationData, ...forecastData]
+    }
+    if (currentDateIndex - dayOfYear === 1) {
+      const stationData = data.stationData.slice(0, currentDateIndex - 4)
+      const forecastData = data.forecast.slice(0, 4)
+      data1 = [...stationData, ...forecastData]
+    }
+    if (currentDateIndex - dayOfYear === 2) {
+      const stationData = data.stationData.slice(0, currentDateIndex - 5)
+      const forecastData = data.forecast.slice(0, 3)
+      data1 = [...stationData, ...forecastData]
+    }
+    if (currentDateIndex - dayOfYear === 3) {
+      const stationData = data.stationData.slice(0, currentDateIndex - 6)
+      const forecastData = data.forecast.slice(0, 2)
+      data1 = [...stationData, ...forecastData]
+    }
+    if (currentDateIndex - dayOfYear === 4) {
+      const stationData = data.stationData.slice(0, currentDateIndex - 7)
+      const forecastData = data.forecast.slice(0, 1)
+      data1 = [...stationData, ...forecastData]
+    }
+    if (currentDateIndex - dayOfYear === 5) {
+      const stationData = data.stationData.slice(0, currentDateIndex - 8)
+      data1 = [...stationData]
+    }
+    if (currentDateIndex - dayOfYear > 5) {
+      const stationData = data.stationData.slice(0, dayOfYear + 5)
+      data1 = [...stationData]
+    }
+  } else {
+    const stationData = data.stationData.slice(0, dayOfYear + 5)
+    data1 = [...stationData]
+  }
+
+  if (data1 !== null) {
+    dataGraph = data1.map(d => ({
+      ...d,
+      gdd: d.gdd === "N/A" ? null : +d.gdd,
+      low: ddRiskLevels.low,
+      moderate: ddRiskLevels.upperModerate,
+      high: ddRiskLevels.high,
+    }))
+  }
 
   if (isLoading) {
     return (
@@ -64,19 +121,29 @@ export default function ResultsGraph({ data, isLoading }) {
     )
   }
 
-  if (!data) {
+  if (dataGraph === null) {
     return null
   }
 
-  if (!isLoading && data) {
+  if (!isLoading && dataGraph) {
     return (
       <div className="w-full">
         <div className="flex justify-between items-center mb-3 ">
           <h2 className="font-semibold text-gray-600 md:text-2xl">
-            Results Graph
+            {resultsGraph.title}
           </h2>
 
-          <div className="rounded-md shadow-sm flex justify-center">
+          <div className="rounded-md flex justify-center items-center">
+            <span className="inline-block mr-4">
+              <a
+                className="text-sm"
+                href={`http://forecast.weather.gov/MapClick.php?textField1=${station.lat}&textField2=${station.lon}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Forecast Details
+              </a>
+            </span>
             <button
               type="button"
               className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-secondary-600 hover:bg-secondary-500 focus:outline-none focus:border-secondary-700 focus:shadow-outline-secondary active:bg-secondary-700 transition ease-in-out duration-150"
@@ -97,29 +164,52 @@ export default function ResultsGraph({ data, isLoading }) {
           </div>
         </div>
         <ResponsiveContainer width="100%" height={400}>
-          <LineChart
-            data={dataTable}
+          <ComposedChart
+            data={dataGraph}
             margin={{ top: 10, right: 30, left: 0, bottom: 30 }}
             className="bg-white rounded-md shadow"
           >
-            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+            {/* <CartesianGrid strokeDasharray="3 3" vertical={false} /> */}
             <XAxis
               dataKey="date"
               interval={"preserveStartEnd"}
               axisLine={true}
               tick={<CustomXLabel />}
             />
-            <YAxis tick={<CustomYLabel unit={""} />} />
+            <YAxis dataKey="gdd" tick={<CustomYLabel unit={""} />} />
             <Tooltip />
             <Legend verticalAlign="top" height={36} />
+
+            {/* <Area
+              stackId="riskLevel"
+              type="monotone"
+              dataKey="low"
+              fill="#357858"
+              stroke="#357858"
+            />
+            <Area
+              stackId="riskLevel"
+              type="monotone"
+              dataKey="moderate"
+              fill="#F3CC49"
+              stroke="#F3CC49"
+            />
+            <Area
+              stackId="riskLevel"
+              type="monotone"
+              dataKey="high"
+              fill="#CE3A31"
+              stroke="#CE3A31"
+            /> */}
             <Line
               type="monotone"
               dataKey="gdd"
               stroke="#1987C2"
+              strokeWidth={3}
               dot={false}
               name="Cumulative Degree Day"
             />
-          </LineChart>
+          </ComposedChart>
         </ResponsiveContainer>
       </div>
     )

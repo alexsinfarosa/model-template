@@ -33,9 +33,7 @@ const DEFAULT_STATE = {
   showManagementGuide: ls_model ? ls_model.showManagementGuide : true,
   showResultsTable: ls_model ? ls_model.showResultsTable : true,
   showResultsGraph: ls_model ? ls_model.showResultsGraph : false,
-  showEnvironmentalVariablesTable: ls_model
-    ? ls_model.showEnvironmentalVariablesTable
-    : false,
+  showEnvirValuesTable: ls_model ? ls_model.showEnvirValuesTable : false,
 }
 
 function reducer(state, action) {
@@ -76,10 +74,10 @@ function reducer(state, action) {
         showResultsGraph: !state.showResultsGraph,
       }
     }
-    case "toggleEnvironmentalVariablesTable": {
+    case "toggleEnvirValuesTable": {
       return {
         ...state,
-        showEnvironmentalVariablesTable: !state.showEnvironmentalVariablesTable,
+        showEnvirValuesTable: !state.showEnvirValuesTable,
       }
     }
     default: {
@@ -111,6 +109,7 @@ export const GlobalStateProvider = ({ children }) => {
         showManagementGuide: state.showManagementGuide,
         showResultsTable: state.showResultsTable,
         showResultsGraph: state.showResultsGraph,
+        showEnvirValuesTable: state.showEnvirValuesTable,
       })
     )
   }, [state])

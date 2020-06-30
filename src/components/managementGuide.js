@@ -48,6 +48,10 @@ export default function ManagementGuide({
       <h2 className="mb-3 font-semibold text-gray-600 md:text-2xl">
         Management Guide
       </h2>
+      <p className="text-gray-700 text-sm leading-6 bg-white px-4 py-2 rounded">
+        <span className="font-semibold">Explanation:</span>{" "}
+        {managementGuide.explanation}
+      </p>
       <div className="flex flex-col">
         <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
           <div className="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">

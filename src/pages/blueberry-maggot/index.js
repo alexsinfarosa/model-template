@@ -7,7 +7,7 @@ import Map from "../../components/map"
 import ManagementGuide from "../../components/managementGuide"
 import ResultsTable from "../../components/resultsTable"
 import ResultsGraph from "../../components/resultsGraph"
-import EnvironmentalVariablesTable from "../../components/environmentalVariablesTable"
+import EnvirValuesTable from "../../components/envirValuesTable"
 import Disclaimer from "../../components/disclaimer"
 import Footer from "../../components/footer"
 import useStationData from "../../hooks/useStationData"
@@ -20,7 +20,7 @@ const IndexPage = () => {
     showManagementGuide,
     showResultsTable,
     showResultsGraph,
-    showEnvironmentalVariablesTable,
+    showEnvirValuesTable,
     dateOfInterest,
   } = React.useContext(GlobalStateContext)
   const { data, isLoading } = useStationData()
@@ -58,25 +58,30 @@ const IndexPage = () => {
           </div>
         )}
 
-        {showResultsGraph && data && false && (
+        {showResultsGraph && data && (
           <div
             className={`mt-24 flex justify-center items-center order-${modelData.elements["resultsGraph"].priority}`}
           >
-            <ResultsGraph data={data} isLoading={isLoading}></ResultsGraph>
+            <ResultsGraph
+              data={data}
+              isLoading={isLoading}
+              resultsGraph={modelData.elements["resultsGraph"]}
+              ddRiskLevels={
+                modelData.elements["resultsTable"].degreeDayRiskLevels
+              }
+            ></ResultsGraph>
           </div>
         )}
 
-        {showEnvironmentalVariablesTable && data && (
+        {showEnvirValuesTable && data && (
           <div
-            className={`mt-24 flex justify-center items-center order-${modelData.elements["environmentalVariablesTable"].priority}`}
+            className={`mt-24 flex justify-center items-center order-${modelData.elements["envirValuesTable"].priority}`}
           >
-            <EnvironmentalVariablesTable
+            <EnvirValuesTable
               data={data}
               isLoading={isLoading}
-              environmentalVariablesTable={
-                modelData.elements["environmentalVariablesTable"]
-              }
-            ></EnvironmentalVariablesTable>
+              envirValuesTable={modelData.elements["envirValuesTable"]}
+            ></EnvirValuesTable>
           </div>
         )}
 

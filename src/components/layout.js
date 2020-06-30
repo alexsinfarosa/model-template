@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
     showManagementGuide,
     showResultsTable,
     showResultsGraph,
-    showEnvironmentalVariablesTable,
+    showEnvirValuesTable,
   } = React.useContext(GlobalStateContext)
 
   return (
@@ -113,9 +113,9 @@ const Layout = ({ children }) => {
                             toggleElement="toggleResultsTable"
                           ></Toggle>
                           <Toggle
-                            text="Environmental Variables Table"
-                            isChecked={showEnvironmentalVariablesTable}
-                            toggleElement="toggleEnvironmentalVariablesTable"
+                            text="Envir. Values Table"
+                            isChecked={showEnvirValuesTable}
+                            toggleElement="toggleEnvirValuesTable"
                           ></Toggle>
                         </div>
                       </div>
@@ -188,9 +188,9 @@ const Layout = ({ children }) => {
                       toggleElement="toggleResultsGraph"
                     ></Toggle>
                     <Toggle
-                      text="Environmental Variables Table"
-                      isChecked={showEnvironmentalVariablesTable}
-                      toggleElement="toggleEnvironmentalVariablesTable"
+                      text="Envir. Values Table"
+                      isChecked={showEnvirValuesTable}
+                      toggleElement="toggleEnvirValuesTable"
                     ></Toggle>
                   </div>
                 </div>

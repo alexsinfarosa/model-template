@@ -151,9 +151,9 @@ export default function useStationData() {
           // START: Calculate dd, gdd, min, avg, max ///////////////////////////////////
           let dd = 0
           let gdd = 0
-          let min
-          let avg
-          let max
+          let minT
+          let avgT
+          let maxT
           const data7 = data6.map((day, i) => {
             const dailyMissingValues = day.temp.filter(t => t === "M").length
             if (dailyMissingValues >= 5) {
@@ -163,29 +163,29 @@ export default function useStationData() {
                 dayOfYear: getDayOfYear(new Date(day.date)),
                 dd: "N/A",
                 gdd: "N/A",
-                min: "N/A",
-                avg: "N/A",
-                max: "N/A",
+                minT: "N/A",
+                avgT: "N/A",
+                maxT: "N/A",
               }
             } else {
               const tempsNoMissingValues = day.temp
                 .filter(t => t !== "M")
                 .map(d => +d)
-              min = Math.min(...tempsNoMissingValues)
-              max = Math.max(...tempsNoMissingValues)
-              avg =
+              minT = Math.min(...tempsNoMissingValues)
+              maxT = Math.max(...tempsNoMissingValues)
+              avgT =
                 tempsNoMissingValues.reduce((a, b) => a + b) /
                 tempsNoMissingValues.length
-              dd = Math.abs(baskervilleEmin(min, max, 50))
+              dd = Math.abs(baskervilleEmin(minT, maxT, 50))
               gdd += Math.round(dd)
               return {
                 ...day,
                 dayOfYear: getDayOfYear(new Date(day.date)),
                 dd: Math.round(dd),
                 gdd: Math.round(gdd),
-                min: Math.round(min),
-                avg: Math.round(avg),
-                max: Math.round(max),
+                minT: Math.round(minT),
+                avgT: Math.round(avgT),
+                maxT: Math.round(maxT),
               }
             }
           })
@@ -204,9 +204,9 @@ export default function useStationData() {
           // START: Calculate dd, gdd, min, avg, max ///////////////////////////////////
           let fdd = 0
           let fgdd = Number(dataFinal.map(d => d.gdd).slice(-1)[0])
-          let fmin
-          let favg
-          let fmax
+          let fminT
+          let favgT
+          let fmaxT
           updatedForecast = forecast.slice(1).map((day, i) => {
             const dailyMissingValues = day.temp.filter(t => t === "M").length
             if (dailyMissingValues >= 5) {
@@ -216,29 +216,29 @@ export default function useStationData() {
                 dayOfYear: getDayOfYear(new Date(day.date)),
                 dd: "N/A",
                 gdd: "N/A",
-                min: "N/A",
-                avg: "N/A",
-                max: "N/A",
+                minT: "N/A",
+                avgT: "N/A",
+                maxT: "N/A",
               }
             } else {
               const tempsNoMissingValues = day.temp
                 .filter(t => t !== "M")
                 .map(d => +d)
-              fmin = Math.min(...tempsNoMissingValues)
-              fmax = Math.max(...tempsNoMissingValues)
-              favg =
+              fminT = Math.min(...tempsNoMissingValues)
+              fmaxT = Math.max(...tempsNoMissingValues)
+              favgT =
                 tempsNoMissingValues.reduce((a, b) => a + b) /
                 tempsNoMissingValues.length
-              fdd = Math.abs(baskervilleEmin(fmin, fmax, 50))
+              fdd = Math.abs(baskervilleEmin(fminT, fmaxT, 50))
               fgdd += Math.round(fdd)
               return {
                 ...day,
                 dayOfYear: getDayOfYear(new Date(day.date)),
                 dd: Math.round(fdd),
                 gdd: Math.round(fgdd),
-                min: Math.round(fmin),
-                avg: Math.round(favg),
-                max: Math.round(fmax),
+                minT: Math.round(fminT),
+                avgT: Math.round(favgT),
+                maxT: Math.round(fmaxT),
               }
             }
           })
