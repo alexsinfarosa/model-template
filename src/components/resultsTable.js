@@ -4,7 +4,7 @@ import HashLoader from "react-spinners/HashLoader"
 import GlobalStateContext from "../context/globalStateContext"
 
 export default function ResultsTable({ resultsTable, data, isLoading }) {
-  const { dateOfInterest } = React.useContext(GlobalStateContext)
+  const { station, dateOfInterest } = React.useContext(GlobalStateContext)
   const { title, base, formula, degreeDayRiskLevels, startDate } = resultsTable
 
   if (isLoading) {
@@ -93,6 +93,17 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                     Forecast:
                   </span>
                   <span className="w-16 py-2 bg-secondary-400 inline-block mx-2 text-xs text-center font-semibold rounded"></span>
+
+                  <span className="inline-block mr-4">
+                    <a
+                      className="text-sm"
+                      href={`http://forecast.weather.gov/MapClick.php?textField1=${station.lat}&textField2=${station.lon}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Forecast Details
+                    </a>
+                  </span>
                 </>
               )}
             </div>

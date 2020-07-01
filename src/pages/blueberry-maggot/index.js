@@ -35,77 +35,79 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <div className="flex flex-col h-full">
-        <div className="flex-1 order-1">
+        <div className="flex-1">
           <StationHeader station={station}></StationHeader>
         </div>
 
         {showMap && (
-          <div className="flex-1 mt-24 order-2">
+          <div className="flex-1 mt-24">
             <Map></Map>
           </div>
         )}
 
-        {showManagementGuide && data && (
-          <div
-            className={`flex-1 mt-24 flex justify-center items-center ${
-              managementGuide ? `order-${managementGuide.priority}` : ``
-            }`}
-          >
-            <ManagementGuide
-              currentDate={data.stationData[dateOfInterest.dayOfYear - 1]}
-              isLoading={isLoading}
-              managementGuide={modelData.elements["managementGuide"]}
-            ></ManagementGuide>
-          </div>
-        )}
+        <div className="flex-1 flex flex-col">
+          {showManagementGuide && data && (
+            <div
+              className={`flex-1 mt-24 flex justify-center items-center ${
+                managementGuide ? `order-${managementGuide.priority}` : ``
+              }`}
+            >
+              <ManagementGuide
+                currentDate={data.stationData[dateOfInterest.dayOfYear - 1]}
+                isLoading={isLoading}
+                managementGuide={modelData.elements["managementGuide"]}
+              ></ManagementGuide>
+            </div>
+          )}
 
-        {showResultsTable && data && (
-          <div
-            className={`flex-1 mt-24 flex justify-center items-center ${
-              resultsTable ? `order-${resultsTable.priority}` : ``
-            }`}
-          >
-            <ResultsTable
-              data={data}
-              isLoading={isLoading}
-              resultsTable={modelData.elements["resultsTable"]}
-            ></ResultsTable>
-          </div>
-        )}
+          {showResultsTable && data && (
+            <div
+              className={`flex-1 mt-24 flex justify-center items-center ${
+                resultsTable ? `order-${resultsTable.priority}` : ``
+              }`}
+            >
+              <ResultsTable
+                data={data}
+                isLoading={isLoading}
+                resultsTable={modelData.elements["resultsTable"]}
+              ></ResultsTable>
+            </div>
+          )}
 
-        {showResultsGraph && data && (
-          <div
-            className={`flex-1 mt-24 flex justify-center items-center ${
-              resultsGraph ? `order-${resultsGraph.priority}` : ``
-            }`}
-          >
-            <ResultsGraph
-              data={data}
-              isLoading={isLoading}
-              resultsGraph={modelData.elements["resultsGraph"]}
-              ddRiskLevels={
-                modelData.elements["resultsTable"].degreeDayRiskLevels
-              }
-            ></ResultsGraph>
-          </div>
-        )}
+          {showResultsGraph && data && (
+            <div
+              className={`flex-1 mt-24 flex justify-center items-center ${
+                resultsGraph ? `order-${resultsGraph.priority}` : ``
+              }`}
+            >
+              <ResultsGraph
+                data={data}
+                isLoading={isLoading}
+                resultsGraph={modelData.elements["resultsGraph"]}
+                ddRiskLevels={
+                  modelData.elements["resultsTable"].degreeDayRiskLevels
+                }
+              ></ResultsGraph>
+            </div>
+          )}
 
-        {showEnvirValuesTable && data && (
-          <div
-            className={`flex-1 mt-24 flex justify-center items-center ${
-              envirValuesTable ? `order-${envirValuesTable.priority}` : ``
-            }`}
-          >
-            <EnvirValuesTable
-              data={data}
-              isLoading={isLoading}
-              envirValuesTable={modelData.elements["envirValuesTable"]}
-            ></EnvirValuesTable>
-          </div>
-        )}
+          {showEnvirValuesTable && data && (
+            <div
+              className={`flex-1 mt-24 flex justify-center items-center ${
+                envirValuesTable ? `order-${envirValuesTable.priority}` : ``
+              }`}
+            >
+              <EnvirValuesTable
+                data={data}
+                isLoading={isLoading}
+                envirValuesTable={modelData.elements["envirValuesTable"]}
+              ></EnvirValuesTable>
+            </div>
+          )}
+        </div>
 
         {/* Always at the bottom - flex order-12 */}
-        <div className="flex-1 order-12 mt-24">
+        <div className="flex-1 mt-24">
           <hr className="max-w-7xl mx-auto"></hr>
           <Disclaimer></Disclaimer>
           <Footer></Footer>

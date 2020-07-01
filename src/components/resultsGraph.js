@@ -56,7 +56,7 @@ export default function ResultsGraph({
   ddRiskLevels,
   resultsGraph,
 }) {
-  const { dateOfInterest, station } = React.useContext(GlobalStateContext)
+  const { dateOfInterest } = React.useContext(GlobalStateContext)
 
   let dataGraph = null
   let data1 = null
@@ -133,16 +133,6 @@ export default function ResultsGraph({
           </h2>
 
           <div className="rounded-md flex justify-center items-center">
-            <span className="inline-block mr-4">
-              <a
-                className="text-sm"
-                href={`http://forecast.weather.gov/MapClick.php?textField1=${station.lat}&textField2=${station.lon}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Forecast Details
-              </a>
-            </span>
             <button
               type="button"
               className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-secondary-600 hover:bg-secondary-500 focus:outline-none focus:border-secondary-700 focus:shadow-outline-secondary active:bg-secondary-700 transition ease-in-out duration-150"
@@ -162,6 +152,7 @@ export default function ResultsGraph({
             </button>
           </div>
         </div>
+
         <ResponsiveContainer width="100%" height={400}>
           <ComposedChart
             data={dataGraph}
