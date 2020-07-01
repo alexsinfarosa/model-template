@@ -29,11 +29,11 @@ const DEFAULT_STATE = {
   station: ls_stationData ? ls_stationData.station : null,
   dateOfInterest: { date: new Date(), dayOfYear: getDayOfYear(new Date()) },
   stationData: ls_stationData ? ls_stationData : null,
-  showMap: ls_model ? ls_model.showMap : false,
+  showMap: ls_model ? ls_model.showMap : true,
   showManagementGuide: ls_model ? ls_model.showManagementGuide : true,
   showResultsTable: ls_model ? ls_model.showResultsTable : true,
-  showResultsGraph: ls_model ? ls_model.showResultsGraph : false,
-  showEnvirValuesTable: ls_model ? ls_model.showEnvirValuesTable : false,
+  showResultsGraph: ls_model ? ls_model.showResultsGraph : true,
+  showEnvirValuesTable: ls_model ? ls_model.showEnvirValuesTable : true,
 }
 
 function reducer(state, action) {

@@ -31,15 +31,12 @@ const IndexPage = () => {
       <div className="flex flex-col h-full">
         <StationHeader station={station}></StationHeader>
 
-        {showMap && (
-          <div className="flex-1 mt-24">
-            <Map></Map>
-          </div>
-        )}
+        {/* Always on top - flex order-0 */}
+        {showMap && <Map></Map>}
 
         {showManagementGuide && data && (
           <div
-            className={`flex-1 mt-24 flex justify-center items-center order-${modelData.elements["managementGuide"].priority}`}
+            className={`mt-24 flex justify-center items-center order-${modelData.elements["managementGuide"].priority}`}
           >
             <ManagementGuide
               currentDate={data.stationData[dateOfInterest.dayOfYear - 1]}
@@ -51,7 +48,7 @@ const IndexPage = () => {
 
         {showResultsTable && data && (
           <div
-            className={`flex-1 mt-24 flex justify-center items-center order-${modelData.elements["resultsTable"].priority}`}
+            className={`mt-24 flex justify-center items-center order-${modelData.elements["resultsTable"].priority}`}
           >
             <ResultsTable
               data={data}
@@ -63,7 +60,7 @@ const IndexPage = () => {
 
         {showResultsGraph && data && (
           <div
-            className={`flex-1 mt-24 flex justify-center items-center order-${modelData.elements["resultsGraph"].priority}`}
+            className={`mt-24 flex justify-center items-center order-${modelData.elements["resultsGraph"].priority}`}
           >
             <ResultsGraph
               data={data}
@@ -78,7 +75,7 @@ const IndexPage = () => {
 
         {showEnvirValuesTable && data && (
           <div
-            className={`flex-1 mt-24 flex justify-center items-center order-${modelData.elements["envirValuesTable"].priority}`}
+            className={`mt-24 flex justify-center items-center order-${modelData.elements["envirValuesTable"].priority}`}
           >
             <EnvirValuesTable
               data={data}
@@ -89,7 +86,7 @@ const IndexPage = () => {
         )}
 
         {/* Always at the bottom - flex order-12 */}
-        <div className="flex-1 order-12 mt-24">
+        <div className="order-12 mt-24">
           <hr className="max-w-7xl mx-auto"></hr>
           <Disclaimer></Disclaimer>
           <Footer></Footer>
