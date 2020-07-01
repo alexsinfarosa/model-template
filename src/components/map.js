@@ -1,6 +1,7 @@
 import React from "react"
 import ReactMapGL, { NavigationControl } from "react-map-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
+import GlobalStateContext from "../context/globalStateContext"
 
 const settings = {
   dragPan: true,
@@ -17,13 +18,28 @@ const settings = {
 }
 
 export default function Map() {
+  const { station, dispatch } = React.useContext(GlobalStateContext)
   const [viewport, setViewport] = React.useState({
     width: "100%",
     height: 400,
-    latitude: 42.87295,
-    longitude: -77.02818,
+    latitude: station ? station.lat : 42.87295,
+    longitude: station ? station.lon : -77.02818,
     zoom: 8,
+    transitionDuration: 1000,
   })
+
+  function handleClickOnMap(e) {
+    const feature = e.features[0]
+    if (feature) {
+      const { description, ...station } = feature.properties
+      dispatch({ type: "setStation", station })
+      setViewport({
+        ...viewport,
+        latitude: station.lat,
+        longitude: station.lon,
+      })
+    }
+  }
 
   function getCursor({ isHovering }) {
     return isHovering ? "pointer" : "default"
@@ -38,6 +54,7 @@ export default function Map() {
         mapStyle="mapbox://styles/xscanna/ck3695z07029q1cp5fk1bz1fn"
         interactiveLayerIds={["acisstationsgeojson"]}
         onViewportChange={nextViewport => setViewport(nextViewport)}
+        onClick={handleClickOnMap}
         getCursor={getCursor}
         clickRadius={2}
       >

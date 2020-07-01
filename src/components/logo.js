@@ -9,13 +9,17 @@ export default function Logo() {
   const { user } = React.useContext(GlobalStateContext)
   return (
     <div className="flex flex-col w-64">
-      <Link to="/">
+      <a
+        href="http://newa.netlify.app"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img
           src={newaLogo}
           alt="NEWA (Network for Environment and Weather Applications)"
           className="w-36"
         />
-      </Link>
+      </a>
       <div className="flex items-center ml-8">
         <div className="text-xs">a partnership of</div>
         <span className="ml-3 flex items-center">

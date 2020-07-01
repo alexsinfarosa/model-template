@@ -28,14 +28,14 @@ module.exports = {
         path: `${__dirname}/src/assets/state-partners`,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-mdx`,
-    //   options: {
-    //     defaultLayouts: {
-    //       default: require.resolve(`./src/components/layout.js`),
-    //     },
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        defaultLayouts: {
+          default: require.resolve(`./src/components/layout.js`),
+        },
+      },
+    },
     {
       resolve: "gatsby-source-graphql",
       options: {

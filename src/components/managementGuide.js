@@ -48,7 +48,7 @@ export default function ManagementGuide({
       <h2 className="mb-3 font-semibold text-gray-600 md:text-2xl">
         Management Guide
       </h2>
-      <p className="text-gray-700 text-sm leading-6 bg-white px-4 py-2 rounded">
+      <p className="text-sm bg-white px-6 py-4 sm:py-6 rounded">
         <span className="font-semibold">Explanation:</span>{" "}
         {managementGuide.explanation}
       </p>

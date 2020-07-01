@@ -2,7 +2,6 @@ import React from "react"
 import { navigate } from "gatsby"
 
 export default function BackButton({ location }) {
-  console.log(location)
   return (
     <span className="rounded-md shadow-sm">
       <svg

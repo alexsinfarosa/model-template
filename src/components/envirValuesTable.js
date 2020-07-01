@@ -86,6 +86,15 @@ export default function EnvirValuesTable({
             </button>
           </div>
         </div>
+        <div className="flex my-4">
+          {forecastDataTable && (
+            <>
+              <span className="text-gray-600 text-xs font-bold">Forecast:</span>
+              <span className="w-16 py-2 bg-secondary-300 inline-block mx-2 text-xs text-center font-semibold rounded"></span>
+            </>
+          )}
+        </div>
+
         <div className="flex flex-col">
           <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
             <div className="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
@@ -93,9 +102,11 @@ export default function EnvirValuesTable({
                 <thead>
                   <tr>
                     <th
-                      className="py-3 border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
+                      className="py-3 border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-secondary-600 uppercase tracking-wider"
                       rowSpan="2"
-                    ></th>
+                    >
+                      x
+                    </th>
                     <th
                       className="px-6 py-3 border-r border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
                       rowSpan="2"
@@ -183,15 +194,6 @@ export default function EnvirValuesTable({
               </table>
             </div>
           </div>
-        </div>
-
-        <div className="flex mt-3">
-          {forecastDataTable && (
-            <>
-              <span className="text-gray-600 text-sm font-bold">Forecast:</span>
-              <span className="w-20 py-2 bg-secondary-300 inline-block mx-2 text-sm text-center font-semibold rounded"></span>
-            </>
-          )}
         </div>
       </div>
     )

@@ -7,7 +7,6 @@ import {
   Tooltip,
   Legend,
   Line,
-  Area,
 } from "recharts"
 import HashLoader from "react-spinners/HashLoader"
 import GlobalStateContext from "../context/globalStateContext"

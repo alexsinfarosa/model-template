@@ -82,16 +82,50 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
             </button>
           </div>
         </div>
-        <div className="flex flex-col">
+
+        {/* LEGEND */}
+        {data && (
+          <div className="flex flex-col sm:flex-row my-4 sm:justify-between sm:items-center">
+            <div className="mt-4 sm:mt-0 flex items-center order-2 sm:order-1">
+              {forecastDataTable && (
+                <>
+                  <span className="text-gray-600 text-xs font-bold">
+                    Forecast:
+                  </span>
+                  <span className="w-16 py-2 bg-secondary-400 inline-block mx-2 text-xs text-center font-semibold rounded"></span>
+                </>
+              )}
+            </div>
+
+            <div className="order-1 sm:order-2">
+              <span className="w-auto text-gray-600 text-xs font-bold">
+                Degree Days Risk Levels:{" "}
+              </span>
+              <span className="w-16 py-1 bg-green-600 inline-block mx-2 text-xs text-center text-white font-semibold rounded">
+                Low
+              </span>
+              <span className="w-16 py-1 bg-yellow-300 inline-block mx-2 text-xs text-center text-white font-semibold rounded">
+                Moderate
+              </span>
+              <span className="w-16 py-1 bg-red-600 inline-block ml-2 text-xs text-center text-white font-semibold rounded">
+                High
+              </span>
+            </div>
+          </div>
+        )}
+
+        <div className="mt-4 flex flex-col">
           <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
             <div className="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
               <table className="min-w-full">
                 <thead>
                   <tr>
                     <th
-                      className="py-3 border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
+                      className="py-3 border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-secondary-600 uppercase tracking-wider"
                       rowSpan="2"
-                    ></th>
+                    >
+                      x
+                    </th>
                     <th
                       className="px-6 py-3 border-r border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
                       rowSpan="2"
@@ -204,37 +238,6 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
             </div>
           </div>
         </div>
-
-        {/* LEGEND */}
-        {data && (
-          <div className="flex flex-col sm:flex-row mt-3 sm:justify-between sm:items-center">
-            <div className="mt-3 sm:mt-0 flex items-center order-2 sm:order-1">
-              {forecastDataTable && (
-                <>
-                  <span className="text-gray-600 text-sm font-bold">
-                    Forecast:
-                  </span>
-                  <span className="w-20 py-2 bg-secondary-400 inline-block mx-2 text-sm text-center font-semibold rounded"></span>
-                </>
-              )}
-            </div>
-
-            <div className="order-1 sm:order-2">
-              <span className="text-gray-600 text-sm font-bold">
-                Degree Days Risk Levels:{" "}
-              </span>
-              <span className="w-20 py-1 bg-green-600 inline-block mx-2 text-sm text-center text-white font-semibold rounded">
-                Low
-              </span>
-              <span className="w-20 py-1 bg-yellow-300 inline-block mx-2 text-sm text-center text-white font-semibold rounded">
-                Moderate
-              </span>
-              <span className="w-20 py-1 bg-red-600 inline-block mx-2 text-sm text-center text-white font-semibold rounded">
-                High
-              </span>
-            </div>
-          </div>
-        )}
       </div>
     )
   }

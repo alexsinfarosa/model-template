@@ -313,7 +313,7 @@ export default function useStationData() {
         fetchStationHourlyData(station)
       }
     }
-  }, [station, dateOfInterest, LS_STATION_DATA_KEY])
+  }, [station, dateOfInterest, LS_STATION_DATA_KEY, isSameYear])
 
   return { ...state }
 }

@@ -8,11 +8,7 @@ export default function Disclaimer() {
       <div className="flex justify-center items-center h-16 mb-12">
         <div className="max-w-md w-full flex justify-between">
           <Link
-            to={
-              typeof window !== "undefined"
-                ? `${window.location.pathname}/more-info`
-                : `/more-info`
-            }
+            to={`/blueberry-maggot/more-info`}
             className="text-gray-900 text-center"
             activeClassName={activeStyle}
           >
@@ -20,11 +16,7 @@ export default function Disclaimer() {
           </Link>
 
           <Link
-            to={
-              typeof window !== "undefined"
-                ? `${window.location.pathname}/acknowledgments`
-                : `/acknowledgments`
-            }
+            to={`/blueberry-maggot/acknowledgments`}
             className="text-gray-900 text-center"
             activeClassName={activeStyle}
           >
@@ -32,11 +24,7 @@ export default function Disclaimer() {
           </Link>
 
           <Link
-            to={
-              typeof window !== "undefined"
-                ? `${window.location.pathname}/references`
-                : `/references`
-            }
+            to={`/blueberry-maggot/references`}
             className="text-gray-900 text-center"
             activeClassName={activeStyle}
           >

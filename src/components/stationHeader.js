@@ -14,20 +14,28 @@ export default function StationHeader({ station }) {
         )}
       </h1>
 
-      <div className="mt-3 sm:mt-0 flex justify-between sm:flex-col text-sm leading-5 text-gray-500 w-full sm:w-auto">
-        <div className="flex-1 text-center md:text-left">
-          <span className="font-semibold">Latitude:</span>{" "}
-          <span className="ml-0">{station ? station.lat.toFixed(2) : ""}</span>
+      {station && (
+        <div className="mt-3 sm:mt-0 flex justify-between sm:flex-col text-sm leading-5 text-gray-500 w-full sm:w-auto">
+          <div className="flex-1 text-center md:text-left">
+            <span className="font-semibold">Latitude:</span>{" "}
+            <span className="ml-0">
+              {station.lat ? station.lat.toFixed(2) : ""}
+            </span>
+          </div>
+          <div className="flex-1 text-center md:text-left">
+            <span className="font-semibold">Longitude:</span>{" "}
+            <span className="ml-0">
+              {station.lon ? station.lon.toFixed(2) : ""}
+            </span>
+          </div>
+          <div className="flex-1 text-center md:text-left">
+            <span className="font-semibold">Elevation:</span>{" "}
+            <span className="ml-0">
+              {station.elev ? `${station.elev} ft` : ""}
+            </span>
+          </div>
         </div>
-        <div className="flex-1 text-center md:text-left">
-          <span className="font-semibold">Longitude:</span>{" "}
-          <span className="ml-0">{station ? station.lon.toFixed(2) : ""}</span>
-        </div>
-        <div className="flex-1 text-center md:text-left">
-          <span className="font-semibold">Elevation:</span>{" "}
-          <span className="ml-0">{station ? `${station.elev} ft` : ""}</span>
-        </div>
-      </div>
+      )}
     </div>
   )
 }
