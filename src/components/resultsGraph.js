@@ -127,7 +127,7 @@ export default function ResultsGraph({
   if (!isLoading && dataGraph) {
     return (
       <div className="w-full">
-        <div className="flex justify-between items-center mb-3 ">
+        <div className="flex justify-between items-center mb-6">
           <h2 className="font-semibold text-gray-600 md:text-2xl">
             {resultsGraph.title}
           </h2>

@@ -102,21 +102,34 @@ const Layout = ({ children }) => {
                             isChecked={showMap}
                             toggleElement="toggleMap"
                           ></Toggle>
-                          <Toggle
-                            text="Management Guide"
-                            isChecked={showManagementGuide}
-                            toggleElement="toggleManagementGuide"
-                          ></Toggle>
-                          <Toggle
-                            text="Results Table"
-                            isChecked={showResultsTable}
-                            toggleElement="toggleResultsTable"
-                          ></Toggle>
-                          <Toggle
-                            text="Envir. Values Table"
-                            isChecked={showEnvirValuesTable}
-                            toggleElement="toggleEnvirValuesTable"
-                          ></Toggle>
+                          {station && (
+                            <Toggle
+                              text="Management Guide"
+                              isChecked={showManagementGuide}
+                              toggleElement="toggleManagementGuide"
+                            ></Toggle>
+                          )}
+                          {station && (
+                            <Toggle
+                              text="Results Table"
+                              isChecked={showResultsTable}
+                              toggleElement="toggleResultsTable"
+                            ></Toggle>
+                          )}
+                          {station && (
+                            <Toggle
+                              text="Results Graph"
+                              isChecked={showResultsGraph}
+                              toggleElement="toggleResultsGraph"
+                            ></Toggle>
+                          )}
+                          {station && (
+                            <Toggle
+                              text="Envir. Values Table"
+                              isChecked={showEnvirValuesTable}
+                              toggleElement="toggleEnvirValuesTable"
+                            ></Toggle>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -170,11 +183,13 @@ const Layout = ({ children }) => {
                       isChecked={showMap}
                       toggleElement="toggleMap"
                     ></Toggle>
-                    <Toggle
-                      text="Management Guide"
-                      isChecked={showManagementGuide}
-                      toggleElement="toggleManagementGuide"
-                    ></Toggle>
+                    {station && (
+                      <Toggle
+                        text="Management Guide"
+                        isChecked={showManagementGuide}
+                        toggleElement="toggleManagementGuide"
+                      ></Toggle>
+                    )}
                     {station && (
                       <Toggle
                         text="Results Table"
@@ -182,16 +197,20 @@ const Layout = ({ children }) => {
                         toggleElement="toggleResultsTable"
                       ></Toggle>
                     )}
-                    <Toggle
-                      text="Results Graph"
-                      isChecked={showResultsGraph}
-                      toggleElement="toggleResultsGraph"
-                    ></Toggle>
-                    <Toggle
-                      text="Envir. Values Table"
-                      isChecked={showEnvirValuesTable}
-                      toggleElement="toggleEnvirValuesTable"
-                    ></Toggle>
+                    {station && (
+                      <Toggle
+                        text="Results Graph"
+                        isChecked={showResultsGraph}
+                        toggleElement="toggleResultsGraph"
+                      ></Toggle>
+                    )}
+                    {station && (
+                      <Toggle
+                        text="Envir. Values Table"
+                        isChecked={showEnvirValuesTable}
+                        toggleElement="toggleEnvirValuesTable"
+                      ></Toggle>
+                    )}
                   </div>
                 </div>
               </div>

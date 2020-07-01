@@ -28,7 +28,7 @@ const formatGroupLabel = data => (
 
 const formatOptionLabel = ({ name, state, network }) => (
   <div className="flex justify-between items-center text-xs">
-    <div className="">
+    <div className="w-full">
       <span>{name}, </span>
       <span className="font-bold">{state}</span>
     </div>

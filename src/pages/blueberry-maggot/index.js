@@ -35,19 +35,25 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <div className="flex flex-col h-full">
-        <div className="flex-1">
-          <StationHeader station={station}></StationHeader>
-        </div>
+        {station && (
+          <div className="flex-1">
+            <StationHeader station={station}></StationHeader>
+          </div>
+        )}
 
         {showMap && (
-          <div className="flex-1 mt-24">
+          <div
+            id="stationsMap"
+            className={`flex-1 ${station ? "mt-24" : ""} bg-red-100`}
+          >
             <Map></Map>
           </div>
         )}
 
         <div className="flex-1 flex flex-col">
-          {showManagementGuide && data && (
+          {showManagementGuide && data !== null && (
             <div
+              id="managementGuide"
               className={`flex-1 mt-24 flex justify-center items-center ${
                 managementGuide ? `order-${managementGuide.priority}` : ``
               }`}
@@ -60,8 +66,9 @@ const IndexPage = () => {
             </div>
           )}
 
-          {showResultsTable && data && (
+          {showResultsTable && data !== null && (
             <div
+              id="resultsTable"
               className={`flex-1 mt-24 flex justify-center items-center ${
                 resultsTable ? `order-${resultsTable.priority}` : ``
               }`}
@@ -74,8 +81,9 @@ const IndexPage = () => {
             </div>
           )}
 
-          {showResultsGraph && data && (
+          {showResultsGraph && data !== null && (
             <div
+              id="resultsGraph"
               className={`flex-1 mt-24 flex justify-center items-center ${
                 resultsGraph ? `order-${resultsGraph.priority}` : ``
               }`}
@@ -91,8 +99,9 @@ const IndexPage = () => {
             </div>
           )}
 
-          {showEnvirValuesTable && data && (
+          {showEnvirValuesTable && data !== null && (
             <div
+              id="envirValuesTable"
               className={`flex-1 mt-24 flex justify-center items-center ${
                 envirValuesTable ? `order-${envirValuesTable.priority}` : ``
               }`}

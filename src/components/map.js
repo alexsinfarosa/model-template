@@ -20,8 +20,6 @@ const settings = {
 export default function Map() {
   const { station, dispatch } = React.useContext(GlobalStateContext)
   const [viewport, setViewport] = React.useState({
-    width: "100%",
-    height: 400,
     latitude: station ? station.lat : 42.87295,
     longitude: station ? station.lon : -77.02818,
     zoom: 8,
@@ -46,21 +44,25 @@ export default function Map() {
   }
 
   return (
-    <ReactMapGL
-      {...viewport}
-      {...settings}
-      mapboxApiAccessToken={process.env.GATSBY_MAPBOX_TOKEN}
-      mapStyle="mapbox://styles/xscanna/ck3695z07029q1cp5fk1bz1fn"
-      interactiveLayerIds={["acisstationsgeojson"]}
-      onViewportChange={nextViewport => setViewport(nextViewport)}
-      onClick={handleClickOnMap}
-      getCursor={getCursor}
-      clickRadius={2}
-    >
-      <NavigationControl
-        className="absolute right-0 z-10 mt-4 mb-4 mr-4"
-        showCompass={false}
-      ></NavigationControl>
-    </ReactMapGL>
+    <div className="h-96 lg:128">
+      <ReactMapGL
+        {...viewport}
+        {...settings}
+        width="100%"
+        height="100%"
+        mapboxApiAccessToken={process.env.GATSBY_MAPBOX_TOKEN}
+        mapStyle="mapbox://styles/xscanna/ck3695z07029q1cp5fk1bz1fn"
+        interactiveLayerIds={["acisstationsgeojson"]}
+        onViewportChange={nextViewport => setViewport(nextViewport)}
+        onClick={handleClickOnMap}
+        getCursor={getCursor}
+        clickRadius={2}
+      >
+        <NavigationControl
+          className="absolute right-0 z-10 mt-4 mb-4 mr-4"
+          showCompass={false}
+        ></NavigationControl>
+      </ReactMapGL>
+    </div>
   )
 }
