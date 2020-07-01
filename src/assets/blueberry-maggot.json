@@ -3,7 +3,7 @@
   "elements": {
     "managementGuide": {
       "title": "Management Guide",
-      "priority": 1,
+      "priority": 3,
       "explanation": "The blueberry maggot degree day model predicts when to set baited traps to monitor for adult flies. This insect has patchy distribution and monitoring will determine if and when it occurs on your farm. Flies typically emerge around 913 degree days base 50˚ F from January 1. (This model uses the Baskerville Emin (BE) formula.)",
       "thresholds": {
         "03-01 | 09-30": {
@@ -32,7 +32,7 @@
     },
     "resultsTable": {
       "title": "Results Table",
-      "priority": 2,
+      "priority": 4,
       "startDate": { "month": "Jan 1", "index": 0 },
       "base": "50 ˚F",
       "formula": "BE",
@@ -45,12 +45,12 @@
     },
     "resultsGraph": {
       "title": "Cumulative Degree Days, base 50° F BE",
-      "priority": 3,
+      "priority": 5,
       "variables": ["gdd"]
     },
     "envirValuesTable": {
       "title": "Environmental Values Table",
-      "priority": 4,
+      "priority": 6,
       "variables": ["avgT", "maxT", "minT"]
     }
   }

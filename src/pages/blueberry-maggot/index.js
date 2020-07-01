@@ -29,10 +29,12 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <div className="flex flex-col h-full">
-        <StationHeader station={station}></StationHeader>
+        <div className="flex-1 order-1">
+          <StationHeader station={station}></StationHeader>
+        </div>
 
         {showMap && (
-          <div className="flex-1 mt-24">
+          <div className="flex-1 mt-24 order-2">
             <Map></Map>
           </div>
         )}
