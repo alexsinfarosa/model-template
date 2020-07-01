@@ -24,6 +24,12 @@ const IndexPage = () => {
     dateOfInterest,
   } = React.useContext(GlobalStateContext)
   const { data, isLoading } = useStationData()
+  const {
+    managementGuide,
+    resultsTable,
+    resultsGraph,
+    envirValuesTable,
+  } = modelData.elements
 
   return (
     <Layout>
@@ -41,7 +47,9 @@ const IndexPage = () => {
 
         {showManagementGuide && data && (
           <div
-            className={`flex-1 mt-24 flex justify-center items-center order-${modelData.elements["managementGuide"].priority}`}
+            className={`flex-1 mt-24 flex justify-center items-center ${
+              managementGuide ? `order-${managementGuide.priority}` : ``
+            }`}
           >
             <ManagementGuide
               currentDate={data.stationData[dateOfInterest.dayOfYear - 1]}
@@ -53,7 +61,9 @@ const IndexPage = () => {
 
         {showResultsTable && data && (
           <div
-            className={`flex-1 mt-24 flex justify-center items-center order-${modelData.elements["resultsTable"].priority}`}
+            className={`flex-1 mt-24 flex justify-center items-center ${
+              resultsTable ? `order-${resultsTable.priority}` : ``
+            }`}
           >
             <ResultsTable
               data={data}
@@ -65,7 +75,9 @@ const IndexPage = () => {
 
         {showResultsGraph && data && (
           <div
-            className={`flex-1 mt-24 flex justify-center items-center order-${modelData.elements["resultsGraph"].priority}`}
+            className={`flex-1 mt-24 flex justify-center items-center ${
+              resultsGraph ? `order-${resultsGraph.priority}` : ``
+            }`}
           >
             <ResultsGraph
               data={data}
@@ -80,7 +92,9 @@ const IndexPage = () => {
 
         {showEnvirValuesTable && data && (
           <div
-            className={`flex-1 mt-24 flex justify-center items-center order-${modelData.elements["envirValuesTable"].priority}`}
+            className={`flex-1 mt-24 flex justify-center items-center ${
+              envirValuesTable ? `order-${envirValuesTable.priority}` : ``
+            }`}
           >
             <EnvirValuesTable
               data={data}
