@@ -56,7 +56,7 @@ const IndexPage = () => {
               <ManagementGuide
                 currentDate={data.stationData[dateOfInterest.dayOfYear - 1]}
                 isLoading={isLoading}
-                managementGuide={modelData.elements["managementGuide"]}
+                managementGuide={managementGuide}
               ></ManagementGuide>
             </div>
           )}
@@ -69,7 +69,7 @@ const IndexPage = () => {
               <ResultsTable
                 data={data}
                 isLoading={isLoading}
-                resultsTable={modelData.elements["resultsTable"]}
+                resultsTable={resultsTable}
               ></ResultsTable>
             </div>
           )}
@@ -82,10 +82,8 @@ const IndexPage = () => {
               <ResultsGraph
                 data={data}
                 isLoading={isLoading}
-                resultsGraph={modelData.elements["resultsGraph"]}
-                ddRiskLevels={
-                  modelData.elements["resultsTable"].degreeDayRiskLevels
-                }
+                resultsGraph={resultsGraph}
+                ddRiskLevels={resultsTable.degreeDayRiskLevels}
               ></ResultsGraph>
             </div>
           )}
@@ -98,7 +96,7 @@ const IndexPage = () => {
               <EnvirValuesTable
                 data={data}
                 isLoading={isLoading}
-                envirValuesTable={modelData.elements["envirValuesTable"]}
+                envirValuesTable={envirValuesTable}
               ></EnvirValuesTable>
             </div>
           )}

@@ -2,6 +2,7 @@ import React from "react"
 import { formatDateMonthDay } from "../utils/utils"
 import HashLoader from "react-spinners/HashLoader"
 import GlobalStateContext from "../context/globalStateContext"
+import { CSVLink } from "react-csv"
 
 export default function ResultsTable({ resultsTable, data, isLoading }) {
   const { station, dateOfInterest } = React.useContext(GlobalStateContext)
@@ -78,7 +79,24 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
               >
                 <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
               </svg>
-              Download CSV
+
+              <CSVLink
+                className="text-white no-underline"
+                data={[
+                  ...data.stationData.map(d => ({
+                    date: d.date,
+                    degreeDay: d.dd,
+                    cumulativeDegreeDays: d.gdd,
+                  })),
+                  ...data.forecast.map(d => ({
+                    date: d.date,
+                    degreeDay: d.dd,
+                    cumulativeDegreeDays: d.gdd,
+                  })),
+                ]}
+              >
+                Download CSV
+              </CSVLink>
             </button>
           </div>
         </div>

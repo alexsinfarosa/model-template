@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import newaLogo from "../assets/newa-logo.svg"
 import ipmLogo from "../assets/ipm-logo-small.svg"
 import StatePartnerLogo from "./statePartnerLogo"

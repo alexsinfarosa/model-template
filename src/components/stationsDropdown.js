@@ -105,7 +105,10 @@ const StationsDropdown = () => {
             <div className="mt-4 shadow-sm bg-red-100">
               <Select
                 aria-labelledby="stations"
-                value={formattedStationsFavorite[0].options[0]}
+                value={
+                  formattedStationsFavorite.length !== 0 &&
+                  formattedStationsFavorite[0].options[0]
+                }
                 placeholder={"Select or search by weather station name"}
                 isSearchable
                 options={formattedStationsFavorite}

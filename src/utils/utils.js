@@ -68,8 +68,8 @@ export function prettifyACISData(data, elems) {
   data.forEach(day => {
     const [date, ...rest] = day
     let p = { date }
-    Object.keys(elems).map((key, i) => {
-      return (p[key] = rest[i])
+    Object.keys(elems).forEach((key, i) => {
+      p[key] = rest[i]
     })
     result.push(p)
   })

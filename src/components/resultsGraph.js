@@ -10,6 +10,8 @@ import {
 } from "recharts"
 import HashLoader from "react-spinners/HashLoader"
 import GlobalStateContext from "../context/globalStateContext"
+import domtoimage from "dom-to-image"
+import { saveAs } from "file-saver"
 
 const CustomXLabel = props => {
   const { x, y, payload } = props
@@ -124,6 +126,12 @@ export default function ResultsGraph({
     return null
   }
 
+  function downloadPNG() {
+    domtoimage
+      .toBlob(document.getElementById("chart"))
+      .then(blob => saveAs(blob, "chart.png"))
+  }
+
   if (!isLoading && dataGraph) {
     return (
       <div className="w-full">
@@ -135,6 +143,7 @@ export default function ResultsGraph({
           <div className="rounded-md flex justify-center items-center">
             <button
               type="button"
+              onClick={downloadPNG}
               className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-secondary-600 hover:bg-secondary-500 focus:outline-none focus:border-secondary-700 focus:shadow-outline-secondary active:bg-secondary-700 transition ease-in-out duration-150"
             >
               <svg
@@ -153,7 +162,7 @@ export default function ResultsGraph({
           </div>
         </div>
 
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width="100%" height={400} id="chart">
           <ComposedChart
             data={dataGraph}
             margin={{ top: 10, right: 30, left: 0, bottom: 30 }}
