@@ -45,6 +45,13 @@ export function formatDate(d) {
   return `${year}-${month}-${date}`
 }
 
+////////////////////////////////////////////////////////////
+export function formatAMPM(hour) {
+  const amOrpm = hour > 11 ? "PM" : "AM"
+  const h = hour % 12 || 12
+  return `${h}:00 ${amOrpm}`
+}
+
 //////////////////////////////////////////////////////////////////
 export function stationIdAdjustment(stn) {
   // Michigan (miwx)

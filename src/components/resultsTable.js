@@ -187,7 +187,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                       day.gdd >= degreeDayRiskLevels.lowerModerate &&
                       day.gdd <= degreeDayRiskLevels.upperModerate
                     )
-                      riskLevel = "bg-orange-500 text-white font-semibold"
+                      riskLevel = "bg-yellow-300 text-white font-semibold"
                     if (day.gdd >= degreeDayRiskLevels.high)
                       riskLevel = "bg-red-600 text-white font-semibold"
                     return (
@@ -237,7 +237,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                         day.gdd >= degreeDayRiskLevels.lowerModerate &&
                         day.gdd <= degreeDayRiskLevels.upperModerate
                       )
-                        riskLevel = "bg-orange-500 text-white font-semibold"
+                        riskLevel = "bg-yellow-300 text-white font-semibold"
                       if (day.gdd >= degreeDayRiskLevels.high)
                         riskLevel = "bg-red-600 text-white font-semibold"
                       return (

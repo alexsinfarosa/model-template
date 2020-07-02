@@ -206,7 +206,7 @@ export default function ResultsGraph({
               stroke="#1987C2"
               strokeWidth={3}
               dot={false}
-              name="Cumulative Degree Day"
+              name="Blueberry Maggot Cumulative Degree Day"
             />
           </ComposedChart>
         </ResponsiveContainer>

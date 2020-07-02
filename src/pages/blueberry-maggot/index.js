@@ -37,12 +37,15 @@ const IndexPage = () => {
       <div className="flex flex-col h-full">
         {station && (
           <div className="flex-1">
-            <StationHeader station={station}></StationHeader>
+            <StationHeader data={data} station={station}></StationHeader>
           </div>
         )}
 
         {showMap && (
           <div id="stationsMap" className={`flex-1 ${station ? "mt-24" : ""}`}>
+            <h2 className="mb-8 font-semibold text-gray-600 md:text-2xl">
+              Station Selection Map
+            </h2>
             <Map></Map>
           </div>
         )}

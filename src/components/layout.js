@@ -98,7 +98,7 @@ const Layout = ({ children }) => {
                       <div className="bg-gray-100 rounded  flex justify-center items-center">
                         <div className="flex-1">
                           <Toggle
-                            text="Stations Map"
+                            text="Station Selection Map"
                             isChecked={showMap}
                             toggleElement="toggleMap"
                           ></Toggle>
@@ -179,7 +179,7 @@ const Layout = ({ children }) => {
                 <div className="flex justify-center items-center">
                   <div className="flex-1">
                     <Toggle
-                      text="Stations Map"
+                      text="Station Selection Map"
                       isChecked={showMap}
                       toggleElement="toggleMap"
                     ></Toggle>

@@ -29,7 +29,7 @@ const DEFAULT_STATE = {
   station: ls_stationData ? ls_stationData.station : null,
   dateOfInterest: { date: new Date(), dayOfYear: getDayOfYear(new Date()) },
   stationData: ls_stationData ? ls_stationData : null,
-  showMap: ls_model ? ls_model.showMap : true,
+  showMap: ls_model ? ls_model.showMap : user === null ? true : false,
   showManagementGuide: ls_model ? ls_model.showManagementGuide : true,
   showResultsTable: ls_model ? ls_model.showResultsTable : true,
   showResultsGraph: ls_model ? ls_model.showResultsGraph : true,
