@@ -106,8 +106,10 @@ const StationsDropdown = () => {
               <Select
                 aria-labelledby="stations"
                 value={
-                  formattedStationsFavorite.length !== 0 &&
-                  formattedStationsFavorite[0].options[0]
+                  station === null
+                    ? formattedStationsFavorite.length !== 0 &&
+                      formattedStationsFavorite[0].options[0]
+                    : station
                 }
                 placeholder={"Select or search by weather station name"}
                 isSearchable

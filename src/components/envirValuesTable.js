@@ -85,6 +85,7 @@ export default function EnvirValuesTable({
               </svg>
               <CSVLink
                 className="text-white no-underline"
+                filename="environmental-values-table"
                 data={[
                   ...data.stationData.map(d => ({
                     date: d.date,

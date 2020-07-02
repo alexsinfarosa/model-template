@@ -82,6 +82,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
 
               <CSVLink
                 className="text-white no-underline"
+                filename="results-table"
                 data={[
                   ...data.stationData.map(d => ({
                     date: d.date,
