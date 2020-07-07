@@ -8,6 +8,80 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
   const { station, dateOfInterest } = React.useContext(GlobalStateContext)
   const { title, base, formula, degreeDayRiskLevels, startDate } = resultsTable
 
+  // Current year
+  let stationDataTable = null
+  let forecastDataTable = null
+  let csvData = null
+  const { dayOfYear } = dateOfInterest
+  if (data.forecast !== null) {
+    csvData = [
+      ...data.stationData.map(d => ({
+        date: d.date,
+        degreeDay: d.dd,
+        cumulativeDegreeDays: d.gdd,
+      })),
+      ...data.forecast.map(d => ({
+        date: d.date,
+        degreeDay: d.dd,
+        cumulativeDegreeDays: d.gdd,
+      })),
+    ]
+    const currentDateIndex = data.stationData.slice(-1)[0].dayOfYear
+
+    if (currentDateIndex - dayOfYear === 0) {
+      stationDataTable = data.stationData.slice(
+        currentDateIndex - 3,
+        currentDateIndex - 1
+      )
+      forecastDataTable = data.forecast
+    }
+    if (currentDateIndex - dayOfYear === 1) {
+      stationDataTable = data.stationData.slice(
+        currentDateIndex - 4,
+        currentDateIndex - 1
+      )
+      forecastDataTable = data.forecast.slice(0, 5)
+    }
+    if (currentDateIndex - dayOfYear === 2) {
+      stationDataTable = data.stationData.slice(
+        currentDateIndex - 5,
+        currentDateIndex - 1
+      )
+      forecastDataTable = data.forecast.slice(0, 4)
+    }
+    if (currentDateIndex - dayOfYear === 3) {
+      stationDataTable = data.stationData.slice(
+        currentDateIndex - 6,
+        currentDateIndex - 1
+      )
+      forecastDataTable = data.forecast.slice(0, 3)
+    }
+    if (currentDateIndex - dayOfYear === 4) {
+      stationDataTable = data.stationData.slice(
+        currentDateIndex - 7,
+        currentDateIndex - 1
+      )
+      forecastDataTable = data.forecast.slice(0, 2)
+    }
+    if (currentDateIndex - dayOfYear === 5) {
+      stationDataTable = data.stationData.slice(
+        currentDateIndex - 8,
+        currentDateIndex - 1
+      )
+      forecastDataTable = data.forecast.slice(0, 1)
+    }
+    if (currentDateIndex - dayOfYear > 5) {
+      stationDataTable = data.stationData.slice(dayOfYear - 3, dayOfYear + 5)
+    }
+  } else {
+    stationDataTable = data.stationData.slice(dayOfYear - 3, dayOfYear + 5)
+    csvData = data.stationData.map(d => ({
+      date: d.date,
+      degreeDay: d.dd,
+      cumulativeDegreeDays: d.gdd,
+    }))
+  }
+
   if (isLoading) {
     return (
       <div>
@@ -16,45 +90,8 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
     )
   }
 
-  if (!data) {
+  if (!isLoading && !stationDataTable) {
     return null
-  }
-
-  // Current year
-  let stationDataTable = null
-  let forecastDataTable = null
-  const { dayOfYear } = dateOfInterest
-  if (data.forecast !== null) {
-    const currentDateIndex = data.stationData.slice(-1)[0].dayOfYear
-
-    if (currentDateIndex - dayOfYear === 0) {
-      stationDataTable = data.stationData.slice(currentDateIndex - 3)
-      forecastDataTable = data.forecast
-    }
-    if (currentDateIndex - dayOfYear === 1) {
-      stationDataTable = data.stationData.slice(currentDateIndex - 4)
-      forecastDataTable = data.forecast.slice(0, 4)
-    }
-    if (currentDateIndex - dayOfYear === 2) {
-      stationDataTable = data.stationData.slice(currentDateIndex - 5)
-      forecastDataTable = data.forecast.slice(0, 3)
-    }
-    if (currentDateIndex - dayOfYear === 3) {
-      stationDataTable = data.stationData.slice(currentDateIndex - 6)
-      forecastDataTable = data.forecast.slice(0, 2)
-    }
-    if (currentDateIndex - dayOfYear === 4) {
-      stationDataTable = data.stationData.slice(currentDateIndex - 7)
-      forecastDataTable = data.forecast.slice(0, 1)
-    }
-    if (currentDateIndex - dayOfYear === 5) {
-      stationDataTable = data.stationData.slice(currentDateIndex - 8)
-    }
-    if (currentDateIndex - dayOfYear > 5) {
-      stationDataTable = data.stationData.slice(dayOfYear - 3, dayOfYear + 5)
-    }
-  } else {
-    stationDataTable = data.stationData.slice(dayOfYear - 3, dayOfYear + 5)
   }
 
   if (!isLoading && stationDataTable) {
@@ -83,18 +120,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
               <CSVLink
                 className="text-white no-underline"
                 filename="results-table"
-                data={[
-                  ...data.stationData.map(d => ({
-                    date: d.date,
-                    degreeDay: d.dd,
-                    cumulativeDegreeDays: d.gdd,
-                  })),
-                  ...data.forecast.map(d => ({
-                    date: d.date,
-                    degreeDay: d.dd,
-                    cumulativeDegreeDays: d.gdd,
-                  })),
-                ]}
+                data={csvData}
               >
                 Download CSV
               </CSVLink>
@@ -160,7 +186,10 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                       className="px-6 py-3 border-r border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
                       rowSpan="2"
                     >
-                      Date
+                      Date{" "}
+                      <small>
+                        ({new Date(dateOfInterest.date).getFullYear()})
+                      </small>
                     </th>
                     <th
                       className="px-6 py-3 border-b border-r border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
@@ -194,29 +223,31 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                       <tr
                         key={day.date}
                         className={
-                          i === 2 ? `font-bold text-center` : `text-center`
+                          dayOfYear === day.dayOfYear
+                            ? `font-bold text-center`
+                            : `text-center`
                         }
                       >
-                        <td className="w-3 py-4 border-b border-gray-200 leading-6 text-gray-700"></td>
+                        <td className="w-3 py-4 border-b border-gray-200 leading-6 text-gray-700 "></td>
                         <td
                           className={`${
-                            i === 2 ? `text-lg` : `text-sm`
+                            dayOfYear === day.dayOfYear ? `text-lg` : `text-sm`
                           } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                         >
-                          <span className="w-20 inline-block">
+                          <span className="w-36 inline-block">
                             {formatDateMonthDay(day.date)}
                           </span>
                         </td>
                         <td
                           className={`${
-                            i === 2 ? `text-lg` : `text-sm`
+                            dayOfYear === day.dayOfYear ? `text-lg` : `text-sm`
                           } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                         >
                           {day.dd}
                         </td>
                         <td
                           className={`${
-                            i === 2 ? `text-lg` : `text-sm`
+                            dayOfYear === day.dayOfYear ? `text-lg` : `text-sm`
                           } px-6 py-3 border-b border-gray-200 leading-6`}
                         >
                           <span
@@ -241,18 +272,41 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                       if (day.gdd >= degreeDayRiskLevels.high)
                         riskLevel = "bg-red-600 text-white font-semibold"
                       return (
-                        <tr key={day.date} className="text-center">
-                          <td className="w-3 bg-secondary-400"></td>
-                          <td className="px-6 py-4 border-b border-gray-200 text-sm leading-6  text-gray-700">
-                            <span className="w-20 inline-block">
+                        <tr
+                          key={day.date}
+                          className={
+                            dayOfYear === day.dayOfYear
+                              ? `font-bold text-center`
+                              : `text-center`
+                          }
+                        >
+                          <td className="w-3 py-4 border-b border-gray-200 leading-6 text-gray-700 bg-secondary-400"></td>
+                          <td
+                            className={`${
+                              dayOfYear === day.dayOfYear
+                                ? `text-lg`
+                                : `text-sm`
+                            } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
+                          >
+                            <span className="w-36 inline-block">
                               {formatDateMonthDay(day.date)}
                             </span>
                           </td>
-                          <td className="px-6 py-4 border-b border-gray-200 text-sm leading-6 text-gray-700">
+                          <td
+                            className={`${
+                              dayOfYear === day.dayOfYear
+                                ? `text-lg`
+                                : `text-sm`
+                            } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
+                          >
                             {day.dd}
                           </td>
                           <td
-                            className={`px-6 py-3 border-b border-gray-200 text-sm leading-6`}
+                            className={`${
+                              dayOfYear === day.dayOfYear
+                                ? `text-lg`
+                                : `text-sm`
+                            } px-6 py-3 border-b border-gray-200 leading-6`}
                           >
                             <span
                               className={`${riskLevel} rounded w-20 py-1 inline-block`}

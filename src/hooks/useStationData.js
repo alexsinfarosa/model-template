@@ -198,16 +198,33 @@ export default function useStationData() {
         if (isSameYear) {
           // START: Forecast //////////////////////////////////////////////////////////
           const forecast = await fetchHourlyForecastData(body)
-          // console.log({ forecast: forecast.slice(1) })
+          console.log({ forecast })
           // END: Forecast ////////////////////////////////////////////////////////////
+
+          const forecastFirstDay = forecast[0]
+          const stationDataLastDay = dataFinal.slice(-1)[0]
+          console.log(forecastFirstDay, stationDataLastDay)
+
+          const forecastWeatherVariables = Object.keys(forecastFirstDay).slice(
+            1
+          )
+          let hybridDay = { ...stationDataLastDay }
+          Object.entries(stationDataLastDay).forEach(([key, val]) => {
+            if (forecastWeatherVariables.includes(key)) {
+              hybridDay[key] = [
+                ...val,
+                ...forecastFirstDay[key].slice(currentHour),
+              ]
+            }
+          })
 
           // START: Calculate dd, gdd, min, avg, max ///////////////////////////////////
           let fdd = 0
-          let fgdd = Number(dataFinal.map(d => d.gdd).slice(-1)[0])
+          let fgdd = Number(dataFinal.map(d => d.gdd).slice(-2)[0])
           let fminT
           let favgT
           let fmaxT
-          updatedForecast = forecast.slice(1).map((day, i) => {
+          updatedForecast = [hybridDay, ...forecast.slice(1)].map((day, i) => {
             const dailyMissingValues = day.temp.filter(t => t === "M").length
             if (dailyMissingValues >= 5) {
               datesWithFiveOrMoreMissingValues.push(i)
@@ -242,13 +259,6 @@ export default function useStationData() {
               }
             }
           })
-          // START: Determine weather icons from forecast data ////////////////////////
-          // const forecastWithIcons = determineForecastWeatherIcon(
-          //   forecast,
-          //   currentHour
-          // )
-          // console.log({ forecastWithIcons })
-          // END: Determine weather icons from forecast data //////////////////////////
         }
 
         dispatch({

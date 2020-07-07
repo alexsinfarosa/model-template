@@ -1,36 +1,11 @@
 import React from "react"
-import { getDayOfYear } from "date-fns"
 import HashLoader from "react-spinners/HashLoader"
 
 export default function ManagementGuide({
-  currentDate,
+  resMngGuide,
   managementGuide,
   isLoading,
 }) {
-  let pestStatus = ""
-  let pestManagement = ""
-  const currentYear = new Date().getFullYear()
-  for (const [dates, values] of Object.entries(managementGuide.thresholds)) {
-    const dateRange = dates.split(" | ")
-    const lowerDate = getDayOfYear(new Date(`${currentYear}-${dateRange[0]}`))
-    const upperDate = getDayOfYear(new Date(`${currentYear}-${dateRange[1]}`))
-
-    if (
-      currentDate.dayOfYear >= lowerDate &&
-      currentDate.dayOfYear <= upperDate
-    ) {
-      for (const [key, thresholds] of Object.entries(values)) {
-        const gddRange = key.split("-")
-        const lowerGdd = +gddRange[0]
-        const upperGdd = +gddRange[1]
-        if (currentDate.gdd >= lowerGdd && currentDate.gdd <= upperGdd) {
-          pestStatus = thresholds.pestStatus
-          pestManagement = thresholds.pestManagement
-        }
-      }
-    }
-  }
-
   if (isLoading) {
     return (
       <div>
@@ -39,7 +14,7 @@ export default function ManagementGuide({
     )
   }
 
-  if (pestStatus.length === 0 && pestManagement.length === 0) {
+  if (!resMngGuide) {
     return null
   }
 
@@ -69,10 +44,10 @@ export default function ManagementGuide({
               <tbody className="bg-white">
                 <tr>
                   <td className="px-6 py-4 border-b border-gray-200 text-sm leading-6 w-1/2 text-gray-700">
-                    {pestStatus}
+                    {resMngGuide.pestStatus}
                   </td>
                   <td className="px-6 py-4 border-b border-gray-200 text-sm leading-6 w-1/2 text-gray-700">
-                    {pestManagement}
+                    {resMngGuide.pestManagement}
                   </td>
                 </tr>
               </tbody>

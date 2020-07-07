@@ -12,6 +12,7 @@ import Disclaimer from "../../components/disclaimer"
 import Footer from "../../components/footer"
 import useStationData from "../../hooks/useStationData"
 import modelData from "../../assets/blueberry-maggot.json"
+import { isModelInSeason } from "../../utils/utils"
 
 const IndexPage = () => {
   const {
@@ -31,11 +32,24 @@ const IndexPage = () => {
     envirValuesTable,
   } = modelData.elements
 
+  let resMngGuide = null
+  let isInSeason = true
+  if (data) {
+    const res = isModelInSeason(
+      modelData,
+      data.stationData[dateOfInterest.dayOfYear - 1]
+    )
+    if (res) {
+      resMngGuide = res.resMngGuide
+      isInSeason = res.isInSeason
+    }
+  }
+  console.log(data, dateOfInterest)
   return (
     <Layout>
       <SEO title="Home" />
       <div className="flex flex-col h-full">
-        {station && (
+        {isInSeason && station && (
           <div className="flex-1">
             <StationHeader data={data} station={station}></StationHeader>
           </div>
@@ -50,21 +64,24 @@ const IndexPage = () => {
           </div>
         )}
 
+        {/*  */}
         <div className="flex-1 flex flex-col">
           {showManagementGuide && data !== null && (
             <div
               id="managementGuide"
-              className={`flex-1 mt-24 flex justify-center items-center`}
+              className={`flex-1 ${
+                isInSeason ? `mt-24` : ``
+              } flex justify-center items-center`}
             >
               <ManagementGuide
-                currentDate={data.stationData[dateOfInterest.dayOfYear - 1]}
+                resMngGuide={resMngGuide}
                 isLoading={isLoading}
                 managementGuide={managementGuide}
               ></ManagementGuide>
             </div>
           )}
 
-          {showResultsTable && data !== null && (
+          {isInSeason && showResultsTable && data !== null && (
             <div
               id="resultsTable"
               className={`flex-1 mt-24 flex justify-center items-center`}
@@ -77,7 +94,7 @@ const IndexPage = () => {
             </div>
           )}
 
-          {showResultsGraph && data !== null && (
+          {isInSeason && showResultsGraph && data !== null && (
             <div
               id="resultsGraph"
               className={`flex-1 mt-24 flex justify-center items-center`}
@@ -91,7 +108,7 @@ const IndexPage = () => {
             </div>
           )}
 
-          {showEnvirValuesTable && data !== null && (
+          {isInSeason && showEnvirValuesTable && data !== null && (
             <div
               id="envirValuesTable"
               className={`flex-1 mt-24 flex justify-center items-center`}
@@ -104,7 +121,6 @@ const IndexPage = () => {
             </div>
           )}
         </div>
-
         {/* Always at the bottom - flex order-12 */}
         <div className="flex-1 mt-24">
           <hr className="max-w-7xl mx-auto"></hr>

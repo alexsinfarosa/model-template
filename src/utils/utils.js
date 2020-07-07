@@ -1,5 +1,6 @@
 import statesAndProvinces from "../assets/statesAndProvinces.json"
 import vXDef from "../assets/vXDef.json"
+import { getDayOfYear } from "date-fns"
 
 /////////////////////////////////////////////////////////////
 export function formatStationsToDisplayOnDropdownMenu(allStations) {
@@ -246,3 +247,34 @@ export function formatDateMonthDay(stringDate) {
 // export function leapYear(year) {
 //   return year % 100 === 0 ? year % 400 === 0 : year % 4 === 0
 // }
+
+export function isModelInSeason(modelData, selectedDate) {
+  console.log(modelData, selectedDate)
+  const currentYear = new Date().getFullYear()
+  const dateRange = modelData.isInSeason.split(" | ")
+  const lowerDate = getDayOfYear(new Date(`${currentYear}-${dateRange[0]}`))
+  const upperDate = getDayOfYear(new Date(`${currentYear}-${dateRange[1]}`))
+  if (selectedDate) {
+    if (
+      selectedDate.dayOfYear >= lowerDate &&
+      selectedDate.dayOfYear <= upperDate
+    ) {
+      for (const [key, values] of Object.entries(
+        modelData.elements.managementGuide.thresholds
+      )) {
+        const gddRange = key.split("-")
+        const lowerGdd = +gddRange[0]
+        const upperGdd = +gddRange[1]
+        if (selectedDate.gdd >= lowerGdd && selectedDate.gdd <= upperGdd) {
+          return { resMngGuide: values, isInSeason: true }
+        }
+      }
+    } else {
+      console.log("outOfSeason", modelData.elements.managementGuide.outOfSeason)
+      return {
+        resMngGuide: modelData.elements.managementGuide.outOfSeason,
+        isInSeason: false,
+      }
+    }
+  }
+}
