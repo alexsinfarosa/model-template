@@ -5,6 +5,7 @@ import acisLogo from "../assets/acis-logo.svg"
 import usdaLogo from "../assets/usda-logo.svg"
 import StatePartnerLogo from "../components/statePartnerLogo"
 import GlobalStateContext from "../context/globalStateContext"
+import webAccessibilityIcon from "../assets/web-accessibility-icon.png"
 
 export default function Footer() {
   const { user } = React.useContext(GlobalStateContext)
@@ -150,7 +151,7 @@ export default function Footer() {
           <p className="text-center text-base leading-6 text-gray-400">
             &copy; 1996-2020 NYS IPM Program, Cornell University
           </p>
-          <div className="mt-8 flex justify-center">
+          <div className="my-8 flex justify-center">
             <a
               href="https://www.facebook.com"
               className="text-gray-400 hover:text-gray-500"
@@ -181,6 +182,24 @@ export default function Footer() {
                 <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
               </svg>
             </a>
+          </div>
+          <div className="flex items-center text-sm text-gray-500 leading-6 px-4">
+            <span className="mr-4 w-14">
+              <img
+                src={webAccessibilityIcon}
+                alt="web accessability"
+                className="text-red-500"
+              />
+            </span>
+            <span className="md:text-justify">
+              If you have a disability and are having trouble accessing
+              information on this website or need materials in an alternate
+              format, contact{" "}
+              <a href="mailto:web-accessibility@cornell.edu">
+                web-accessibility@cornell.edu
+              </a>{" "}
+              for assistance.
+            </span>
           </div>
         </div>
       </div>

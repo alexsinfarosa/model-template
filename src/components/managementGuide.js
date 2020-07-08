@@ -24,7 +24,6 @@ export default function ManagementGuide({
         Management Guide
       </h2>
       <p className="text-sm bg-white px-4 py-6 rounded">
-        <span className="font-semibold">Explanation:</span>{" "}
         {managementGuide.explanation}
       </p>
       <div className="flex flex-col">
