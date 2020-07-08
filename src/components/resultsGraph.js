@@ -165,7 +165,7 @@ export default function ResultsGraph({
         <ResponsiveContainer width="100%" height={400} id="chart">
           <ComposedChart
             data={dataGraph}
-            margin={{ top: 10, right: 30, left: 0, bottom: 30 }}
+            margin={{ top: 20, right: 30, left: 0, bottom: 20 }}
             className="bg-white rounded-md shadow"
           >
             {/* <CartesianGrid strokeDasharray="3 3" vertical={false} /> */}

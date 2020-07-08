@@ -194,7 +194,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                       </small>
                     </th>
                     <th
-                      className="px-6 py-3 border-b border-r border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
+                      className="px-6 py-3 border-b border-r border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white tracking-wider"
                       colSpan="2"
                     >
                       Degree Days (Base {base} {formula})
