@@ -136,7 +136,7 @@ export default function ResultsGraph({
     return (
       <div className="w-full">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="font-semibold text-gray-600 md:text-2xl">
+          <h2 className="font-semibold text-gray-600 text-lg sm:text-xl md:text-2xl">
             {resultsGraph.title}
           </h2>
 
@@ -144,7 +144,7 @@ export default function ResultsGraph({
             <button
               type="button"
               onClick={downloadPNG}
-              className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-secondary-600 hover:bg-secondary-500 focus:outline-none focus:border-secondary-700 focus:shadow-outline-secondary active:bg-secondary-700 transition ease-in-out duration-150"
+              className="inline-flex items-center p-2 sm:px-3 sm:py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-secondary-600 hover:bg-secondary-500 focus:outline-none focus:border-secondary-700 focus:shadow-outline-secondary active:bg-secondary-700 transition ease-in-out duration-150"
             >
               <svg
                 className="-ml-0.5 mr-2 h-4 w-4"
@@ -157,7 +157,7 @@ export default function ResultsGraph({
               >
                 <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
               </svg>
-              Download PNG
+              <span className="hidden sm:inline-block">Download</span> PNG
             </button>
           </div>
         </div>

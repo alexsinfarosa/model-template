@@ -183,12 +183,12 @@ export default function Footer() {
               </svg>
             </a>
           </div>
-          <div className="flex items-center text-sm text-gray-500 leading-6 px-4">
-            <span className="mr-4 w-14">
+          <div className="flex items-center text-sm text-gray-500 leading-6 px-5">
+            <span className="mr-4">
               <img
                 src={webAccessibilityIcon}
                 alt="web accessability"
-                className="text-red-500"
+                className="w-20 sm:w-16 md:w-14"
               />
             </span>
             <span className="md:text-justify">

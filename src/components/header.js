@@ -8,12 +8,12 @@ export default function Header() {
       <div className="hidden sm:block">
         <Logo></Logo>
       </div>
-      <div className="w-full ml-6">
+      <div className="md:ml-6 mx-auto">
         <Link
           to="/blueberry-maggot"
           className="no-underline p-4 text-center sm:text-left"
         >
-          <h2 className="text-3xl font-semibold leading-7 text-gray-700 sm:text-4xl md:text-5xl sm:leading-9">
+          <h2 className="text-2xl font-semibold leading-7 text-gray-700 sm:text-3xl md:text-4xl sm:leading-9">
             Blueberry Maggot
           </h2>
         </Link>

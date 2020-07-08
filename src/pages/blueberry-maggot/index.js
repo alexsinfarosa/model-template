@@ -50,83 +50,84 @@ const IndexPage = () => {
       <SEO title="Home" />
       <div className="flex flex-col h-full">
         {isInSeason && station && (
-          <div className="flex-1">
+          <div className="flex-1 mt-2 md:mt-4">
             <StationHeader data={data} station={station}></StationHeader>
           </div>
         )}
 
         {showMap && (
-          <div id="stationsMap" className={`flex-1 ${station ? "mt-24" : ""}`}>
-            <h2 className="mb-8 font-semibold text-gray-600 md:text-2xl">
+          <div
+            id="stationsMap"
+            className={`flex-1 ${station ? "mt-16 sm:mt-20 md:mt-24" : "mt-0"}`}
+          >
+            <h2 className="mb-3 sm:mb-5 md:mb-8 font-semibold text-gray-600 md:text-2xl">
               Station Selection Map
             </h2>
             <Map></Map>
           </div>
         )}
 
-        {/*  */}
-        <div className="flex-1 flex flex-col">
-          {showManagementGuide && data !== null && (
-            <div
-              id="managementGuide"
-              className={`flex-1 ${
-                isInSeason ? `mt-24` : ``
-              } flex justify-center items-center`}
-            >
-              <ManagementGuide
-                resMngGuide={resMngGuide}
-                isLoading={isLoading}
-                managementGuide={managementGuide}
-              ></ManagementGuide>
-            </div>
-          )}
+        {showManagementGuide && data !== null && (
+          <div
+            id="managementGuide"
+            className={`flex-1 ${
+              isInSeason ? `mt-16 sm:mt-20 md:mt-24` : `mt-0`
+            } flex justify-center items-center`}
+          >
+            <ManagementGuide
+              resMngGuide={resMngGuide}
+              isLoading={isLoading}
+              managementGuide={managementGuide}
+            ></ManagementGuide>
+          </div>
+        )}
 
-          {isInSeason && showResultsTable && data !== null && (
-            <div
-              id="resultsTable"
-              className={`flex-1 mt-24 flex justify-center items-center`}
-            >
-              <ResultsTable
-                data={data}
-                isLoading={isLoading}
-                resultsTable={resultsTable}
-              ></ResultsTable>
-            </div>
-          )}
+        {isInSeason && showResultsTable && data !== null && (
+          <div
+            id="resultsTable"
+            className={`flex-1 mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
+          >
+            <ResultsTable
+              data={data}
+              isLoading={isLoading}
+              resultsTable={resultsTable}
+            ></ResultsTable>
+          </div>
+        )}
 
-          {isInSeason && showResultsGraph && data !== null && (
-            <div
-              id="resultsGraph"
-              className={`flex-1 mt-24 flex justify-center items-center`}
-            >
-              <ResultsGraph
-                data={data}
-                isLoading={isLoading}
-                resultsGraph={resultsGraph}
-                ddRiskLevels={resultsTable.degreeDayRiskLevels}
-              ></ResultsGraph>
-            </div>
-          )}
+        {isInSeason && showResultsGraph && data !== null && (
+          <div
+            id="resultsGraph"
+            className={`flex-1 mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
+          >
+            <ResultsGraph
+              data={data}
+              isLoading={isLoading}
+              resultsGraph={resultsGraph}
+              ddRiskLevels={resultsTable.degreeDayRiskLevels}
+            ></ResultsGraph>
+          </div>
+        )}
 
-          {isInSeason && showEnvirValuesTable && data !== null && (
-            <div
-              id="envirValuesTable"
-              className={`flex-1 mt-24 flex justify-center items-center`}
-            >
-              <EnvirValuesTable
-                data={data}
-                isLoading={isLoading}
-                envirValuesTable={envirValuesTable}
-              ></EnvirValuesTable>
-            </div>
-          )}
-        </div>
-        {/* Always at the bottom - flex order-12 */}
-        <div className="flex-1 mt-24">
-          <hr className="max-w-7xl mx-auto"></hr>
-          <Disclaimer></Disclaimer>
-          <Footer></Footer>
-        </div>
+        {isInSeason && showEnvirValuesTable && data !== null && (
+          <div
+            id="envirValuesTable"
+            className={`flex-1 mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
+          >
+            <EnvirValuesTable
+              data={data}
+              isLoading={isLoading}
+              envirValuesTable={envirValuesTable}
+            ></EnvirValuesTable>
+          </div>
+        )}
+      </div>
+
+      {/* Always at the bottom - flex order-12 */}
+      <div className="flex-1 mt-16 sm:mt-20 md:mt-24">
+        <hr className="max-w-7xl mx-auto"></hr>
+        <Disclaimer></Disclaimer>
+        <Footer></Footer>
       </div>
     </Layout>
   )

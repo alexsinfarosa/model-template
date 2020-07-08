@@ -104,14 +104,14 @@ export default function EnvirValuesTable({
     return (
       <div className="w-full">
         <div className="flex justify-between items-center mb-3 ">
-          <h2 className="font-semibold text-gray-600 md:text-2xl">
+          <h2 className="font-semibold text-gray-600 text-xl md:text-2xl">
             {envirValuesTable.title}
           </h2>
 
           <div className="rounded-md shadow-sm flex justify-center">
             <button
               type="button"
-              className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-secondary-600 hover:bg-secondary-500 focus:outline-none focus:border-secondary-700 focus:shadow-outline-secondary active:bg-secondary-700 transition ease-in-out duration-150"
+              className="inline-flex items-center p-2 sm:px-3 sm:py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-secondary-600 hover:bg-secondary-500 focus:outline-none focus:border-secondary-700 focus:shadow-outline-secondary active:bg-secondary-700 transition ease-in-out duration-150"
             >
               <svg
                 className="-ml-0.5 mr-2 h-4 w-4"
@@ -129,7 +129,7 @@ export default function EnvirValuesTable({
                 filename="environmental-values-table"
                 data={csvData}
               >
-                Download CSV
+                <span className="hidden sm:inline-block">Download</span> CSV
               </CSVLink>
             </button>
           </div>

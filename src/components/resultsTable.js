@@ -98,12 +98,14 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
     return (
       <div className="w-full">
         <div className="flex justify-between items-center mb-3 ">
-          <h2 className="font-semibold text-gray-600 md:text-2xl">{title}</h2>
+          <h2 className="font-semibold text-gray-600 text-xl md:text-2xl">
+            {title}
+          </h2>
 
           <div className="rounded-md shadow-sm flex justify-center">
             <button
               type="button"
-              className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-secondary-600 hover:bg-secondary-500 focus:outline-none focus:border-secondary-700 focus:shadow-outline-secondary active:bg-secondary-700 transition ease-in-out duration-150"
+              className="inline-flex items-center p-2 sm:px-3 sm:py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-secondary-600 hover:bg-secondary-500 focus:outline-none focus:border-secondary-700 focus:shadow-outline-secondary active:bg-secondary-700 transition ease-in-out duration-150"
             >
               <svg
                 className="-ml-0.5 mr-2 h-4 w-4"
@@ -122,7 +124,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                 filename="results-table"
                 data={csvData}
               >
-                Download CSV
+                <span className="hidden sm:inline-block">Download</span> CSV
               </CSVLink>
             </button>
           </div>
@@ -131,17 +133,17 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
         {/* LEGEND */}
         {data && (
           <div className="flex flex-col sm:flex-row my-4 sm:justify-between sm:items-center">
-            <div className="mt-4 sm:mt-0 flex items-center order-2 sm:order-1">
+            <div className="flex items-center order-2 sm:order-1">
               {forecastDataTable && (
                 <>
-                  <span className="text-gray-600 text-xs font-bold">
+                  <span className="inline-block text-gray-600 text-xs font-bold">
                     Forecast:
                   </span>
                   <span className="w-16 py-2 bg-secondary-400 inline-block mx-2 text-xs text-center font-semibold rounded"></span>
 
-                  <span className="inline-block mr-4">
+                  <span className="inline-block mr-4 py-2">
                     <a
-                      className="text-sm"
+                      className="text-xs sm:text-sm"
                       href={`http://forecast.weather.gov/MapClick.php?textField1=${station.lat}&textField2=${station.lon}`}
                       target="_blank"
                       rel="noopener noreferrer"

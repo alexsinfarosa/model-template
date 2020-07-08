@@ -20,7 +20,7 @@ export default function ManagementGuide({
 
   return (
     <div>
-      <h2 className="mb-3 font-semibold text-gray-600 md:text-2xl">
+      <h2 className="mb-3 sm:mb-5 md:mb-8 font-semibold text-gray-600 md:text-2xl">
         Management Guide
       </h2>
       <p className="text-sm bg-white px-4 py-6 rounded">

@@ -92,10 +92,10 @@ const Layout = ({ children }) => {
 
                     {/* Toggle components On/Off */}
                     <div className="mt-24">
-                      <span className="block text-sm leading-5 text-secondary-600 font-extrabold mb-1">
+                      <span className="block text-sm leading-5 text-secondary-600 font-bold mb-2 tracking-wide">
                         Show/Hide
                       </span>
-                      <div className="bg-gray-100 rounded  flex justify-center items-center">
+                      <div className="flex justify-center items-center">
                         <div className="flex-1">
                           <Toggle
                             text="Station Selection Map"
@@ -148,14 +148,6 @@ const Layout = ({ children }) => {
       <div className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-72 border-r border-gray-200 bg-white">
           <div className="h-0 flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-            {/* <div className="flex-shrink-0 flex items-center px-4">
-              <img
-                src={newaLogo}
-                alt="NEWA (Network for Environment and Weather Applications)"
-                className="flex items-center w-32"
-              />
-            </div> */}
-            {/* Sidebar component */}
             <div className="flex-1 px-2">
               <div className="h-32">
                 <StationsDropdown

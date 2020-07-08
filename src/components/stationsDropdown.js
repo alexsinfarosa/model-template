@@ -28,17 +28,13 @@ const formatGroupLabel = data => (
 
 const formatOptionLabel = ({ name, state, network }) => (
   <div className="flex justify-between items-center text-xs">
-    <div className="w-full">
+    <div className="w-72 truncate">
       <span>{name}, </span>
       <span className="font-bold">{state}</span>
     </div>
-    <div className="">
+    <div>
       {network === "icao" && (
-        <img
-          src={planeIcon}
-          alt="airport newa station"
-          className="w-3 mr-"
-        ></img>
+        <img src={planeIcon} alt="airport newa station" className="w-4"></img>
       )}
     </div>
   </div>
@@ -102,7 +98,7 @@ const StationsDropdown = () => {
 
         <TabPanel>
           {user ? (
-            <div className="mt-6 shadow-sm bg-red-100">
+            <div className="mt-6 shadow-sm">
               <Select
                 aria-labelledby="stations"
                 value={
