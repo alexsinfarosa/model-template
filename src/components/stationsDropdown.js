@@ -80,7 +80,7 @@ const StationsDropdown = () => {
             <span
               className={`${
                 tabIndex === 0
-                  ? `text-secondary-600 font-extrabold`
+                  ? `text-sm leading-5 text-secondary-600 font-bold mb-2 tracking-wide`
                   : `text-gray-400`
               } text-sm leading-5`}
             >
@@ -91,7 +91,7 @@ const StationsDropdown = () => {
             <span
               className={`${
                 tabIndex === 1
-                  ? `text-secondary-600 font-extrabold`
+                  ? `block text-sm leading-5 text-secondary-600 font-bold mb-2 tracking-wide`
                   : `text-gray-400`
               } text-sm leading-5`}
             >
@@ -102,7 +102,7 @@ const StationsDropdown = () => {
 
         <TabPanel>
           {user ? (
-            <div className="mt-4 shadow-sm bg-red-100">
+            <div className="mt-6 shadow-sm bg-red-100">
               <Select
                 aria-labelledby="stations"
                 value={

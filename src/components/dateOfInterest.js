@@ -21,11 +21,7 @@ export default function DateOfInterest() {
       }
       maxDate={new Date()}
       inline
-      // showMonthDropdown
       showYearDropdown
-      // dateFormatCalendar="MMMM"
-      // yearDropdownItemNumber={5}
-      // scrollableYearDropdown
     />
   )
 }

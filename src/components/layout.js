@@ -165,7 +165,7 @@ const Layout = ({ children }) => {
               </div>
 
               <div className="mt-24 h-80">
-                <span className="block text-sm leading-5 text-secondary-600 font-extrabold mb-1">
+                <span className="block text-sm leading-5 text-secondary-600 font-bold mb-2 tracking-wide">
                   Date of Interest
                 </span>
                 <DateOfInterest></DateOfInterest>
@@ -173,7 +173,7 @@ const Layout = ({ children }) => {
 
               {/* Toggle components On/Off */}
               <div className="mt-24">
-                <span className="block text-sm leading-5 text-secondary-600 font-extrabold mb-1">
+                <span className="block text-sm leading-5 text-secondary-600 font-bold mb-2 tracking-wide">
                   Show/Hide
                 </span>
                 <div className="flex justify-center items-center">

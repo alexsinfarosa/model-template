@@ -44,7 +44,7 @@ const IndexPage = () => {
       isInSeason = res.isInSeason
     }
   }
-  console.log(data, dateOfInterest)
+
   return (
     <Layout>
       <SEO title="Home" />

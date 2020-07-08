@@ -249,7 +249,6 @@ export function formatDateMonthDay(stringDate) {
 // }
 
 export function isModelInSeason(modelData, selectedDate) {
-  console.log(modelData, selectedDate)
   const currentYear = new Date().getFullYear()
   const dateRange = modelData.isInSeason.split(" | ")
   const lowerDate = getDayOfYear(new Date(`${currentYear}-${dateRange[0]}`))
@@ -270,7 +269,6 @@ export function isModelInSeason(modelData, selectedDate) {
         }
       }
     } else {
-      console.log("outOfSeason", modelData.elements.managementGuide.outOfSeason)
       return {
         resMngGuide: modelData.elements.managementGuide.outOfSeason,
         isInSeason: false,
