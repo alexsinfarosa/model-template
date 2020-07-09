@@ -3,6 +3,7 @@ import { getDayOfYear } from "date-fns"
 import stateAndProvinces from "../assets/statesAndProvinces.json"
 
 let url
+let modelName = ""
 const LS_ALL_STATIONS_KEY = `newa_project_stations`
 const LS_STATION_DATA_KEY = `newa_project_station_data`
 const LS_MODEL_KEY = `blueberry_maggot_model`
@@ -11,17 +12,16 @@ let ls_stationData
 let ls_model
 if (typeof window !== "undefined") {
   url = new URL(window.location.href)
+  modelName = url.pathname
+    .slice(1)
+    .split("-")
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ")
   ls_stationData = JSON.parse(
     window.localStorage.getItem(`${LS_STATION_DATA_KEY}`)
   )
   ls_model = JSON.parse(window.localStorage.getItem(`${LS_MODEL_KEY}`))
 }
-
-const modelName = url.pathname
-  .slice(1)
-  .split("-")
-  .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-  .join(" ")
 
 let user = {}
 if (url.searchParams.has("favStns") && url.searchParams.has("sop")) {
