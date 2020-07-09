@@ -1,8 +1,25 @@
 import React from "react"
 import statePartners from "../assets/state-partners.json"
 import { useStaticQuery, graphql } from "gatsby"
+import GlobalStateContext from "../context/globalStateContext"
 
-const StatePartnerLogo = ({ newaStatePartner, smallLogo = true }) => {
+const StatePartnerLogo = ({ smallLogo = true }) => {
+  const { user } = React.useContext(GlobalStateContext)
+
+  let newaStatePartner = ""
+  if (!Object.keys(user).length) {
+    newaStatePartner = "NY"
+  } else {
+    const stateIsValid = statePartners.find(
+      d => d.state === user.stateOrProvince
+    )
+    if (stateIsValid) {
+      newaStatePartner = user.stateOrProvince
+    } else {
+      newaStatePartner = "NY"
+    }
+  }
+
   const data = useStaticQuery(graphql`
     query {
       allFile(filter: { sourceInstanceName: { eq: "svgLogos" } }) {
@@ -16,7 +33,7 @@ const StatePartnerLogo = ({ newaStatePartner, smallLogo = true }) => {
     }
   `)
 
-  const partner = statePartners.find(s => s.stateName === newaStatePartner)
+  const partner = statePartners.find(s => s.state === newaStatePartner)
   let logo
 
   if (smallLogo) {

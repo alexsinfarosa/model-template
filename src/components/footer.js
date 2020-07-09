@@ -4,12 +4,9 @@ import ipmLogo from "../assets/ipm-logo.svg"
 import acisLogo from "../assets/acis-logo.svg"
 import usdaLogo from "../assets/usda-logo.svg"
 import StatePartnerLogo from "../components/statePartnerLogo"
-import GlobalStateContext from "../context/globalStateContext"
 import webAccessibilityIcon from "../assets/web-accessibility-icon.png"
 
 export default function Footer() {
-  const { user } = React.useContext(GlobalStateContext)
-
   return (
     <div className="bg-white mt-8">
       <div className="max-w-screen-xl mx-auto overflow-hidden">
@@ -138,10 +135,7 @@ export default function Footer() {
 
               {/* NEWA STATE PARTNER */}
               <span className="w-64 m-auto mt-12 lg:mb-0 lg:w-72 lg:mt-0">
-                <StatePartnerLogo
-                  newaStatePartner={user ? user.stateOrProvince : "New York"}
-                  smallLogo={false}
-                ></StatePartnerLogo>
+                <StatePartnerLogo smallLogo={false}></StatePartnerLogo>
               </span>
             </div>
           </div>

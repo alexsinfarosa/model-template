@@ -67,33 +67,34 @@ export default function ResultsGraph({
     const currentDateIndex = data.stationData.slice(-1)[0].dayOfYear
 
     if (currentDateIndex - dayOfYear === 0) {
-      const stationData = data.stationData.slice(0, currentDateIndex - 3)
-      const forecastData = data.forecast
+      const stationData = data.stationData.slice(0, currentDateIndex - 1)
+      const forecastData = data.forecast.slice(0, 6)
       data1 = [...stationData, ...forecastData]
     }
     if (currentDateIndex - dayOfYear === 1) {
-      const stationData = data.stationData.slice(0, currentDateIndex - 4)
-      const forecastData = data.forecast.slice(0, 4)
+      const stationData = data.stationData.slice(0, currentDateIndex - 1)
+      const forecastData = data.forecast.slice(0, 5)
       data1 = [...stationData, ...forecastData]
     }
     if (currentDateIndex - dayOfYear === 2) {
-      const stationData = data.stationData.slice(0, currentDateIndex - 5)
-      const forecastData = data.forecast.slice(0, 3)
+      const stationData = data.stationData.slice(0, currentDateIndex - 1)
+      const forecastData = data.forecast.slice(0, 4)
       data1 = [...stationData, ...forecastData]
     }
     if (currentDateIndex - dayOfYear === 3) {
-      const stationData = data.stationData.slice(0, currentDateIndex - 6)
-      const forecastData = data.forecast.slice(0, 2)
+      const stationData = data.stationData.slice(0, currentDateIndex - 1)
+      const forecastData = data.forecast.slice(0, 3)
       data1 = [...stationData, ...forecastData]
     }
     if (currentDateIndex - dayOfYear === 4) {
-      const stationData = data.stationData.slice(0, currentDateIndex - 7)
-      const forecastData = data.forecast.slice(0, 1)
+      const stationData = data.stationData.slice(0, currentDateIndex - 1)
+      const forecastData = data.forecast.slice(0, 2)
       data1 = [...stationData, ...forecastData]
     }
     if (currentDateIndex - dayOfYear === 5) {
-      const stationData = data.stationData.slice(0, currentDateIndex - 8)
-      data1 = [...stationData]
+      const stationData = data.stationData.slice(0, currentDateIndex - 1)
+      const forecastData = data.forecast.slice(0, 1)
+      data1 = [...stationData, ...forecastData]
     }
     if (currentDateIndex - dayOfYear > 5) {
       const stationData = data.stationData.slice(0, dayOfYear + 5)

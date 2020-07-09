@@ -12,7 +12,6 @@ import StatePartnerLogo from "./statePartnerLogo"
 const Layout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = React.useState(true)
   const {
-    user,
     station,
     showMap,
     showManagementGuide,
@@ -71,16 +70,9 @@ const Layout = ({ children }) => {
                   </button>
                 </div>
                 <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
-                  {/* <div className="flex-shrink-0 flex items-center px-4">
-                    <img
-                      src={newaLogo}
-                      alt="NEWA (Network for Environment and Weather Applications)"
-                      className="flex items-center w-32"
-                    />
-                  </div> */}
                   <div className="flex-1 px-2">
                     <div className="h-32">
-                      <StationsDropdown user={user}></StationsDropdown>
+                      <StationsDropdown></StationsDropdown>
                     </div>
 
                     <div className="mt-24 h-80">
@@ -150,10 +142,7 @@ const Layout = ({ children }) => {
           <div className="h-0 flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
             <div className="flex-1 px-2">
               <div className="h-32">
-                <StationsDropdown
-                  user={user}
-                  marginRight={32}
-                ></StationsDropdown>
+                <StationsDropdown></StationsDropdown>
               </div>
 
               <div className="mt-24 h-80">
@@ -261,9 +250,7 @@ const Layout = ({ children }) => {
               </a>
             </span>
             <span className="flex items-center w-8">
-              <StatePartnerLogo
-                newaStatePartner={user ? user.stateOrProvince : "New York"}
-              ></StatePartnerLogo>
+              <StatePartnerLogo></StatePartnerLogo>
             </span>
           </div>
         </div>

@@ -11,11 +11,11 @@ export default function EnvirValuesTable({
 }) {
   const { dateOfInterest } = React.useContext(GlobalStateContext)
 
-  // Current year
   let stationDataTable = null
   let forecastDataTable = null
   let csvData = null
   const { dayOfYear } = dateOfInterest
+
   if (data.forecast !== null) {
     csvData = [
       ...data.stationData.map(d => ({

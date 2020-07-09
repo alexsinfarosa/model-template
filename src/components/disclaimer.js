@@ -1,14 +1,16 @@
 import React from "react"
 import { Link } from "gatsby"
+import GlobalStateContext from "../context/globalStateContext"
 
 const activeStyle = `text-primary-600 font-bold`
 export default function Disclaimer() {
+  const { url } = React.useContext(GlobalStateContext)
   return (
     <div className="p-6">
       <div className="flex justify-center items-center h-16 mb-12">
         <div className="max-w-md w-full flex justify-between">
           <Link
-            to={`/blueberry-maggot/more-info`}
+            to={`${url.pathname}/more-info`}
             className="text-gray-900 text-center"
             activeClassName={activeStyle}
           >
@@ -16,7 +18,7 @@ export default function Disclaimer() {
           </Link>
 
           <Link
-            to={`/blueberry-maggot/acknowledgments`}
+            to={`${url.pathname}/acknowledgments`}
             className="text-gray-900 text-center"
             activeClassName={activeStyle}
           >
@@ -24,7 +26,7 @@ export default function Disclaimer() {
           </Link>
 
           <Link
-            to={`/blueberry-maggot/references`}
+            to={`${url.pathname}/references`}
             className="text-gray-900 text-center"
             activeClassName={activeStyle}
           >
@@ -33,7 +35,7 @@ export default function Disclaimer() {
         </div>
       </div>
 
-      <div className="">
+      <div>
         <p className="leading-relaxed text-sm">
           <span className="font-semibold">
             Disclaimer: These are theoretical predictions and forecasts.

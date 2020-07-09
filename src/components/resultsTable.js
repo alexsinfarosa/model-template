@@ -13,6 +13,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
   let forecastDataTable = null
   let csvData = null
   const { dayOfYear } = dateOfInterest
+
   if (data.forecast !== null) {
     csvData = [
       ...data.stationData.map(d => ({
@@ -26,6 +27,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
         cumulativeDegreeDays: d.gdd,
       })),
     ]
+
     const currentDateIndex = data.stationData.slice(-1)[0].dayOfYear
 
     if (currentDateIndex - dayOfYear === 0) {

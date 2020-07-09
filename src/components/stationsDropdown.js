@@ -42,11 +42,14 @@ const formatOptionLabel = ({ name, state, network }) => (
 
 const StationsDropdown = () => {
   const { user, station, dispatch } = React.useContext(GlobalStateContext)
-  const [tabIndex, setTabIndex] = React.useState(user ? 0 : 1)
+
+  const [tabIndex, setTabIndex] = React.useState(
+    !Object.keys(user).length ? 1 : 0
+  )
   const { stations } = useFetchAllStations()
 
   let formattedStationsFavorite = []
-  if (stations.length !== 0 && user) {
+  if (stations.length !== 0 && Object.keys(user).length !== 0) {
     formattedStationsFavorite = formatStationsToDisplayOnDropdownMenu(
       stations.filter(d => {
         const ss = `${d.id} ${d.network}`
@@ -97,15 +100,15 @@ const StationsDropdown = () => {
         </TabList>
 
         <TabPanel>
-          {user ? (
+          {formattedStationsFavorite.length !== 0 ? (
             <div className="mt-6 shadow-sm">
               <Select
                 aria-labelledby="stations"
                 value={
-                  station === null
-                    ? formattedStationsFavorite.length !== 0 &&
-                      formattedStationsFavorite[0].options[0]
-                    : station
+                  formattedStationsFavorite.length !== 0 &&
+                  formattedStationsFavorite[0].options[0]
+                    ? formattedStationsFavorite[0].options[0]
+                    : null
                 }
                 placeholder={"Select or search by weather station name"}
                 isSearchable

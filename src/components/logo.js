@@ -2,10 +2,8 @@ import React from "react"
 import newaLogo from "../assets/newa-logo.svg"
 import ipmLogo from "../assets/ipm-logo-small.svg"
 import StatePartnerLogo from "./statePartnerLogo"
-import GlobalStateContext from "../context/globalStateContext"
 
 export default function Logo() {
-  const { user } = React.useContext(GlobalStateContext)
   return (
     <div className="flex flex-col w-64">
       <a
@@ -26,7 +24,7 @@ export default function Logo() {
             href="https://nysipm.cornell.edu"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block w-10"
+            className="inline-block w-10 h-10"
           >
             <img
               src={ipmLogo}
@@ -34,10 +32,8 @@ export default function Logo() {
             />
           </a>
         </span>
-        <span className="ml-4 flex items-center w-12">
-          <StatePartnerLogo
-            newaStatePartner={user ? user.stateOrProvince : "New York"}
-          ></StatePartnerLogo>
+        <span className="ml-4 flex items-center h-10">
+          <StatePartnerLogo></StatePartnerLogo>
         </span>
       </div>
     </div>

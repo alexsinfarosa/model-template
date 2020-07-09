@@ -1,6 +1,8 @@
 import React from "react"
 import { getDayOfYear } from "date-fns"
+import stateAndProvinces from "../assets/statesAndProvinces.json"
 
+let url
 const LS_ALL_STATIONS_KEY = `newa_project_stations`
 const LS_STATION_DATA_KEY = `newa_project_station_data`
 const LS_MODEL_KEY = `blueberry_maggot_model`
@@ -8,32 +10,49 @@ const LS_MODEL_KEY = `blueberry_maggot_model`
 let ls_stationData
 let ls_model
 if (typeof window !== "undefined") {
+  url = new URL(window.location.href)
   ls_stationData = JSON.parse(
     window.localStorage.getItem(`${LS_STATION_DATA_KEY}`)
   )
   ls_model = JSON.parse(window.localStorage.getItem(`${LS_MODEL_KEY}`))
 }
 
-// const user = null
-const user = {
-  name: "Alex Sinfarosa",
-  email: "as898@cornell.edu",
-  stateOrProvince: "New Jersey",
-  favoriteStations: ["kdxr icao", "kbdr icao", "ew_haw miwx"],
-  activeTools: [14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
-  weatherVariables: [0, 1, 2, 6, 7],
-  preExpanded: [0],
+const modelName = url.pathname
+  .slice(1)
+  .split("-")
+  .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+  .join(" ")
+
+let user = {}
+if (url.searchParams.has("favStns") && url.searchParams.has("sop")) {
+  const stateOrProvince = url.searchParams.get("sop").toUpperCase()
+  if (stateAndProvinces.find(d => d.postalCode === stateOrProvince)) {
+    user["stateOrProvince"] = stateOrProvince
+  }
+  user["favoriteStations"] = url.searchParams.get("favStns").split(",")
 }
 
 const DEFAULT_STATE = {
   station: ls_stationData ? ls_stationData.station : null,
   dateOfInterest: { date: new Date(), dayOfYear: getDayOfYear(new Date()) },
   stationData: ls_stationData ? ls_stationData : null,
-  showMap: ls_model ? ls_model.showMap : user === null ? true : false,
+  showMap: ls_model
+    ? ls_model.showMap
+    : !Object.keys(user).length
+    ? true
+    : false,
   showManagementGuide: ls_model ? ls_model.showManagementGuide : true,
   showResultsTable: ls_model ? ls_model.showResultsTable : true,
   showResultsGraph: ls_model ? ls_model.showResultsGraph : true,
   showEnvirValuesTable: ls_model ? ls_model.showEnvirValuesTable : true,
+  user: !Object.keys(user).length
+    ? ls_model
+      ? typeof ls_model.user === "undefined" ||
+        !Object.keys(ls_model.user).length
+        ? user
+        : ls_model.user
+      : user
+    : user,
 }
 
 function reducer(state, action) {
@@ -86,17 +105,6 @@ function reducer(state, action) {
   }
 }
 
-let modelName = ""
-if (typeof window !== "undefined") {
-  const pathname = window.location.pathname
-  modelName = pathname
-    .slice(1)
-    .split("-")
-    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(" ")
-    .slice(0, -1)
-}
-
 const GlobalStateContext = React.createContext()
 export const GlobalStateProvider = ({ children }) => {
   const [state, dispatch] = React.useReducer(reducer, DEFAULT_STATE)
@@ -110,6 +118,7 @@ export const GlobalStateProvider = ({ children }) => {
         showResultsTable: state.showResultsTable,
         showResultsGraph: state.showResultsGraph,
         showEnvirValuesTable: state.showEnvirValuesTable,
+        user: state.user,
       })
     )
   }, [state])
@@ -117,8 +126,8 @@ export const GlobalStateProvider = ({ children }) => {
   return (
     <GlobalStateContext.Provider
       value={{
+        url,
         modelName,
-        user,
         LS_ALL_STATIONS_KEY,
         LS_STATION_DATA_KEY,
         LS_MODEL_KEY,
