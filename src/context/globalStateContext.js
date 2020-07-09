@@ -15,11 +15,10 @@ if (typeof window !== "undefined") {
   url = new URL(window.location.href)
 
   modelName = url.pathname
-    .slice(1)
+    .replace(/\//g, "")
     .split("-")
     .map(w => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ")
-    .replace("/", "")
 
   if (url.searchParams.has("favStns") && url.searchParams.has("sop")) {
     const stateOrProvince = url.searchParams.get("sop").toUpperCase()
