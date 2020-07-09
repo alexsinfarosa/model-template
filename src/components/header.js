@@ -10,12 +10,9 @@ export default function Header() {
       <div className="hidden sm:block">
         <Logo></Logo>
       </div>
-      <div className="md:ml-6 mx-auto">
-        <Link
-          to={url.pathname}
-          className="no-underline p-4 text-center sm:text-left"
-        >
-          <h2 className="text-2xl font-extrabold leading-7 text-gray-600 sm:text-3xl md:text-4xl sm:leading-9 tracking-wide">
+      <div className="md:ml-6 mx-auto w-full">
+        <Link to={url.pathname} className="no-underline p-4">
+          <h2 className="text-3xl font-semibold leading-7 text-gray-600 sm:text-4xl lg:text-5xl sm:leading-9 text-center sm:text-left">
             {modelName}
           </h2>
         </Link>

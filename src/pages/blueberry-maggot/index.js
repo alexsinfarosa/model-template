@@ -58,9 +58,9 @@ const IndexPage = () => {
         {showMap && data !== null && (
           <div
             id="stationsMap"
-            className={`flex-1 ${
+            className={`flex-1 h-72 lg:h-96 mb-12 ${
               station ? "mt-16 sm:mt-20 md:mt-24" : "mt-0"
-            } h-72 lg:h-96 mb-12`}
+            }`}
           >
             <h2 className="mb-3 sm:mb-5 md:mb-8 font-semibold text-gray-600 md:text-2xl">
               Station Selection Map
