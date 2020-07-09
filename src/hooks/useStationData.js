@@ -198,12 +198,11 @@ export default function useStationData() {
         if (isSameYear) {
           // START: Forecast //////////////////////////////////////////////////////////
           const forecast = await fetchHourlyForecastData(body)
-          console.log({ forecast })
+          // console.log({ forecast })
           // END: Forecast ////////////////////////////////////////////////////////////
 
           const forecastFirstDay = forecast[0]
           const stationDataLastDay = dataFinal.slice(-1)[0]
-          console.log(forecastFirstDay, stationDataLastDay)
 
           const forecastWeatherVariables = Object.keys(forecastFirstDay).slice(
             1
