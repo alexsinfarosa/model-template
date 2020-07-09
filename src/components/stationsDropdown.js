@@ -90,7 +90,7 @@ const StationsDropdown = () => {
             <span
               className={`${
                 tabIndex === 1
-                  ? `block text-sm leading-5 text-secondary-600 font-bold mb-2 tracking-wide`
+                  ? `text-sm leading-5 text-secondary-600 font-bold mb-2 tracking-wide`
                   : `text-gray-400`
               } text-sm leading-5`}
             >
@@ -132,9 +132,9 @@ const StationsDropdown = () => {
               ></Select>
             </div>
           ) : (
-            <div className="mt-6 ml-3">
+            <div className="mt-8 ml-3">
               <a
-                className="inline-flex justify-between no-underline text-sm text-gray-900 font-semibold"
+                className="flex no-underline text-sm text-gray-900 font-semibold"
                 href="https://newa.rcc-acis.workers.dev/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -156,7 +156,7 @@ const StationsDropdown = () => {
           )}
         </TabPanel>
         <TabPanel>
-          <div className="mt-4 shadow-sm">
+          <div className="mt-6 shadow-sm">
             <Select
               aria-labelledby="stations"
               value={station}

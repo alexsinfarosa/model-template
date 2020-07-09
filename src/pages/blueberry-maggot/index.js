@@ -13,6 +13,7 @@ import Footer from "../../components/footer"
 import useStationData from "../../hooks/useStationData"
 import modelData from "../../assets/blueberry-maggot.json"
 import { isModelInSeason } from "../../utils/utils"
+import HashLoader from "react-spinners/HashLoader"
 
 const IndexPage = () => {
   const {
@@ -48,89 +49,105 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <div className="flex flex-col h-full">
-        {isInSeason && station && (
-          <div className="flex-1 mt-2 md:mt-4">
-            <StationHeader data={data} station={station}></StationHeader>
-          </div>
-        )}
+      {isLoading ? (
+        <div className="flex justify-center mt-12">
+          Loading data{" "}
+          <HashLoader size={60} color={"#1987C2"} loading={isLoading} />
+        </div>
+      ) : (
+        <div>
+          <div className="flex flex-col h-full">
+            {station === null && (
+              <div className="h-12 flex justify-center items-center bg-primary-600 px-5 rounded-lg text-white font-medium mt-4 mb-8">
+                <span>
+                  Select weather station from the map or from dropdown menu.
+                </span>
+              </div>
+            )}
 
-        {showMap && data !== null && (
-          <div
-            id="stationsMap"
-            className={`flex-1 h-72 lg:h-96 mb-12 ${
-              station ? "mt-16 sm:mt-20 md:mt-24" : "mt-0"
-            }`}
-          >
-            <h2 className="mb-3 sm:mb-5 md:mb-8 font-semibold text-gray-600 md:text-2xl">
-              Station Selection Map
-            </h2>
-            <Map></Map>
-          </div>
-        )}
+            {isInSeason && station && (
+              <div className="flex-1 mt-2 md:mt-4">
+                <StationHeader data={data} station={station}></StationHeader>
+              </div>
+            )}
 
-        {showManagementGuide && data !== null && (
-          <div
-            id="managementGuide"
-            className={`flex-1 ${
-              isInSeason ? `mt-16 sm:mt-20 md:mt-24` : `mt-0`
-            } flex justify-center items-center`}
-          >
-            <ManagementGuide
-              resMngGuide={resMngGuide}
-              isLoading={isLoading}
-              managementGuide={managementGuide}
-            ></ManagementGuide>
-          </div>
-        )}
+            {showMap && (
+              <div
+                id="stationsMap"
+                className={`flex-1 h-72 lg:h-96 mb-12 ${
+                  station ? "mt-16 sm:mt-20 md:mt-24" : "mt-2 md:mt-4"
+                }`}
+              >
+                <h2 className="mb-3 sm:mb-5 md:mb-8 font-semibold text-gray-600 md:text-2xl">
+                  Station Selection Map
+                </h2>
+                <Map></Map>
+              </div>
+            )}
 
-        {isInSeason && showResultsTable && data !== null && (
-          <div
-            id="resultsTable"
-            className={`flex-1 mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
-          >
-            <ResultsTable
-              data={data}
-              isLoading={isLoading}
-              resultsTable={resultsTable}
-            ></ResultsTable>
-          </div>
-        )}
+            {showManagementGuide && data !== null && (
+              <div
+                id="managementGuide"
+                className={`flex-1 ${
+                  isInSeason ? `mt-16 sm:mt-20 md:mt-24` : `mt-0`
+                } flex justify-center items-center`}
+              >
+                <ManagementGuide
+                  resMngGuide={resMngGuide}
+                  isLoading={isLoading}
+                  managementGuide={managementGuide}
+                ></ManagementGuide>
+              </div>
+            )}
 
-        {isInSeason && showResultsGraph && data !== null && (
-          <div
-            id="resultsGraph"
-            className={`flex-1 mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
-          >
-            <ResultsGraph
-              data={data}
-              isLoading={isLoading}
-              resultsGraph={resultsGraph}
-              ddRiskLevels={resultsTable.degreeDayRiskLevels}
-            ></ResultsGraph>
-          </div>
-        )}
+            {isInSeason && showResultsTable && data !== null && (
+              <div
+                id="resultsTable"
+                className={`flex-1 mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
+              >
+                <ResultsTable
+                  data={data}
+                  isLoading={isLoading}
+                  resultsTable={resultsTable}
+                ></ResultsTable>
+              </div>
+            )}
 
-        {isInSeason && showEnvirValuesTable && data !== null && (
-          <div
-            id="envirValuesTable"
-            className={`flex-1 mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
-          >
-            <EnvirValuesTable
-              data={data}
-              isLoading={isLoading}
-              envirValuesTable={envirValuesTable}
-            ></EnvirValuesTable>
-          </div>
-        )}
-      </div>
+            {isInSeason && showResultsGraph && data !== null && (
+              <div
+                id="resultsGraph"
+                className={`flex-1 mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
+              >
+                <ResultsGraph
+                  data={data}
+                  isLoading={isLoading}
+                  resultsGraph={resultsGraph}
+                  ddRiskLevels={resultsTable.degreeDayRiskLevels}
+                ></ResultsGraph>
+              </div>
+            )}
 
-      {/* Always at the bottom - flex order-12 */}
-      <div className="flex-1 mt-16 sm:mt-20 md:mt-24">
-        <hr className="max-w-7xl mx-auto"></hr>
-        <Disclaimer></Disclaimer>
-        <Footer></Footer>
-      </div>
+            {isInSeason && showEnvirValuesTable && data !== null && (
+              <div
+                id="envirValuesTable"
+                className={`flex-1 mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
+              >
+                <EnvirValuesTable
+                  data={data}
+                  isLoading={isLoading}
+                  envirValuesTable={envirValuesTable}
+                ></EnvirValuesTable>
+              </div>
+            )}
+          </div>
+          {/* Always at the bottom - flex order-12 */}
+          <div className="flex-1 mt-16 sm:mt-20 md:mt-24">
+            <hr className="max-w-7xl mx-auto"></hr>
+            <Disclaimer></Disclaimer>
+            <Footer></Footer>
+          </div>
+        </div>
+      )}
     </Layout>
   )
 }
