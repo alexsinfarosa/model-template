@@ -63,7 +63,7 @@ const IndexPage = () => {
         {isInSeason && station && (
           <div className="flex-1 mt-2 md:mt-4">
             {isLoading ? (
-              <div className="flex justify-center items-center border-4 border-dashed border-gray-200 rounded-lg px-4 py-6">
+              <div className="flex justify-center items-center px-4 py-6">
                 <HashLoader size={61} color={"#1987C2"} loading={isLoading} />
               </div>
             ) : (
@@ -75,7 +75,7 @@ const IndexPage = () => {
         {showMap && (
           <div
             id="stationsMap"
-            className={`flex-1 h-72 lg:h-96 mb-12 ${
+            className={`flex-1 h-72 lg:h-96 mb-36 ${
               station ? "mt-16 sm:mt-20 md:mt-24" : "mt-2 md:mt-4"
             }`}
           >
@@ -142,13 +142,12 @@ const IndexPage = () => {
         )}
 
         {/* Always at the bottom - flex order-12 */}
-        <div className="mt-16 sm:mt-20 md:mt-24">
+        <div className="mt-16 sm:mt-20 md:mt-24 mb-4">
           <hr className="max-w-7xl mx-auto"></hr>
           <Disclaimer></Disclaimer>
           <Footer></Footer>
         </div>
       </>
-      )}
     </Layout>
   )
 }

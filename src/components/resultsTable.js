@@ -87,7 +87,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
   if (isLoading) {
     return (
       <div>
-        <HashLoader size={70} color={"#1987C2"} loading={isLoading} />
+        <HashLoader size={61} color={"#1987C2"} loading={isLoading} />
       </div>
     )
   }
