@@ -59,18 +59,17 @@ const IndexPage = () => {
           </div>
         </div>
       ) : (
-        <div>
-          <div className="flex flex-col h-full">
-            {station === null && (
-              <div className="flex-1 mt-2 md:mt-4 mb-12">
-                <div className="bg-primary-600 px-5 py-4 rounded-lg text-white font-medium text-center">
-                  <span>
-                    Select a weather station from the map or from dropdown menu.
-                  </span>
-                </div>
+        <>
+          {station === null && (
+            <div className="flex-1 mt-2 md:mt-4 mb-12">
+              <div className="bg-primary-600 px-5 py-4 rounded-lg text-white font-medium text-center">
+                <span>
+                  Select a weather station from the map or from dropdown menu.
+                </span>
               </div>
-            )}
-
+            </div>
+          )}
+          <div className="flex flex-col h-full">
             {isInSeason && station && (
               <div className="flex-1 mt-2 md:mt-4">
                 <StationHeader data={data} station={station}></StationHeader>
@@ -152,7 +151,7 @@ const IndexPage = () => {
             <Disclaimer></Disclaimer>
             <Footer></Footer>
           </div>
-        </div>
+        </>
       )}
     </Layout>
   )
