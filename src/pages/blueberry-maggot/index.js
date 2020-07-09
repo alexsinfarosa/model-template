@@ -51,8 +51,12 @@ const IndexPage = () => {
       <SEO title="Home" />
       {isLoading ? (
         <div className="flex justify-center mt-12">
-          Loading data{" "}
-          <HashLoader size={60} color={"#1987C2"} loading={isLoading} />
+          <div className="flex justify-center items-center">
+            <span className="font-medium text-gray-600">Loading data...</span>
+            <span className="ml-4">
+              <HashLoader size={60} color={"#1987C2"} loading={isLoading} />
+            </span>
+          </div>
         </div>
       ) : (
         <div>
