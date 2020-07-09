@@ -50,7 +50,7 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       {isLoading ? (
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center mt-2 md:mt-4">
           <div className="flex justify-center items-center">
             <span className="font-medium text-gray-600">Loading data...</span>
             <span className="ml-4">
@@ -62,10 +62,12 @@ const IndexPage = () => {
         <div>
           <div className="flex flex-col h-full">
             {station === null && (
-              <div className="h-12 flex justify-center items-center bg-primary-600 px-5 rounded-lg text-white font-medium mt-4 mb-8">
-                <span>
-                  Select weather station from the map or from dropdown menu.
-                </span>
+              <div className="flex-1 mt-2 md:mt-4 mb-12">
+                <div className="bg-primary-600 px-5 py-4 rounded-lg text-white font-medium text-center">
+                  <span>
+                    Select a weather station from the map or from dropdown menu.
+                  </span>
+                </div>
               </div>
             )}
 
