@@ -132,9 +132,9 @@ const StationsDropdown = () => {
               ></Select>
             </div>
           ) : (
-            <div className="mt-8 ml-3">
+            <div className="mt-6 ml-3">
               <a
-                className="flex no-underline text-sm text-gray-900 font-semibold"
+                className="inline-flex no-underline text-sm text-gray-900 font-semibold h-10 items-center"
                 href="https://newa.rcc-acis.workers.dev/"
                 target="_blank"
                 rel="noopener noreferrer"
