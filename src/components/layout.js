@@ -277,8 +277,9 @@ const Layout = ({ children }) => {
               />
             </svg>
           </button>
-          <div className="flex mr-4 sm:hidden">
-            <span className="flex items-center w-8 mr-3">
+          <div className="flex  items-center mr-4 sm:hidden">
+            <h2 className="font-semibold mr-2">Blueberry Maggot</h2>
+            <span className="flex items-center w-6 h-6 mr-3">
               <a
                 href="https://newa.netlify.app"
                 target="_blank"
@@ -291,7 +292,7 @@ const Layout = ({ children }) => {
                 />
               </a>
             </span>
-            <span className="flex items-center w-8 mr-3">
+            {/* <span className="flex items-center w-8 mr-3">
               <a
                 href="https://nysipm.cornell.edu"
                 target="_blank"
@@ -306,7 +307,7 @@ const Layout = ({ children }) => {
             </span>
             <span className="flex items-center w-8">
               <StatePartnerLogo></StatePartnerLogo>
-            </span>
+            </span> */}
           </div>
         </div>
         <Header></Header>

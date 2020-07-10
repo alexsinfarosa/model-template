@@ -124,7 +124,7 @@ const IndexPage = () => {
             id="managementGuide"
             className={`${
               showManagementGuide
-                ? `mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`
+                ? `mt-12 sm:mt-20 md:mt-24 flex justify-center items-center`
                 : `hidden`
             } `}
           >
@@ -141,7 +141,7 @@ const IndexPage = () => {
             id="resultsTable"
             className={`${
               showResultsTable
-                ? `mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`
+                ? `mt-12 sm:mt-20 md:mt-24 flex justify-center items-center`
                 : `hidden`
             } `}
           >
@@ -158,7 +158,7 @@ const IndexPage = () => {
             id="resultsGraph"
             className={`${
               showResultsGraph
-                ? `mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`
+                ? `mt-12 sm:mt-20 md:mt-24 flex justify-center items-center`
                 : `hidden`
             }`}
           >
@@ -176,7 +176,7 @@ const IndexPage = () => {
             id="envirValuesTable"
             className={`${
               showEnvirValuesTable
-                ? `mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`
+                ? `mt-12 sm:mt-20 md:mt-24 flex justify-center items-center`
                 : `hidden`
             }`}
           >

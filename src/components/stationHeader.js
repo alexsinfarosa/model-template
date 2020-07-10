@@ -27,10 +27,10 @@ export default function StationHeader({ data, isLoading, station }) {
 
   return (
     <div
-      className={`border-4 border-dashed border-gray-200 rounded-lg flex flex-col items-center justify-between sm:flex-row px-4 py-6 w-full`}
+      className={`border-4 border-dashed border-gray-200 rounded-lg flex flex-col items-center justify-between sm:flex-row px-4 sm:py-6 w-full`}
     >
       <div>
-        <h1 className="text-xl leading-7 text-gray-500 sm:text-3xl sm:leading-9 text-center md:text-left md:mr-auto mb-5 sm:mb-2 truncate">
+        <h1 className="text-base leading-7 text-gray-500 sm:text-3xl sm:leading-9 text-center md:text-left md:mr-auto mb-0 py-1 sm:mb-2">
           Results for{" "}
           {station && (
             <span className="text-gray-900 font-semibold">
@@ -39,13 +39,13 @@ export default function StationHeader({ data, isLoading, station }) {
           )}
         </h1>
 
-        <div className="text-sm text-gray-500 font-semibold text-center sm:text-left">
+        <div className="hidden sm:block text-sm text-gray-500 font-semibold text-center sm:text-left">
           {lastDownload}
         </div>
       </div>
 
       {station && (
-        <div className="mt-2 sm:mt-0 flex flex-col items-center text-sm leading-5 text-gray-500 w-full sm:w-auto">
+        <div className="hidden sm:flex mt-2 sm:mt-0 flex-col items-center text-sm leading-5 text-gray-500 w-full sm:w-auto">
           <div className="flex-1 text-center md:text-left">
             <span className="font-semibold">Latitude:</span>{" "}
             <span className="ml-0">

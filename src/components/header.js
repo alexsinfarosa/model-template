@@ -6,8 +6,8 @@ import GlobalStateContext from "../context/globalStateContext"
 export default function Header() {
   const { url, modelName } = React.useContext(GlobalStateContext)
   return (
-    <div className="flex w-full bg-white shadow-lg sm:px-8 sm:py-2">
-      <div className="hidden sm:block">
+    <div className="hidden sm:flex w-full bg-white shadow-lg sm:px-8 sm:py-2">
+      <div className="">
         <Logo></Logo>
       </div>
       <div className="md:ml-6 mx-auto w-full">
