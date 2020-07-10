@@ -200,7 +200,8 @@ export default function useStationData() {
         if (isSameYear) {
           // START: Forecast //////////////////////////////////////////////////////////
           const forecast = await fetchHourlyForecastData(body)
-          // console.log({ forecast })
+          console.log(station)
+          console.log({ forecast })
           // END: Forecast ////////////////////////////////////////////////////////////
 
           const forecastFirstDay = forecast[0]

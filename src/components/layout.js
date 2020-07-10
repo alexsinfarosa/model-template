@@ -10,7 +10,7 @@ import Transition from "../components/transition"
 import StatePartnerLogo from "./statePartnerLogo"
 
 const Layout = ({ children }) => {
-  const [sidebarOpen, setSidebarOpen] = React.useState(true)
+  const [sidebarOpen, setSidebarOpen] = React.useState(false)
   const {
     station,
     showMap,
@@ -86,7 +86,7 @@ const Layout = ({ children }) => {
                             strokeWidth="3"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
-                            className="w-4 mr-1"
+                            className="w-4 h-4 mr-1"
                           >
                             <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                           </svg>
@@ -116,14 +116,20 @@ const Layout = ({ children }) => {
                     </div>
 
                     <div className="h-32">
-                      <StationsDropdown></StationsDropdown>
+                      <StationsDropdown
+                        setSidebarOpen={setSidebarOpen}
+                        isMobile={true}
+                      ></StationsDropdown>
                     </div>
 
                     <div className="mt-24 h-80">
                       <span className="block text-sm leading-5 text-secondary-600 font-extrabold mb-1">
                         Date of Interest
                       </span>
-                      <DateOfInterest></DateOfInterest>
+                      <DateOfInterest
+                        setSidebarOpen={setSidebarOpen}
+                        isMobile={true}
+                      ></DateOfInterest>
                     </div>
 
                     {/* Toggle components On/Off */}
@@ -137,12 +143,14 @@ const Layout = ({ children }) => {
                             text="Station Selection Map"
                             isChecked={showMap}
                             toggleElement="toggleMap"
+                            isMobile={true}
                           ></Toggle>
                           {station && (
                             <Toggle
                               text="Management Guide"
                               isChecked={showManagementGuide}
                               toggleElement="toggleManagementGuide"
+                              isMobile={true}
                             ></Toggle>
                           )}
                           {station && (
@@ -150,6 +158,7 @@ const Layout = ({ children }) => {
                               text="Results Table"
                               isChecked={showResultsTable}
                               toggleElement="toggleResultsTable"
+                              isMobile={true}
                             ></Toggle>
                           )}
                           {station && (
@@ -157,6 +166,7 @@ const Layout = ({ children }) => {
                               text="Results Graph"
                               isChecked={showResultsGraph}
                               toggleElement="toggleResultsGraph"
+                              isMobile={true}
                             ></Toggle>
                           )}
                           {station && (
@@ -164,6 +174,7 @@ const Layout = ({ children }) => {
                               text="Envir. Values Table"
                               isChecked={showEnvirValuesTable}
                               toggleElement="toggleEnvirValuesTable"
+                              isMobile={true}
                             ></Toggle>
                           )}
                         </div>

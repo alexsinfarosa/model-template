@@ -40,7 +40,7 @@ const formatOptionLabel = ({ name, state, network }) => (
   </div>
 )
 
-const StationsDropdown = () => {
+const StationsDropdown = ({ setSidebarOpen, isMobile = false }) => {
   const { user, station, dispatch } = React.useContext(GlobalStateContext)
 
   const [tabIndex, setTabIndex] = React.useState(
@@ -69,6 +69,9 @@ const StationsDropdown = () => {
 
   function handleSetSelectedStation(station) {
     dispatch({ type: "setStation", station })
+    if (isMobile) {
+      setSidebarOpen(false)
+    }
   }
 
   return (

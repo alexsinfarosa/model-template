@@ -13,11 +13,9 @@ import Footer from "../../components/footer"
 import useStationData from "../../hooks/useStationData"
 import modelData from "../../assets/blueberry-maggot.json"
 import { isModelInSeason } from "../../utils/utils"
-import { Link } from "gatsby"
 
 const IndexPage = () => {
   const {
-    url,
     station,
     showMap,
     showManagementGuide,
@@ -95,36 +93,40 @@ const IndexPage = () => {
           </div>
         )}
 
-        {isInSeason && station && (
-          <div className="mt-2 md:mt-4 flex justify-center items-center w-full">
-            <StationHeader
-              data={data}
-              isLoading={isLoading}
-              station={station}
-            ></StationHeader>
-          </div>
-        )}
+        <div
+          className={`${
+            isInSeason && station ? `flex` : `hidden`
+          } mt-2 md:mt-4 justify-center items-center w-full`}
+        >
+          <StationHeader
+            data={data}
+            isLoading={isLoading}
+            station={station}
+          ></StationHeader>
+        </div>
 
-        {showMap && (
-          <div
-            id="stationsMap"
-            className={`${
-              station ? "mt-16 sm:mt-20 md:mt-24" : "mt-2 md:mt-4"
-            }`}
-          >
-            <h2 className="mb-3 sm:mb-5 md:mb-8 font-semibold text-gray-600 md:text-2xl">
-              Station Selection Map
-            </h2>
-            <div className="h-72 lg:h-96">
-              <Map></Map>
-            </div>
+        <div
+          id="stationsMap"
+          className={`${station ? "mt-16 sm:mt-20 md:mt-24" : "mt-2 md:mt-4"} ${
+            showMap ? `block` : `hidden`
+          }`}
+        >
+          <h2 className="mb-3 sm:mb-5 md:mb-8 font-semibold text-gray-600 md:text-2xl">
+            Station Selection Map
+          </h2>
+          <div className="h-72 lg:h-96">
+            <Map></Map>
           </div>
-        )}
+        </div>
 
-        {showManagementGuide && data !== null && (
+        {data !== null && (
           <div
             id="managementGuide"
-            className={`mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
+            className={`${
+              showManagementGuide
+                ? `mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`
+                : `hidden`
+            } `}
           >
             <ManagementGuide
               resMngGuide={resMngGuide}
@@ -134,10 +136,14 @@ const IndexPage = () => {
           </div>
         )}
 
-        {isInSeason && showResultsTable && data !== null && (
+        {isInSeason && data !== null && (
           <div
             id="resultsTable"
-            className={`mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
+            className={`${
+              showResultsTable
+                ? `mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`
+                : `hidden`
+            } `}
           >
             <ResultsTable
               data={data}
@@ -147,10 +153,14 @@ const IndexPage = () => {
           </div>
         )}
 
-        {isInSeason && showResultsGraph && data !== null && (
+        {isInSeason && data !== null && (
           <div
             id="resultsGraph"
-            className={`mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
+            className={`${
+              showResultsGraph
+                ? `mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`
+                : `hidden`
+            }`}
           >
             <ResultsGraph
               data={data}
@@ -164,7 +174,11 @@ const IndexPage = () => {
         {isInSeason && showEnvirValuesTable && data !== null && (
           <div
             id="envirValuesTable"
-            className={`mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
+            className={`${
+              showEnvirValuesTable
+                ? `mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`
+                : `hidden`
+            }`}
           >
             <EnvirValuesTable
               data={data}

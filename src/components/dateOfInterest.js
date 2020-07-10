@@ -4,13 +4,13 @@ import "react-datepicker/dist/react-datepicker.css"
 import GlobalStateContext from "../context/globalStateContext"
 import { getDayOfYear } from "date-fns"
 
-export default function DateOfInterest() {
+export default function DateOfInterest({ setSidebarOpen, isMobile = false }) {
   const { dateOfInterest, dispatch } = React.useContext(GlobalStateContext)
   return (
     <DatePicker
       id="dateOfInterest"
       selected={dateOfInterest.date}
-      onChange={dateOfInterest =>
+      onChange={dateOfInterest => {
         dispatch({
           type: "setDateOfInterest",
           dateOfInterest: {
@@ -18,7 +18,10 @@ export default function DateOfInterest() {
             date: dateOfInterest,
           },
         })
-      }
+        if (isMobile) {
+          setSidebarOpen(false)
+        }
+      }}
       maxDate={new Date()}
       inline
       showYearDropdown
