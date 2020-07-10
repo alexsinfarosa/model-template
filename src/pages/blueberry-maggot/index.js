@@ -13,10 +13,11 @@ import Footer from "../../components/footer"
 import useStationData from "../../hooks/useStationData"
 import modelData from "../../assets/blueberry-maggot.json"
 import { isModelInSeason } from "../../utils/utils"
-import HashLoader from "react-spinners/HashLoader"
+import { Link } from "gatsby"
 
 const IndexPage = () => {
   const {
+    url,
     station,
     showMap,
     showManagementGuide,
@@ -50,6 +51,40 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <>
+        <div className="max-w-md mx-auto flex justify-around items-center py-4 mb-8">
+          <div className="py-3">
+            <a
+              href="https://newa.rcc-acis.workers.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 text-xs sm:text-sm md:text-lg font-semibold leading-6 no-underline hover:underline tracking-wider"
+            >
+              Home
+            </a>
+          </div>
+          <div className="py-3">
+            <a
+              href="https://newa.rcc-acis.workers.dev/crop-and-pest-management"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 text-xs sm:text-sm md:text-lg font-semibold leading-6 no-underline hover:underline tracking-wider"
+            >
+              Crop & IPM Tools
+            </a>
+          </div>
+
+          <div className="py-3">
+            <a
+              href="https://newa.rcc-acis.workers.dev/weather-tools"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 text-xs sm:text-sm md:text-lg font-semibold leading-6 no-underline hover:underline tracking-wider"
+            >
+              Weather Tools
+            </a>
+          </div>
+        </div>
+
         {station === null && (
           <div className="mt-2 md:mt-4 mb-12">
             <div className="bg-primary-600 px-5 py-4 rounded-lg text-white font-medium text-center">
@@ -61,7 +96,7 @@ const IndexPage = () => {
         )}
 
         {isInSeason && station && (
-          <div className="mt-2 md:mt-4 flex justify-center items-center">
+          <div className="mt-2 md:mt-4 flex justify-center items-center w-full">
             <StationHeader
               data={data}
               isLoading={isLoading}
