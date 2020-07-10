@@ -212,7 +212,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                   </tr>
                 </thead>
                 <tbody className="bg-white">
-                  {stationDataTable.map((day, i) => {
+                  {stationDataTable.map(day => {
                     let riskLevel
                     if (day.gdd <= degreeDayRiskLevels.low)
                       riskLevel = "bg-green-600 text-white font-semibold"
@@ -235,7 +235,9 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                         <td className="w-3 py-4 border-b border-gray-200 leading-6 text-gray-700 "></td>
                         <td
                           className={`${
-                            dayOfYear === day.dayOfYear ? `text-lg` : `text-sm`
+                            dayOfYear === day.dayOfYear
+                              ? `text-base sm:text-lg`
+                              : `text-xs sm:text-sm`
                           } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                         >
                           <span className="sm:w-36 inline-block">
@@ -244,18 +246,22 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                         </td>
                         <td
                           className={`${
-                            dayOfYear === day.dayOfYear ? `text-lg` : `text-sm`
+                            dayOfYear === day.dayOfYear
+                              ? `text-base sm:text-lg`
+                              : `text-xs sm:text-sm`
                           } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                         >
                           {day.dd}
                         </td>
                         <td
                           className={`${
-                            dayOfYear === day.dayOfYear ? `text-lg` : `text-sm`
+                            dayOfYear === day.dayOfYear
+                              ? `text-base sm:text-lg`
+                              : `text-xs sm:text-sm`
                           } px-6 py-3 border-b border-gray-200 leading-6`}
                         >
                           <span
-                            className={`${riskLevel} rounded w-20 py-1 inline-block`}
+                            className={`${riskLevel} rounded w-14 sm:w-20 py-1 inline-block`}
                           >
                             {day.gdd}
                           </span>
@@ -288,8 +294,8 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                           <td
                             className={`${
                               dayOfYear === day.dayOfYear
-                                ? `text-lg`
-                                : `text-sm`
+                                ? `text-base sm:text-lg`
+                                : `text-xs sm:text-sm`
                             } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                           >
                             <span className="sm:w-36 inline-block">
@@ -299,8 +305,8 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                           <td
                             className={`${
                               dayOfYear === day.dayOfYear
-                                ? `text-lg`
-                                : `text-sm`
+                                ? `text-base sm:text-lg`
+                                : `text-xs sm:text-sm`
                             } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                           >
                             {day.dd}
@@ -308,12 +314,12 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                           <td
                             className={`${
                               dayOfYear === day.dayOfYear
-                                ? `text-lg`
-                                : `text-sm`
+                                ? `text-base sm:text-lg`
+                                : `text-xs sm:text-sm`
                             } px-6 py-3 border-b border-gray-200 leading-6`}
                           >
                             <span
-                              className={`${riskLevel} rounded w-20 py-1 inline-block`}
+                              className={`${riskLevel} rounded w-14 sm:w-20 py-1 inline-block`}
                             >
                               {day.gdd}
                             </span>

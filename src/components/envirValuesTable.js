@@ -198,8 +198,8 @@ export default function EnvirValuesTable({
                         <td
                           className={`${
                             dayOfYear === day.dayOfYear
-                              ? `text-lg font-semibold`
-                              : `text-xs`
+                              ? `text-base sm:text-lg`
+                              : `text-xs sm:text-sm`
                           } sm:px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                         >
                           <span className="sm:w-36 inline-block">
@@ -213,8 +213,8 @@ export default function EnvirValuesTable({
                               key={variable}
                               className={`${
                                 dayOfYear === day.dayOfYear
-                                  ? `text-lg font-semibold`
-                                  : `text-xs`
+                                  ? `text-base sm:text-lg`
+                                  : `text-xs sm:text-sm`
                               } sm:px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                             >
                               {day[variable]}
@@ -232,8 +232,8 @@ export default function EnvirValuesTable({
                           <td
                             className={`${
                               dayOfYear === day.dayOfYear
-                                ? `text-lg font-semibold`
-                                : `text-xs`
+                                ? `text-base sm:text-lg font-bold`
+                                : `text-xs sm:text-sm`
                             } sm:px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                           >
                             <span className="sm:w-36 inline-block">
@@ -246,8 +246,8 @@ export default function EnvirValuesTable({
                                 key={variable}
                                 className={`${
                                   dayOfYear === day.dayOfYear
-                                    ? `text-lg font-semibold`
-                                    : `text-xs`
+                                    ? `text-base sm:text-lg font-bold`
+                                    : `text-xs sm:text-sm`
                                 } sm:px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                               >
                                 {day[variable]}

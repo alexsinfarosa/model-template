@@ -182,8 +182,7 @@ export default function ResultsGraph({
               tick={<CustomXLabel />}
             ></XAxis>
             <YAxis dataKey="gdd" tick={<CustomYLabel unit={""} />}>
-              {" "}
-              <Label value="Blueberry Maggot" offset={60} position="right" />
+              <Label value="Blueberry Maggot" offset={40} position="right" />
             </YAxis>
             <Tooltip />
             <Legend

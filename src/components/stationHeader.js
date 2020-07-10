@@ -21,7 +21,7 @@ export default function StationHeader({ data, station }) {
       className={`border-4 border-dashed border-gray-200 rounded-lg flex flex-col items-center justify-between sm:flex-row px-4 py-6`}
     >
       <div>
-        <h1 className="text-2xl leading-7 text-gray-500 sm:text-3xl sm:leading-9 text-center md:text-left md:mr-auto mb-5 sm:mb-2">
+        <h1 className="text-xl leading-7 text-gray-500 sm:text-3xl sm:leading-9 text-center md:text-left md:mr-auto mb-5 sm:mb-2 truncate">
           Results for{" "}
           {station && (
             <span className="text-gray-900 font-semibold">
