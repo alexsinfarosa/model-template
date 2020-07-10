@@ -61,14 +61,12 @@ const IndexPage = () => {
         )}
 
         {isInSeason && station && (
-          <div className="mt-2 md:mt-4">
-            {isLoading ? (
-              <div className="flex justify-center items-center px-4 py-6">
-                <HashLoader size={61} color={"#1987C2"} loading={isLoading} />
-              </div>
-            ) : (
-              <StationHeader data={data} station={station}></StationHeader>
-            )}
+          <div className="mt-2 md:mt-4 flex justify-center items-center">
+            <StationHeader
+              data={data}
+              isLoading={isLoading}
+              station={station}
+            ></StationHeader>
           </div>
         )}
 

@@ -1,8 +1,9 @@
 import React from "react"
 import { formatDate, formatAMPM } from "../utils/utils"
 import GlobalStateContext from "../context/globalStateContext"
+import HashLoader from "react-spinners/HashLoader"
 
-export default function StationHeader({ data, station }) {
+export default function StationHeader({ data, isLoading, station }) {
   const { dateOfInterest } = React.useContext(GlobalStateContext)
 
   let lastDownload = ""
@@ -16,9 +17,17 @@ export default function StationHeader({ data, station }) {
     }
   }
 
+  if (isLoading) {
+    return (
+      <div>
+        <HashLoader size={61} color={"#1987C2"} loading={isLoading} />
+      </div>
+    )
+  }
+
   return (
     <div
-      className={`border-4 border-dashed border-gray-200 rounded-lg flex flex-col items-center justify-between sm:flex-row px-4 py-6`}
+      className={`border-4 border-dashed border-gray-200 rounded-lg flex flex-col items-center justify-between sm:flex-row px-4 py-6 w-full`}
     >
       <div>
         <h1 className="text-xl leading-7 text-gray-500 sm:text-3xl sm:leading-9 text-center md:text-left md:mr-auto mb-5 sm:mb-2 truncate">
