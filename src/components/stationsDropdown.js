@@ -139,7 +139,7 @@ const StationsDropdown = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Visit NEWA
+                Create a Profile
                 <svg
                   className="ml-2 w-4"
                   fill="none"

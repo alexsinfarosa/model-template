@@ -7,7 +7,6 @@ import {
   Tooltip,
   Legend,
   Line,
-  Label,
 } from "recharts"
 import HashLoader from "react-spinners/HashLoader"
 import GlobalStateContext from "../context/globalStateContext"
@@ -171,19 +170,25 @@ export default function ResultsGraph({
         <ResponsiveContainer width="100%" height={400} id="chart">
           <ComposedChart
             data={dataGraph}
-            margin={{ top: 20, right: 30, left: 0, bottom: 20 }}
+            margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
             className="bg-white sm:rounded-lg shadow border-b border-gray-200"
           >
-            {/* <CartesianGrid strokeDasharray="3 3" vertical={false} /> */}
             <XAxis
               dataKey="date"
               interval={"preserveStartEnd"}
               axisLine={true}
               tick={<CustomXLabel />}
             ></XAxis>
-            <YAxis dataKey="gdd" tick={<CustomYLabel unit={""} />}>
-              <Label value="Blueberry Maggot" offset={40} position="right" />
-            </YAxis>
+            <YAxis
+              dataKey="gdd"
+              tick={<CustomYLabel />}
+              label={{
+                value: "Cumulative Degree Days",
+                angle: -90,
+                position: "insideLeft",
+                offset: 0,
+              }}
+            />
             <Tooltip />
             <Legend
               verticalAlign="top"
@@ -228,7 +233,7 @@ export default function ResultsGraph({
               stroke="#1987C2"
               strokeWidth={3}
               dot={false}
-              name="Cumulative Degree Day"
+              name="Blueberry Maggot DD"
             />
           </ComposedChart>
         </ResponsiveContainer>

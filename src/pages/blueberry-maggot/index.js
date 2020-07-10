@@ -51,7 +51,7 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <>
-        <div className="max-w-md mx-auto flex justify-around items-center py-4 mb-8">
+        <div className="hidden sm:flex max-w-md mx-auto sm:justify-around sm:items-center py-4 mb-8">
           <div className="py-3">
             <a
               href="https://newa.rcc-acis.workers.dev"
