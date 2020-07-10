@@ -7,6 +7,7 @@ import {
   Tooltip,
   Legend,
   Line,
+  Label,
 } from "recharts"
 import HashLoader from "react-spinners/HashLoader"
 import GlobalStateContext from "../context/globalStateContext"
@@ -137,9 +138,13 @@ export default function ResultsGraph({
     return (
       <div className="w-full">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="font-semibold text-gray-600 text-lg sm:text-xl md:text-2xl">
+          <h2 className="hidden sm:inline-block font-semibold text-gray-600 text-lg sm:text-xl md:text-2xl">
             {resultsGraph.title}
           </h2>
+          <span className="sm:hidden flex flex-col font-semibold text-gray-600 text-lg sm:text-xl md:text-2xl">
+            <span>Cumulative Degree Days</span>
+            <span>Base 50˚F BE</span>
+          </span>
 
           <div className="rounded-md flex justify-center items-center">
             <button
@@ -158,7 +163,7 @@ export default function ResultsGraph({
               >
                 <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
               </svg>
-              <span className="hidden sm:inline-block">Download</span> PNG
+              <span className="hidden sm:inline-block mr-1">Download </span> PNG
             </button>
           </div>
         </div>
@@ -167,7 +172,7 @@ export default function ResultsGraph({
           <ComposedChart
             data={dataGraph}
             margin={{ top: 20, right: 30, left: 0, bottom: 20 }}
-            className="bg-white rounded-md shadow"
+            className="bg-white sm:rounded-lg shadow border-b border-gray-200"
           >
             {/* <CartesianGrid strokeDasharray="3 3" vertical={false} /> */}
             <XAxis
@@ -175,10 +180,27 @@ export default function ResultsGraph({
               interval={"preserveStartEnd"}
               axisLine={true}
               tick={<CustomXLabel />}
-            />
-            <YAxis dataKey="gdd" tick={<CustomYLabel unit={""} />} />
+            ></XAxis>
+            <YAxis dataKey="gdd" tick={<CustomYLabel unit={""} />}>
+              {" "}
+              <Label value="Blueberry Maggot" offset={60} position="right" />
+            </YAxis>
             <Tooltip />
-            <Legend verticalAlign="top" height={36} />
+            <Legend
+              verticalAlign="top"
+              height={36}
+              formatter={(value, entry) => {
+                const { color } = entry
+                return (
+                  <span
+                    className="text-xs sm:text-sm md:text-lg"
+                    style={{ color }}
+                  >
+                    {value}
+                  </span>
+                )
+              }}
+            />
 
             {/* <Area
               stackId="riskLevel"
@@ -207,7 +229,7 @@ export default function ResultsGraph({
               stroke="#1987C2"
               strokeWidth={3}
               dot={false}
-              name="Blueberry Maggot Cumulative Degree Day"
+              name="Cumulative Degree Day"
             />
           </ComposedChart>
         </ResponsiveContainer>

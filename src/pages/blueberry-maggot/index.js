@@ -61,7 +61,7 @@ const IndexPage = () => {
         )}
 
         {isInSeason && station && (
-          <div className="flex-1 mt-2 md:mt-4">
+          <div className="mt-2 md:mt-4">
             {isLoading ? (
               <div className="flex justify-center items-center px-4 py-6">
                 <HashLoader size={61} color={"#1987C2"} loading={isLoading} />
@@ -75,23 +75,23 @@ const IndexPage = () => {
         {showMap && (
           <div
             id="stationsMap"
-            className={`flex-1 h-72 lg:h-96 mb-36 ${
+            className={`${
               station ? "mt-16 sm:mt-20 md:mt-24" : "mt-2 md:mt-4"
             }`}
           >
             <h2 className="mb-3 sm:mb-5 md:mb-8 font-semibold text-gray-600 md:text-2xl">
               Station Selection Map
             </h2>
-            <Map></Map>
+            <div className="h-72 lg:h-96">
+              <Map></Map>
+            </div>
           </div>
         )}
 
         {showManagementGuide && data !== null && (
           <div
             id="managementGuide"
-            className={`flex-1 ${
-              isInSeason ? `mt-16 sm:mt-20 md:mt-24` : `mt-0`
-            } flex justify-center items-center`}
+            className={`mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
           >
             <ManagementGuide
               resMngGuide={resMngGuide}
@@ -104,7 +104,7 @@ const IndexPage = () => {
         {isInSeason && showResultsTable && data !== null && (
           <div
             id="resultsTable"
-            className={`flex-1 mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
+            className={`mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
           >
             <ResultsTable
               data={data}
@@ -117,7 +117,7 @@ const IndexPage = () => {
         {isInSeason && showResultsGraph && data !== null && (
           <div
             id="resultsGraph"
-            className={`flex-1 mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
+            className={`mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
           >
             <ResultsGraph
               data={data}
@@ -131,7 +131,7 @@ const IndexPage = () => {
         {isInSeason && showEnvirValuesTable && data !== null && (
           <div
             id="envirValuesTable"
-            className={`flex-1 mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
+            className={`mt-16 sm:mt-20 md:mt-24 flex justify-center items-center`}
           >
             <EnvirValuesTable
               data={data}
@@ -142,7 +142,7 @@ const IndexPage = () => {
         )}
 
         {/* Always at the bottom - flex order-12 */}
-        <div className="mt-16 sm:mt-20 md:mt-24 mb-4">
+        <div className="mt-16 sm:mt-20 md:mt-24">
           <hr className="max-w-7xl mx-auto"></hr>
           <Disclaimer></Disclaimer>
           <Footer></Footer>

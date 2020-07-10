@@ -124,6 +124,17 @@ export const GlobalStateProvider = ({ children }) => {
         user: state.user,
       })
     )
+    //     window.localStorage.setItem(
+    //   LS_STATION_DATA_KEY,
+    //   JSON.stringify({
+    //     showMap: state.showMap,
+    //     showManagementGuide: state.showManagementGuide,
+    //     showResultsTable: state.showResultsTable,
+    //     showResultsGraph: state.showResultsGraph,
+    //     showEnvirValuesTable: state.showEnvirValuesTable,
+    //     user: state.user,
+    //   })
+    // )
   }, [state])
 
   return (

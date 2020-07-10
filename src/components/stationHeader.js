@@ -1,13 +1,21 @@
 import React from "react"
 import { formatDate, formatAMPM } from "../utils/utils"
+import GlobalStateContext from "../context/globalStateContext"
 
 export default function StationHeader({ data, station }) {
+  const { dateOfInterest } = React.useContext(GlobalStateContext)
+
   let lastDownload = ""
-  if (data && data.currentHour) {
-    lastDownload = `Last download: ${formatDate(new Date())} ${formatAMPM(
-      data.currentHour
-    )}`
+  if (
+    new Date(dateOfInterest.date).getFullYear() === new Date().getFullYear()
+  ) {
+    if (data && data.currentHour) {
+      lastDownload = `Last download: ${formatDate(new Date())} ${formatAMPM(
+        data.currentHour
+      )}`
+    }
   }
+
   return (
     <div
       className={`border-4 border-dashed border-gray-200 rounded-lg flex flex-col items-center justify-between sm:flex-row px-4 py-6`}
@@ -21,13 +29,14 @@ export default function StationHeader({ data, station }) {
             </span>
           )}
         </h1>
-        <div className="text-sm text-gray-500 font-semibold">
+
+        <div className="text-sm text-gray-500 font-semibold text-center sm:text-left">
           {lastDownload}
         </div>
       </div>
 
       {station && (
-        <div className="mt-2 sm:mt-0 flex justify-between sm:flex-col text-sm leading-5 text-gray-500 w-full sm:w-auto">
+        <div className="mt-2 sm:mt-0 flex flex-col items-center text-sm leading-5 text-gray-500 w-full sm:w-auto">
           <div className="flex-1 text-center md:text-left">
             <span className="font-semibold">Latitude:</span>{" "}
             <span className="ml-0">

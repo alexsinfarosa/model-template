@@ -6,12 +6,12 @@ const activeStyle = `text-primary-600 font-bold`
 export default function Disclaimer() {
   const { url } = React.useContext(GlobalStateContext)
   return (
-    <div className="p-6">
-      <div className="flex justify-center items-center h-16 mb-12">
-        <div className="max-w-md w-full flex justify-between">
+    <div className="mt-6 sm:mt-8 md:mt-14">
+      <div className="flex justify-center items-center mb-6 sm:mb-8 md:mb-12">
+        <div className="max-w-md w-full flex my-2 flex-col sm:flex-row justify-between">
           <Link
             to={`${url.pathname}/more-info`}
-            className="text-gray-900 text-center"
+            className="text-gray-900 text-center py-2 sm:py-0"
             activeClassName={activeStyle}
           >
             More Info
@@ -19,7 +19,7 @@ export default function Disclaimer() {
 
           <Link
             to={`${url.pathname}/acknowledgments`}
-            className="text-gray-900 text-center"
+            className="text-gray-900 text-center py-2 sm:py-0"
             activeClassName={activeStyle}
           >
             Acknowledgments
@@ -27,7 +27,7 @@ export default function Disclaimer() {
 
           <Link
             to={`${url.pathname}/references`}
-            className="text-gray-900 text-center"
+            className="text-gray-900 text-center py-2 sm:py-0"
             activeClassName={activeStyle}
           >
             References

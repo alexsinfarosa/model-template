@@ -132,7 +132,7 @@ export default function useStationData() {
           currentDayMissingValues = currentDate.temp.filter(d => d === "M")
             .length
           if (currentDayMissingValues === 24) {
-            dataFinal = [...data5]
+            data6 = [...data5]
           } else {
             currentHour = calculateCurrentHourFromData(currentDate)
             let upToCurrentHour = {}
@@ -190,6 +190,8 @@ export default function useStationData() {
             }
           })
           dataFinal = [...data7]
+          // console.log({ dataFinal })
+          // console.log({ datesWithFiveOrMoreMissingValues })
           // END: Calculate dd, gdd, min, avg, max ///////////////////////////////////
           // console.log({ dataFinal })
         }
@@ -217,9 +219,14 @@ export default function useStationData() {
             }
           })
 
+          let indexWithValidGdd = dataFinal.slice(-2)[0].dayOfYear - 1
+          while (isNaN(dataFinal[indexWithValidGdd].gdd)) {
+            indexWithValidGdd--
+          }
+
           // START: Calculate dd, gdd, min, avg, max ///////////////////////////////////
           let fdd = 0
-          let fgdd = Number(dataFinal.map(d => d.gdd).slice(-2)[0])
+          let fgdd = dataFinal[indexWithValidGdd].gdd
           let fminT
           let favgT
           let fmaxT
@@ -259,6 +266,7 @@ export default function useStationData() {
             }
           })
         }
+        // console.log({ updatedForecast })
 
         dispatch({
           type: "FETCH_SUCCESS",
@@ -311,6 +319,13 @@ export default function useStationData() {
           !isSameYear_LS
         ) {
           console.log("More than 1 hour since we fetched")
+          console.log(`Difference in hours since last fetch: ${differenceInHours(
+            Date.now(),
+            LS_STATION_DATA.lastSuccess
+          )}
+          `)
+          console.log(`isSameYear: ${isSameYear_LS}`)
+          console.log(`isSameStation: ${isSameStation}`)
           fetchStationHourlyData(station)
         } else {
           dispatch({

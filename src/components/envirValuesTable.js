@@ -156,7 +156,7 @@ export default function EnvirValuesTable({
                       x
                     </th>
                     <th
-                      className="px-6 py-3 border-r border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
+                      className="sm:px-6 py-3 border-r border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
                       rowSpan="2"
                     >
                       Date{" "}
@@ -165,20 +165,20 @@ export default function EnvirValuesTable({
                       </small>
                     </th>
                     <th
-                      className="px-6 py-3 border-b border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white tracking-wider"
+                      className="sm:px-6 py-3 border-b border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white tracking-wider"
                       colSpan="3"
                     >
                       Temperature (˚F)
                     </th>
                   </tr>
                   <tr className="text-center">
-                    <th className="px-6 py-3 border-b border-gray-200 bg-secondary-600 text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                    <th className="sm:px-6 py-3 border-b border-gray-200 bg-secondary-600 text-xs leading-4 font-medium text-white uppercase tracking-wider">
                       Avg
                     </th>
-                    <th className="px-6 py-3 border-b border-gray-200 bg-secondary-600 text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                    <th className="sm:px-6 py-3 border-b border-gray-200 bg-secondary-600 text-xs leading-4 font-medium text-white uppercase tracking-wider">
                       Max
                     </th>
-                    <th className="px-6 py-3 border-b border-gray-200 bg-secondary-600 text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                    <th className="sm:px-6 py-3 border-b border-gray-200 bg-secondary-600 text-xs leading-4 font-medium text-white uppercase tracking-wider">
                       Min
                     </th>
                   </tr>
@@ -200,9 +200,9 @@ export default function EnvirValuesTable({
                             dayOfYear === day.dayOfYear
                               ? `text-lg font-semibold`
                               : `text-xs`
-                          } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
+                          } sm:px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                         >
-                          <span className="w-36 inline-block">
+                          <span className="sm:w-36 inline-block">
                             {formatDateMonthDay(day.date)}
                           </span>
                         </td>
@@ -215,7 +215,7 @@ export default function EnvirValuesTable({
                                 dayOfYear === day.dayOfYear
                                   ? `text-lg font-semibold`
                                   : `text-xs`
-                              } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
+                              } sm:px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                             >
                               {day[variable]}
                             </td>
@@ -228,15 +228,15 @@ export default function EnvirValuesTable({
                     forecastDataTable.map(day => {
                       return (
                         <tr key={day.date} className="text-center">
-                          <td className="w-3 bg-secondary-300"></td>
+                          <td className="sm:w-3 bg-secondary-300"></td>
                           <td
                             className={`${
                               dayOfYear === day.dayOfYear
                                 ? `text-lg font-semibold`
                                 : `text-xs`
-                            } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
+                            } sm:px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                           >
-                            <span className="w-36 inline-block">
+                            <span className="sm:w-36 inline-block">
                               {formatDateMonthDay(day.date)}
                             </span>
                           </td>
@@ -248,7 +248,7 @@ export default function EnvirValuesTable({
                                   dayOfYear === day.dayOfYear
                                     ? `text-lg font-semibold`
                                     : `text-xs`
-                                } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
+                                } sm:px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                               >
                                 {day[variable]}
                               </td>

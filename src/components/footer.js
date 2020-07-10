@@ -8,10 +8,10 @@ import webAccessibilityIcon from "../assets/web-accessibility-icon.png"
 
 export default function Footer() {
   return (
-    <div className="bg-white mt-8">
-      <div className="max-w-screen-xl mx-auto overflow-hidden">
-        <nav className="flex justify-between flex-wrap sm:justify-around bg-secondary-600 rounded py-3">
-          <div className="px-5 py-3">
+    <div className="bg-white mt-8 shadow border-b border-gray-200">
+      <div className="max-w-screen-xl mx-auto">
+        <nav className="flex flex-col items-center sm:flex-row sm:justify-around bg-secondary-600  sm:rounded-t-lg py-3">
+          <div className="py-3">
             <a
               href="https://newa.rcc-acis.workers.dev/about-us"
               target="_blank"
@@ -21,7 +21,7 @@ export default function Footer() {
               About Us
             </a>
           </div>
-          <div className="px-5 py-3">
+          <div className="py-3">
             <a
               href="https://newa.rcc-acis.workers.dev/become-partner"
               target="_blank"
@@ -31,7 +31,7 @@ export default function Footer() {
               Become a Partner
             </a>
           </div>
-          <div className="px-5 py-3">
+          <div className="py-3">
             <a
               href="https://newa.rcc-acis.workers.dev/blog"
               target="_blank"
@@ -41,7 +41,7 @@ export default function Footer() {
               Blog
             </a>
           </div>
-          <div className="px-5 py-3">
+          <div className="py-3">
             <a
               href="https://newa.rcc-acis.workers.dev/press-room"
               target="_blank"
@@ -51,7 +51,7 @@ export default function Footer() {
               Press Room
             </a>
           </div>
-          <div className="px-5 py-3">
+          <div className="py-3">
             <a
               href="https://newa.rcc-acis.workers.dev/partners"
               target="_blank"
@@ -61,7 +61,7 @@ export default function Footer() {
               Partners
             </a>
           </div>
-          <div className="px-5 py-3">
+          <div className="py-3">
             <a
               href="https://newa.rcc-acis.workers.dev/help"
               target="_blank"
@@ -142,7 +142,7 @@ export default function Footer() {
         </div>
 
         <div className="mb-4">
-          <p className="text-center text-base leading-6 text-gray-400">
+          <p className="py-4 text-center text-base leading-6 text-gray-400">
             &copy; 1996-2020 NYS IPM Program, Cornell University
           </p>
           <div className="my-8 flex justify-center">
@@ -182,7 +182,7 @@ export default function Footer() {
               <img
                 src={webAccessibilityIcon}
                 alt="web accessability"
-                className="w-20 sm:w-16 md:w-14"
+                className="w-32 sm:w-16 md:w-14"
               />
             </span>
             <span className="md:text-justify">

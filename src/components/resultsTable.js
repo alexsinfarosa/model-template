@@ -157,17 +157,17 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
               )}
             </div>
 
-            <div className="order-1 sm:order-2">
+            <div className="order-1 sm:order-2 mt-2">
               <span className="w-auto text-gray-600 text-xs font-bold">
                 Degree Days Risk Levels:{" "}
               </span>
-              <span className="w-16 py-1 bg-green-600 inline-block mx-2 text-xs text-center text-white font-semibold rounded">
+              <span className="w-10 sm:w-16 py-1 bg-green-600 inline-block mx-2 text-xs text-center text-white font-semibold rounded">
                 Low
               </span>
               <span className="w-16 py-1 bg-yellow-300 inline-block mx-2 text-xs text-center text-white font-semibold rounded">
                 Moderate
               </span>
-              <span className="w-16 py-1 bg-red-600 inline-block ml-2 text-xs text-center text-white font-semibold rounded">
+              <span className="w-10 sm:w-16 py-1 bg-red-600 inline-block ml-2 text-xs text-center text-white font-semibold rounded">
                 High
               </span>
             </div>
@@ -238,7 +238,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                             dayOfYear === day.dayOfYear ? `text-lg` : `text-sm`
                           } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                         >
-                          <span className="w-36 inline-block">
+                          <span className="sm:w-36 inline-block">
                             {formatDateMonthDay(day.date)}
                           </span>
                         </td>
@@ -292,7 +292,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                                 : `text-sm`
                             } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                           >
-                            <span className="w-36 inline-block">
+                            <span className="sm:w-36 inline-block">
                               {formatDateMonthDay(day.date)}
                             </span>
                           </td>
