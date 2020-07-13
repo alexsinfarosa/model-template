@@ -190,7 +190,7 @@ export default function useStationData() {
             }
           })
           dataFinal = [...data7]
-          // console.log({ dataFinal })
+          console.log({ dataFinal })
           // console.log({ datesWithFiveOrMoreMissingValues })
           // END: Calculate dd, gdd, min, avg, max ///////////////////////////////////
           // console.log({ dataFinal })

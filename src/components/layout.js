@@ -1,13 +1,11 @@
 import React from "react"
 import newaFavicon from "../assets/newa-favicon.png"
-import ipmLogo from "../assets/ipm-logo-small.svg"
 import Toggle from "../components/toggle"
 import StationsDropdown from "../components/stationsDropdown"
 import DateOfInterest from "../components/dateOfInterest"
 import GlobalStateContext from "../context/globalStateContext"
 import Header from "../components/header"
 import Transition from "../components/transition"
-import StatePartnerLogo from "./statePartnerLogo"
 
 const Layout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = React.useState(false)
@@ -115,14 +113,14 @@ const Layout = ({ children }) => {
                       </div>
                     </div>
 
-                    <div className="h-32">
+                    <div>
                       <StationsDropdown
                         setSidebarOpen={setSidebarOpen}
                         isMobile={true}
                       ></StationsDropdown>
                     </div>
 
-                    <div className="mt-24 h-80">
+                    <div className="mt-16 h-72">
                       <span className="block text-sm leading-5 text-secondary-600 font-extrabold mb-1">
                         Date of Interest
                       </span>
@@ -133,7 +131,7 @@ const Layout = ({ children }) => {
                     </div>
 
                     {/* Toggle components On/Off */}
-                    <div className="mt-24">
+                    <div className="mt-16">
                       <span className="block text-sm leading-5 text-secondary-600 font-bold mb-2 tracking-wide">
                         Show/Hide
                       </span>
