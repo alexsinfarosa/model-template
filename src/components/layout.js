@@ -10,6 +10,7 @@ import Transition from "../components/transition"
 const Layout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = React.useState(false)
   const {
+    modelName,
     station,
     showMap,
     showManagementGuide,
@@ -276,7 +277,9 @@ const Layout = ({ children }) => {
             </svg>
           </button>
           <div className="flex  items-center mr-4 sm:hidden">
-            <h2 className="font-semibold mr-2">Blueberry Maggot</h2>
+            <h2 className="mr-2 text-base text-gray-600 font-bold">
+              {modelName}
+            </h2>
             <span className="flex items-center w-6 h-6 mr-3">
               <a
                 href="https://newa.netlify.app"
