@@ -293,22 +293,6 @@ const Layout = ({ children }) => {
                 />
               </a>
             </span>
-            {/* <span className="flex items-center w-8 mr-3">
-              <a
-                href="https://nysipm.cornell.edu"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block w-8"
-              >
-                <img
-                  src={ipmLogo}
-                  alt="New York State Integrated Pest Management Program"
-                />
-              </a>
-            </span>
-            <span className="flex items-center w-8">
-              <StatePartnerLogo></StatePartnerLogo>
-            </span> */}
           </div>
         </div>
         <Header></Header>
@@ -317,7 +301,7 @@ const Layout = ({ children }) => {
           // tabIndex="0"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            {children}
+            <div className="py-4">{children}</div>
           </div>
         </main>
       </div>

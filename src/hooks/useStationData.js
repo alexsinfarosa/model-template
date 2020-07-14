@@ -220,6 +220,9 @@ export default function useStationData() {
             }
           })
 
+          //Add tsky.
+          hybridDay["tsky"] = forecastFirstDay.tsky
+
           let indexWithValidGdd = dataFinal.slice(-2)[0].dayOfYear - 1
           while (isNaN(dataFinal[indexWithValidGdd].gdd)) {
             indexWithValidGdd--

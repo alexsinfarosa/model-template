@@ -48,14 +48,14 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <>
-        <div className="hidden sm:flex max-w-md mx-auto sm:justify-around sm:items-center py-4 mb-8">
+      <div className="h-full flex flex-col">
+        <div className="hidden sm:flex sm:justify-around sm:items-center py-2 sm:py-4 mb-4">
           <div className="py-3">
             <a
               href="https://newa.rcc-acis.workers.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 text-xs sm:text-sm md:text-lg font-semibold leading-6 no-underline hover:underline tracking-wider"
+              className="text-gray-600 text-sm sm:text-base md:text-lg font-semibold leading-6 no-underline hover:underline tracking-wider"
             >
               Home
             </a>
@@ -65,7 +65,7 @@ const IndexPage = () => {
               href="https://newa.rcc-acis.workers.dev/crop-and-pest-management"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 text-xs sm:text-sm md:text-lg font-semibold leading-6 no-underline hover:underline tracking-wider"
+              className="text-gray-600 text-sm sm:text-base md:text-lg font-semibold leading-6 no-underline hover:underline tracking-wider"
             >
               Crop & IPM Tools
             </a>
@@ -76,7 +76,7 @@ const IndexPage = () => {
               href="https://newa.rcc-acis.workers.dev/weather-tools"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 text-xs sm:text-sm md:text-lg font-semibold leading-6 no-underline hover:underline tracking-wider"
+              className="text-gray-600 text-sm sm:text-base md:text-lg font-semibold leading-6 no-underline hover:underline tracking-wider"
             >
               Weather Tools
             </a>
@@ -194,7 +194,7 @@ const IndexPage = () => {
           <Disclaimer></Disclaimer>
           <Footer></Footer>
         </div>
-      </>
+      </div>
     </Layout>
   )
 }
