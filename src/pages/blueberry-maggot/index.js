@@ -83,15 +83,15 @@ const IndexPage = () => {
           </div>
         </div>
 
-        {station === null && (
-          <div className="mt-2 md:mt-4 mb-12">
-            <div className="bg-primary-600 px-5 py-4 rounded-lg text-white font-medium text-center">
-              <span>
-                Select a weather station from the map or from dropdown menu.
-              </span>
-            </div>
-          </div>
-        )}
+        <div
+          className={`${
+            station === null ? `block mt-2 md:mt-4 mb-12` : `hidden`
+          } bg-primary-600 px-5 py-4 rounded-lg text-white font-medium text-center`}
+        >
+          <span>
+            Select a weather station from the map or from dropdown menu.
+          </span>
+        </div>
 
         <div
           className={`${
