@@ -83,19 +83,17 @@ const IndexPage = () => {
           </div>
         </div>
 
-        <div
-          className={`${
-            isInSeason && station
-              ? `flex mt-2 md:mt-4 justify-center items-center w-full`
-              : `hidden`
-          }`}
-        >
-          <StationHeader
-            data={data}
-            isLoading={isLoading}
-            station={station}
-          ></StationHeader>
-        </div>
+        {isInSeason && station && (
+          <div
+            className={`flex mt-2 md:mt-4 justify-center items-center w-full`}
+          >
+            <StationHeader
+              data={data}
+              isLoading={isLoading}
+              station={station}
+            ></StationHeader>
+          </div>
+        )}
 
         <div
           id="stationsMap"
