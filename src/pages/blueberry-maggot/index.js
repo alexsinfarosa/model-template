@@ -83,17 +83,31 @@ const IndexPage = () => {
           </div>
         </div>
 
-        {isInSeason && station && (
-          <div
-            className={`flex mt-2 md:mt-4 justify-center items-center w-full`}
-          >
-            <StationHeader
-              data={data}
-              isLoading={isLoading}
-              station={station}
-            ></StationHeader>
-          </div>
-        )}
+        <div
+          className={`${
+            station === null
+              ? `mt-2 md:mt-4 mb-12 bg-primary-600 px-5 py-4 rounded-lg text-white font-medium text-center h-13`
+              : `hidden`
+          }`}
+        >
+          <span>
+            Select a weather station from the map or from dropdown menu.
+          </span>
+        </div>
+
+        <div
+          className={`${
+            isInSeason && station
+              ? `flex mt-2 md:mt-4 justify-center items-center w-full h-10 sm:h-32`
+              : `hidden`
+          }`}
+        >
+          <StationHeader
+            data={data}
+            isLoading={isLoading}
+            station={station}
+          ></StationHeader>
+        </div>
 
         <div
           id="stationsMap"
