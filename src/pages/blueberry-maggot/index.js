@@ -48,7 +48,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <div className="h-full flex flex-col">
+      <div className="h-full flex flex-col min-w-full">
         <div className="hidden sm:flex sm:justify-around sm:items-center py-2 sm:py-4 mb-4">
           <div className="py-3">
             <a
@@ -85,8 +85,10 @@ const IndexPage = () => {
 
         <div
           className={`${
-            station === null ? `block mt-2 md:mt-4 mb-12` : `hidden`
-          } bg-primary-600 px-5 py-4 rounded-lg text-white font-medium text-center`}
+            station === null
+              ? `mt-2 md:mt-4 mb-12 bg-primary-600 px-5 py-4 rounded-lg text-white font-medium text-center`
+              : `hidden`
+          }`}
         >
           <span>
             Select a weather station from the map or from dropdown menu.
@@ -95,8 +97,10 @@ const IndexPage = () => {
 
         <div
           className={`${
-            isInSeason && station ? `flex` : `hidden`
-          } mt-2 md:mt-4 justify-center items-center w-full`}
+            isInSeason && station
+              ? `flex mt-2 md:mt-4 justify-center items-center w-full`
+              : `hidden`
+          }`}
         >
           <StationHeader
             data={data}
@@ -107,9 +111,9 @@ const IndexPage = () => {
 
         <div
           id="stationsMap"
-          className={`${station ? "mt-16 sm:mt-20 md:mt-24" : "mt-2 md:mt-4"} ${
-            showMap ? `block` : `hidden`
-          }`}
+          className={`${
+            station ? "mt-16 sm:mt-20 md:mt-24 min-w-full" : "mt-2 md:mt-4"
+          } ${showMap ? `block` : `hidden`}`}
         >
           <h2 className="mb-3 sm:mb-5 md:mb-8 font-semibold text-gray-600 md:text-2xl">
             Station Selection Map
