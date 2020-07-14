@@ -52,5 +52,94 @@
       "priority": 4,
       "variables": ["avgT", "maxT", "minT"]
     }
+  },
+  "more-info": {
+    "item1": {
+      "title": "IPM Option - Blueberry Certification Program",
+      "url": "https://live-cu-newa.pantheonsite.io/wp-content/uploads/BlueberryCertificationProgram_forBBMmodelNEWA.pdf",
+      "statesOrProvinces": [
+        "ALL"
+      ]
+    },
+    "item2": {
+      "title": "Using Traps to Monitor Blueberry Fruit Fly in New Hampshire",
+      "url": "https://extension.unh.edu/resources/files/Resource002077_Rep3071.pdf",
+      "statesOrProvinces": [
+        "ALL"
+      ]
+    },
+    "item3": {
+      "title": "Blueberry Maggot",
+      "url": "https://pddc.wisc.edu/2018/01/29/blueberry-maggot/",
+      "statesOrProvinces": [
+        "UT",
+        "WI"
+      ]
+    },
+    "item4": {
+      "title": "Blueberry Maggot",
+      "url": "https://www.virginiafruit.ento.vt.edu/BlueberryMaggot.html",
+      "statesOrProvinces": [
+        "VA",
+        "WV"
+      ]
+    },
+    "item5": {
+      "title": "Do you have a blueberry maggot problem?",
+      "url": "https://cpb-us-e1.wpmucdn.com/blogs.cornell.edu/dist/0/7265/files/2017/01/bbmaggotfly-1v17esy.pdf",
+      "statesOrProvinces": [
+        "NY"
+      ]
+    },
+    "item6": {
+      "title": "Blueberry Maggot",
+      "url": "https://pemaruccicenter.rutgers.edu/entomology/iBlueberry-Maggot.html",
+      "statesOrProvinces": [
+        "NJ",
+        "NY",
+        "OH",
+        "PA",
+        "VA",
+        "WV"
+      ]
+    },
+    "item7": {
+      "title": "Blueberry Fruit Fly",
+      "url": "https://extension.unh.edu/resources/files/Resource006118_Rep8692.pdf",
+      "statesOrProvinces": [
+        "CT",
+        "MA",
+        "NH",
+        "VT"
+      ]
+    },
+    "item8": {
+      "title": "Blueberry Certification Program",
+      "url": "http://www.ncagr.gov/PLANTINDUSTRY/Plant/entomology/BlueberryCertificationProgram.htm",
+      "statesOrProvinces": [
+        "NC"
+      ]
+    },
+    "item9": {
+      "title": "Blueberry Maggot",
+      "url": "https://www.fruitedge.umn.edu/blueberrymaggotpp",
+      "statesOrProvinces": [
+        "MN"
+      ]
+    },
+    "item10": {
+      "title": "Blueberry Maggot",
+      "url": "https://www.canr.msu.edu/uploads/files/Blueberry%20maggot.pdf",
+      "statesOrProvinces": [
+        "MI"
+      ]
+    },
+    "item11": {
+      "title": "Blueberry Insect Pests Management Review",
+      "url": "http://ipm.uconn.edu/documents/raw2/Blueberry%20Insect%20Pests%20Management%20Review/Blueberry%20Insect%20Pests%20Management%20Review.php?aid=273",
+      "statesOrProvinces": [
+        "CT"
+      ]
+    }
   }
 }
