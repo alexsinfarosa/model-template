@@ -44,7 +44,7 @@ const IndexPage = () => {
       isInSeason = res.isInSeason
     }
   }
-
+  console.log(isInSeason, station)
   return (
     <Layout>
       <SEO title="Home" />
@@ -86,7 +86,7 @@ const IndexPage = () => {
         <div
           className={`${
             station === null
-              ? `mt-2 md:mt-4 mb-12 bg-primary-600 px-5 py-4 rounded-lg text-white font-medium text-center`
+              ? `block mt-2 md:mt-4 mb-12 bg-primary-600 px-5 py-4 rounded-lg text-white font-medium text-center`
               : `hidden`
           }`}
         >
