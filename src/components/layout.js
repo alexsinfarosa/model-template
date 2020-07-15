@@ -297,7 +297,7 @@ const Layout = ({ children }) => {
         </div>
         <Header></Header>
         <main
-          className="flex-1 relative z-0 overflow-y-auto pt-2 pb-6 focus:outline-none md:py-6 bg-gray-50"
+          className="flex-1 z-0 relative overflow-y-auto pt-2 pb-6 focus:outline-none md:py-6 bg-gray-50"
           // tabIndex="0"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">

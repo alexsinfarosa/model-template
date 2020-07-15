@@ -44,7 +44,7 @@ const IndexPage = () => {
       isInSeason = res.isInSeason
     }
   }
-  console.log(isInSeason, station)
+
   return (
     <Layout>
       <SEO title="Home" />
@@ -70,7 +70,6 @@ const IndexPage = () => {
               Crop & IPM Tools
             </a>
           </div>
-
           <div className="py-3">
             <a
               href="https://newa.rcc-acis.workers.dev/weather-tools"
@@ -83,44 +82,37 @@ const IndexPage = () => {
           </div>
         </div>
 
-        <div
-          className={`${
-            station === null
-              ? `mt-2 md:mt-4 mb-12 bg-primary-600 px-5 py-4 rounded-lg text-white font-medium text-center h-13`
-              : `hidden`
-          }`}
-        >
-          <span>
+        {isInSeason && station === null && !isLoading && (
+          <div
+            className={`mt-2 md:mt-4 mb-12 bg-primary-600 px-5 py-4 rounded-lg text-white font-medium text-center`}
+          >
             Select a weather station from the map or from dropdown menu.
-          </span>
-        </div>
+          </div>
+        )}
 
-        <div
-          className={`${
-            isInSeason && station
-              ? `flex mt-2 md:mt-4 justify-center items-center w-full h-10 sm:h-32`
-              : `hidden`
-          }`}
-        >
-          <StationHeader
-            data={data}
-            isLoading={isLoading}
-            station={station}
-          ></StationHeader>
-        </div>
+        {isInSeason && station !== null && (
+          <div
+            className={`flex mt-2 md:mt-4 justify-center items-center w-full`}
+          >
+            <StationHeader
+              data={data}
+              isLoading={isLoading}
+              station={station}
+            ></StationHeader>
+          </div>
+        )}
 
         <div
           id="stationsMap"
-          className={`${
-            station ? "mt-16 sm:mt-20 md:mt-24 min-w-full" : "mt-2 md:mt-4"
-          } ${showMap ? `block` : `hidden`}`}
+          className={`${station ? "mt-16 sm:mt-20 md:mt-24" : "mt-2 md:mt-4"} ${
+            showMap ? `` : `hidden`
+          }`}
         >
           <h2 className="mb-3 sm:mb-5 md:mb-8 font-semibold text-gray-600 md:text-2xl">
             Station Selection Map
           </h2>
-          <div className="h-72 lg:h-96">
-            <Map></Map>
-          </div>
+
+          <Map></Map>
         </div>
 
         {data !== null && (
@@ -175,7 +167,7 @@ const IndexPage = () => {
           </div>
         )}
 
-        {isInSeason && showEnvirValuesTable && data !== null && (
+        {isInSeason && data !== null && (
           <div
             id="envirValuesTable"
             className={`${

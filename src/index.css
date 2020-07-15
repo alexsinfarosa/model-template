@@ -1,7 +1,6 @@
 @tailwind base;
 html {
-  scroll-behavior: smooth;
-  @apply text-gray-900 antialiased leading-tight;
+  @apply text-gray-900 leading-tight antialiased;
 }
 body {
   @apply min-h-screen bg-gray-100;

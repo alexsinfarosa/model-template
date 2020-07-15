@@ -44,7 +44,7 @@ export default function Map() {
   }
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-72 lg:h-96">
       <ReactMapGL
         {...viewport}
         {...settings}
