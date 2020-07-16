@@ -20,15 +20,15 @@ export default function EnvirValuesTable({
     csvData = [
       ...data.stationData.map(d => ({
         date: d.date,
-        avgT: d.avgT,
-        maxT: d.maxT,
-        minT: d.minT,
+        avg: d.avgT,
+        max: d.maxT,
+        min: d.minT,
       })),
       ...data.forecast.map(d => ({
         date: d.date,
-        avgT: d.avgT,
-        maxT: d.maxT,
-        minT: d.minT,
+        avg: d.avgT,
+        max: d.maxT,
+        min: d.minT,
       })),
     ]
     const currentDateIndex = data.stationData.slice(-1)[0].dayOfYear
@@ -82,9 +82,9 @@ export default function EnvirValuesTable({
     stationDataTable = data.stationData.slice(dayOfYear - 3, dayOfYear + 5)
     csvData = data.stationData.map(d => ({
       date: d.date,
-      avgT: d.avgT,
-      maxT: d.maxT,
-      minT: d.minT,
+      avg: d.avgT,
+      max: d.maxT,
+      min: d.minT,
     }))
   }
 
@@ -134,27 +134,13 @@ export default function EnvirValuesTable({
             </button>
           </div>
         </div>
-        <div className="flex my-4">
-          {forecastDataTable && (
-            <>
-              <span className="text-gray-600 text-xs font-bold">Forecast:</span>
-              <span className="w-16 py-2 bg-secondary-300 inline-block mx-2 text-xs text-center font-semibold rounded"></span>
-            </>
-          )}
-        </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col mt-6">
           <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
             <div className="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
               <table className="min-w-full">
                 <thead>
                   <tr>
-                    <th
-                      className="py-3 border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-secondary-600 uppercase tracking-wider"
-                      rowSpan="2"
-                    >
-                      x
-                    </th>
                     <th
                       className="sm:px-6 py-3 border-r border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
                       rowSpan="2"
@@ -194,7 +180,6 @@ export default function EnvirValuesTable({
                             : `text-center`
                         }
                       >
-                        <td className="w-3 py-4 border-b border-gray-200 leading-6 text-gray-700"></td>
                         <td
                           className={`${
                             dayOfYear === day.dayOfYear
@@ -202,7 +187,7 @@ export default function EnvirValuesTable({
                               : `text-xs sm:text-sm`
                           } sm:px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                         >
-                          <span className="sm:w-36 inline-block">
+                          <span className="inline-block">
                             {formatDateMonthDay(day.date)}
                           </span>
                         </td>
@@ -228,16 +213,18 @@ export default function EnvirValuesTable({
                     forecastDataTable.map(day => {
                       return (
                         <tr key={day.date} className="text-center">
-                          <td className="sm:w-3 bg-secondary-300"></td>
                           <td
                             className={`${
                               dayOfYear === day.dayOfYear
-                                ? `text-base sm:text-lg font-bold`
+                                ? `font-extrabold`
                                 : `text-xs sm:text-sm`
-                            } sm:px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
+                            } sm:px-6 py-2 border-b border-gray-200 leading-6 text-gray-700`}
                           >
-                            <span className="sm:w-36 inline-block">
+                            <span className="flex flex-col items-center">
                               {formatDateMonthDay(day.date)}
+                              <small className="inline-block text-gray-400 font-bold">
+                                Forecast
+                              </small>
                             </span>
                           </td>
                           {envirValuesTable.variables.map(variable => {
@@ -246,9 +233,9 @@ export default function EnvirValuesTable({
                                 key={variable}
                                 className={`${
                                   dayOfYear === day.dayOfYear
-                                    ? `text-base sm:text-lg font-bold`
+                                    ? `font-extrabold`
                                     : `text-xs sm:text-sm`
-                                } sm:px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
+                                } sm:px-6 py-2 border-b border-gray-200 leading-6 text-gray-700`}
                               >
                                 {day[variable]}
                               </td>

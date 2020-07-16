@@ -7,11 +7,14 @@ import {
   Tooltip,
   Legend,
   Line,
+  ReferenceLine,
+  ReferenceDot,
 } from "recharts"
 import HashLoader from "react-spinners/HashLoader"
 import GlobalStateContext from "../context/globalStateContext"
 import domtoimage from "dom-to-image"
 import { saveAs } from "file-saver"
+import { formatDate } from "../utils/utils"
 
 const CustomXLabel = props => {
   const { x, y, payload } = props
@@ -52,6 +55,24 @@ const CustomYLabel = props => {
   )
 }
 
+const CustomizedReferenceLineLabel = props => {
+  const { date, viewBox } = props
+  return (
+    <g>
+      <text
+        x={viewBox.x}
+        y={viewBox.y}
+        dy={-5}
+        // dx={-15}
+        fontSize={11}
+        textAnchor="middle"
+        fill="#666"
+      >
+        {date}
+      </text>
+    </g>
+  )
+}
 export default function ResultsGraph({
   data,
   isLoading,
@@ -137,13 +158,9 @@ export default function ResultsGraph({
     return (
       <div className="w-full">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="hidden sm:inline-block font-semibold text-gray-600 text-lg sm:text-xl md:text-2xl">
+          <h2 className="inline-block font-semibold text-gray-600 text-lg sm:text-xl md:text-2xl">
             {resultsGraph.title}
           </h2>
-          <span className="sm:hidden flex flex-col font-semibold text-gray-600 text-lg sm:text-xl md:text-2xl">
-            <span>Cumulative Degree Days</span>
-            <span>Base 50˚F BE</span>
-          </span>
 
           <div className="rounded-md flex justify-center items-center">
             <button
@@ -170,7 +187,7 @@ export default function ResultsGraph({
         <ResponsiveContainer width="100%" height={400} id="chart">
           <ComposedChart
             data={dataGraph}
-            margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+            margin={{ top: 20, right: 30, left: -30, bottom: 20 }}
             className="bg-white sm:rounded-lg shadow border-b border-gray-200"
           >
             <XAxis
@@ -180,16 +197,17 @@ export default function ResultsGraph({
               tick={<CustomXLabel />}
             ></XAxis>
             <YAxis
+              width={110}
               dataKey="gdd"
               tick={<CustomYLabel />}
               label={{
                 value: "Cumulative Degree Days",
                 angle: -90,
-                position: "insideLeft",
+                position: "center",
                 offset: 0,
               }}
             />
-            <Tooltip />
+            <Tooltip formatter={value => [value, "DD"]} />
             <Legend
               verticalAlign="top"
               height={36}
@@ -233,7 +251,25 @@ export default function ResultsGraph({
               stroke="#1987C2"
               strokeWidth={3}
               dot={false}
-              name="Blueberry Maggot DD"
+              name="Blueberry Maggot DD (Base 50 ˚F BE)"
+            />
+            <ReferenceLine
+              x={formatDate(dateOfInterest.date)}
+              label={formatDate(dateOfInterest.date)}
+              stroke="#B2B2B2"
+              // isFront={true}
+              label={
+                <CustomizedReferenceLineLabel
+                  date={formatDate(dateOfInterest.date)}
+                />
+              }
+            />
+            <ReferenceDot
+              x={formatDate(dateOfInterest.date)}
+              y={dataGraph[dateOfInterest.dayOfYear - 1].gdd}
+              r={3}
+              fill="#4085BD"
+              stroke="none"
             />
           </ComposedChart>
         </ResponsiveContainer>

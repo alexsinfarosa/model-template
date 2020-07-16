@@ -5,6 +5,7 @@ import GlobalStateContext from "../context/globalStateContext"
 const activeStyle = `text-primary-600 font-bold`
 export default function Disclaimer() {
   const { url } = React.useContext(GlobalStateContext)
+
   return (
     <div className="mt-6 sm:mt-8 md:mt-14">
       <div className="flex justify-center items-center mb-6 sm:mb-8 md:mb-12">

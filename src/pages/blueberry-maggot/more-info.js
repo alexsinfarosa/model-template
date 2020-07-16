@@ -2,15 +2,10 @@ import React from "react"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 import BackButton from "../../components/backButton"
-import { graphql } from "gatsby"
+import modelData from "../../assets/blueberry-maggot.json"
 
-export default function MoreInfo({ data }) {
-  let moreInfoData = null
-  if (data) {
-    moreInfoData = data.WPGraphQL.partnerResources.nodes.map(
-      d => d.partnerResources
-    )
-  }
+export default function MoreInfo() {
+  const { moreInfo } = modelData
 
   return (
     <Layout>
@@ -19,15 +14,16 @@ export default function MoreInfo({ data }) {
       <h1>More Info</h1>
 
       <div className="mt-10">
-        {moreInfoData !== null &&
-          moreInfoData.map(d => {
+        {moreInfo
+          .filter(
+            d =>
+              d.statesOrProvinces.includes("ALL") ||
+              d.statesOrProvinces.includes("NY")
+          )
+          .map(d => {
             return (
-              <div key={d.title} className="mb-4">
-                <a
-                  href={d.resourceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+              <div key={d.url} className="mb-4">
+                <a href={d.url} target="_blank" rel="noopener noreferrer">
                   {d.title}
                 </a>
               </div>
@@ -37,18 +33,3 @@ export default function MoreInfo({ data }) {
     </Layout>
   )
 }
-
-export const query = graphql`
-  query moreInfoQuery {
-    WPGraphQL {
-      partnerResources(where: { categoryName: "Blueberry Maggot", tag: "NJ" }) {
-        nodes {
-          partnerResources {
-            title
-            resourceUrl
-          }
-        }
-      }
-    }
-  }
-`

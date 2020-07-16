@@ -18,13 +18,13 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
     csvData = [
       ...data.stationData.map(d => ({
         date: d.date,
-        degreeDay: d.dd,
-        cumulativeDegreeDays: d.gdd,
+        daily: d.dd,
+        fromJan1: d.gdd,
       })),
       ...data.forecast.map(d => ({
         date: d.date,
-        degreeDay: d.dd,
-        cumulativeDegreeDays: d.gdd,
+        daily: d.dd,
+        fromJan1: d.gdd,
       })),
     ]
 
@@ -79,8 +79,8 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
     stationDataTable = data.stationData.slice(dayOfYear - 3, dayOfYear + 5)
     csvData = data.stationData.map(d => ({
       date: d.date,
-      degreeDay: d.dd,
-      cumulativeDegreeDays: d.gdd,
+      daily: d.dd,
+      fromJan1: d.gdd,
     }))
   }
 
@@ -136,25 +136,25 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
         {data && (
           <div className="flex flex-col sm:flex-row my-4 sm:justify-between sm:items-center">
             <div className="flex items-center order-2 sm:order-1">
-              {forecastDataTable && (
+              {/* {forecastDataTable && (
                 <>
                   <span className="inline-block text-gray-600 text-xs font-bold">
                     Forecast:
                   </span>
                   <span className="w-16 py-2 bg-secondary-400 inline-block mx-2 text-xs text-center font-semibold rounded"></span>
-
-                  <span className="inline-block mr-4 py-2">
-                    <a
-                      className="text-xs sm:text-sm"
-                      href={`http://forecast.weather.gov/MapClick.php?textField1=${station.lat}&textField2=${station.lon}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Forecast Details
-                    </a>
-                  </span>
                 </>
-              )}
+              )} */}
+
+              <span className="inline-block mr-4 py-2">
+                <a
+                  className="text-xs sm:text-sm"
+                  href={`http://forecast.weather.gov/MapClick.php?textField1=${station.lat}&textField2=${station.lon}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Forecast Details
+                </a>
+              </span>
             </div>
 
             <div className="order-1 sm:order-2 mt-2">
@@ -180,12 +180,12 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
               <table className="min-w-full">
                 <thead>
                   <tr>
-                    <th
+                    {/* <th
                       className="py-3 border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-secondary-600 uppercase tracking-wider"
                       rowSpan="2"
                     >
                       x
-                    </th>
+                    </th> */}
                     <th
                       className="px-6 py-3 border-r border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
                       rowSpan="2"
@@ -232,7 +232,6 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                             : `text-center`
                         }
                       >
-                        <td className="w-3 py-4 border-b border-gray-200 leading-6 text-gray-700 "></td>
                         <td
                           className={`${
                             dayOfYear === day.dayOfYear
@@ -240,7 +239,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                               : `text-xs sm:text-sm`
                           } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                         >
-                          <span className="sm:w-36 inline-block">
+                          <span className="inline-block">
                             {formatDateMonthDay(day.date)}
                           </span>
                         </td>
@@ -286,26 +285,28 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                           key={day.date}
                           className={
                             dayOfYear === day.dayOfYear
-                              ? `font-bold text-center`
+                              ? `font-extrabold text-center`
                               : `text-center`
                           }
                         >
-                          <td className="w-3 py-4 border-b border-gray-200 leading-6 text-gray-700 bg-secondary-400"></td>
                           <td
                             className={`${
                               dayOfYear === day.dayOfYear
-                                ? `text-base sm:text-lg`
+                                ? ``
                                 : `text-xs sm:text-sm`
-                            } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
+                            } px-6 py-2 border-b border-gray-200 leading-6 text-gray-700`}
                           >
-                            <span className="sm:w-36 inline-block">
+                            <span className="flex flex-col items-center">
                               {formatDateMonthDay(day.date)}
+                              <small className="inline-block text-gray-400 font-bold">
+                                Forecast
+                              </small>
                             </span>
                           </td>
                           <td
                             className={`${
                               dayOfYear === day.dayOfYear
-                                ? `text-base sm:text-lg`
+                                ? ``
                                 : `text-xs sm:text-sm`
                             } px-6 py-4 border-b border-gray-200 leading-6 text-gray-700`}
                           >
@@ -314,7 +315,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                           <td
                             className={`${
                               dayOfYear === day.dayOfYear
-                                ? `text-base sm:text-lg`
+                                ? ``
                                 : `text-xs sm:text-sm`
                             } px-6 py-3 border-b border-gray-200 leading-6`}
                           >
