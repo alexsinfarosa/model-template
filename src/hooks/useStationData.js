@@ -3,7 +3,7 @@ import dataFetchReducer from "../reducers/dataFetchReducer"
 import { fetchStationData, fetchHourlyForecastData } from "../utils/fetchData"
 import GlobalStateContext from "../context/globalStateContext"
 import vXDef from "../assets/vXDef.json"
-import { differenceInHours, getDayOfYear } from "date-fns"
+import { getDayOfYear } from "date-fns"
 import {
   setParams,
   formatDate,
@@ -318,18 +318,17 @@ export default function useStationData() {
           new Date(dateOfInterest.date).getFullYear()
 
         if (
-          differenceInHours(Date.now(), LS_STATION_DATA.lastSuccess) >= 1 ||
+          Date.now() >= LS_STATION_DATA.lastSuccess + 3600000 ||
           !isSameStation ||
           !isSameYear_LS
         ) {
-          console.log("More than 1 hour since we fetched")
-          console.log(`Difference in hours since last fetch: ${differenceInHours(
-            Date.now(),
-            LS_STATION_DATA.lastSuccess
-          )}
-          `)
-          console.log(`isSameYear: ${isSameYear_LS}`)
+          console.log(
+            `${((Date.now() - LS_STATION_DATA.lastSuccess) / 60000).toFixed(
+              0
+            )} minutes since last fetch`
+          )
           console.log(`isSameStation: ${isSameStation}`)
+          console.log(`isSameYear: ${isSameYear_LS}`)
           fetchStationHourlyData(station)
         } else {
           dispatch({

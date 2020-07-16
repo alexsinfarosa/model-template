@@ -255,9 +255,7 @@ export default function ResultsGraph({
             />
             <ReferenceLine
               x={formatDate(dateOfInterest.date)}
-              label={formatDate(dateOfInterest.date)}
               stroke="#B2B2B2"
-              // isFront={true}
               label={
                 <CustomizedReferenceLineLabel
                   date={formatDate(dateOfInterest.date)}
