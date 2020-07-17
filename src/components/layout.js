@@ -94,22 +94,22 @@ const Layout = ({ children }) => {
                       </div>
                       <div className="py-3">
                         <a
-                          href="https://newa.rcc-acis.workers.dev/crop-and-pest-management"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-600 text-xs sm:text-sm md:text-lg font-semibold leading-6 no-underline hover:underline tracking-wider"
-                        >
-                          Crop & IPM Tools
-                        </a>
-                      </div>
-                      <div className="py-3">
-                        <a
                           href="https://newa.rcc-acis.workers.dev/weather-tools"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-gray-600 text-xs sm:text-sm md:text-lg font-semibold leading-6 no-underline hover:underline tracking-wider"
                         >
                           Weather Tools
+                        </a>
+                      </div>
+                      <div className="py-3">
+                        <a
+                          href="https://newa.rcc-acis.workers.dev/crop-and-pest-management"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-600 text-xs sm:text-sm md:text-lg font-semibold leading-6 no-underline hover:underline tracking-wider"
+                        >
+                          Crop & IPM Tools
                         </a>
                       </div>
                     </div>

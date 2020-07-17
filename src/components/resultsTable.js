@@ -7,7 +7,13 @@ import { CSVLink } from "react-csv"
 export default function ResultsTable({ resultsTable, data, isLoading }) {
   const { station, dateOfInterest } = React.useContext(GlobalStateContext)
   const { title, base, formula, degreeDayRiskLevels, startDate } = resultsTable
-
+  console.log(resultsTable)
+  const {
+    low,
+    lowerModerate,
+    upperModerate,
+    high,
+  } = resultsTable.degreeDayRiskLevels
   // Current year
   let stationDataTable = null
   let forecastDataTable = null
@@ -135,16 +141,7 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
         {/* LEGEND */}
         {data && (
           <div className="flex flex-col sm:flex-row my-4 sm:justify-between sm:items-center">
-            <div className="flex items-center order-2 sm:order-1">
-              {/* {forecastDataTable && (
-                <>
-                  <span className="inline-block text-gray-600 text-xs font-bold">
-                    Forecast:
-                  </span>
-                  <span className="w-16 py-2 bg-secondary-400 inline-block mx-2 text-xs text-center font-semibold rounded"></span>
-                </>
-              )} */}
-
+            <div className="flex items-center">
               <span className="inline-block mr-4 py-2">
                 <a
                   className="text-xs sm:text-sm"
@@ -157,18 +154,18 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
               </span>
             </div>
 
-            <div className="order-1 sm:order-2 mt-2">
-              <span className="w-auto text-gray-600 text-xs font-bold">
+            <div className="flex flex-col sm:flex-row items-center mt-2">
+              <span className="text-gray-600 text-sm font-bold text-center mb-2 sm:text-left sm:mb-0">
                 Degree Days Risk Levels:{" "}
               </span>
-              <span className="w-10 sm:w-16 py-1 bg-green-600 inline-block mx-2 text-xs text-center text-white font-semibold rounded">
-                Low
+              <span className="w-40 sm:w-auto p-1 my-1 bg-green-600 sm:mx-2 text-xs text-center text-white font-semibold rounded">
+                Low &#8804; {low}
               </span>
-              <span className="w-16 py-1 bg-yellow-300 inline-block mx-2 text-xs text-center text-white font-semibold rounded">
-                Moderate
+              <span className="w-40 sm:w-auto p-1 my-1 bg-yellow-300 sm:mx-2 text-xs text-center text-white font-semibold rounded">
+                Moderate &#8805; {lowerModerate} &#8804; {upperModerate}
               </span>
-              <span className="w-10 sm:w-16 py-1 bg-red-600 inline-block ml-2 text-xs text-center text-white font-semibold rounded">
-                High
+              <span className="w-40 sm:w-auto p-1 my-1 bg-red-600 sm:ml-2 text-xs text-center text-white font-semibold rounded">
+                High &#62; {high}
               </span>
             </div>
           </div>
@@ -180,12 +177,6 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
               <table className="min-w-full">
                 <thead>
                   <tr>
-                    {/* <th
-                      className="py-3 border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-secondary-600 uppercase tracking-wider"
-                      rowSpan="2"
-                    >
-                      x
-                    </th> */}
                     <th
                       className="px-6 py-3 border-r border-gray-200 bg-secondary-600 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider"
                       rowSpan="2"
@@ -214,14 +205,11 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                 <tbody className="bg-white">
                   {stationDataTable.map(day => {
                     let riskLevel
-                    if (day.gdd <= degreeDayRiskLevels.low)
+                    if (day.gdd <= low)
                       riskLevel = "bg-green-600 text-white font-semibold"
-                    if (
-                      day.gdd >= degreeDayRiskLevels.lowerModerate &&
-                      day.gdd <= degreeDayRiskLevels.upperModerate
-                    )
+                    if (day.gdd >= lowerModerate && day.gdd <= upperModerate)
                       riskLevel = "bg-yellow-300 text-white font-semibold"
-                    if (day.gdd >= degreeDayRiskLevels.high)
+                    if (day.gdd >= high)
                       riskLevel = "bg-red-600 text-white font-semibold"
                     return (
                       <tr
@@ -271,14 +259,11 @@ export default function ResultsTable({ resultsTable, data, isLoading }) {
                   {forecastDataTable &&
                     forecastDataTable.map(day => {
                       let riskLevel
-                      if (day.gdd <= degreeDayRiskLevels.low)
+                      if (day.gdd <= low)
                         riskLevel = "bg-green-600 text-white font-semibold"
-                      if (
-                        day.gdd >= degreeDayRiskLevels.lowerModerate &&
-                        day.gdd <= degreeDayRiskLevels.upperModerate
-                      )
+                      if (day.gdd >= lowerModerate && day.gdd <= upperModerate)
                         riskLevel = "bg-yellow-300 text-white font-semibold"
-                      if (day.gdd >= degreeDayRiskLevels.high)
+                      if (day.gdd >= high)
                         riskLevel = "bg-red-600 text-white font-semibold"
                       return (
                         <tr

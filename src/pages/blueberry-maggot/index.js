@@ -49,25 +49,15 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <div className="h-full flex flex-col min-w-full">
-        <div className="hidden sm:flex sm:justify-around sm:items-center py-2 sm:py-4 mb-4">
+        <div className="hidden sm:flex sm:justify-end sm:items-center py-2 sm:py-4 mb-4 space-x-12">
           <div className="py-3">
             <a
               href="https://newa.rcc-acis.workers.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 text-sm sm:text-base md:text-lg font-semibold leading-6 no-underline hover:underline tracking-wider"
+              className="text-gray-600 text-sm sm:text-base md:text-lg font-semibold leading-6 no-underline border-b-2 border-gray-600 border-opacity-0 hover:border-opacity-100 tracking-wider pb-1"
             >
-              Home
-            </a>
-          </div>
-          <div className="py-3">
-            <a
-              href="https://newa.rcc-acis.workers.dev/crop-and-pest-management"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 text-sm sm:text-base md:text-lg font-semibold leading-6 no-underline hover:underline tracking-wider"
-            >
-              Crop & IPM Tools
+              Home/Dashboard
             </a>
           </div>
           <div className="py-3">
@@ -75,9 +65,19 @@ const IndexPage = () => {
               href="https://newa.rcc-acis.workers.dev/weather-tools"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 text-sm sm:text-base md:text-lg font-semibold leading-6 no-underline hover:underline tracking-wider"
+              className="text-gray-600 text-sm sm:text-base md:text-lg font-semibold leading-6 no-underline border-b-2 border-gray-600 border-opacity-0 hover:border-opacity-100 tracking-wider pb-1"
             >
               Weather Tools
+            </a>
+          </div>
+          <div className="py-3">
+            <a
+              href="https://newa.rcc-acis.workers.dev/crop-and-pest-management"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 text-sm sm:text-base md:text-lg font-semibold leading-6 no-underline border-b-2 border-gray-600 border-opacity-0 hover:border-opacity-100 tracking-wider pb-1"
+            >
+              Crop & IPM Tools
             </a>
           </div>
         </div>

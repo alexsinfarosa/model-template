@@ -75,7 +75,7 @@ const StationsDropdown = ({ setSidebarOpen, isMobile = false }) => {
   }
 
   return (
-    <div className="relative z-30">
+    <div className="relative">
       <Tabs defaultIndex={tabIndex} onSelect={index => setTabIndex(index)}>
         <TabList>
           <Tab>
